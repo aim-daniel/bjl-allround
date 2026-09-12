@@ -590,22 +590,6 @@ window.BJL = {
   </div>
 </div>
 
-<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-labelledby="lb-title">
-  <div class="lb-top">
-    <span id="lb-count"></span>
-    <button type="button" class="lb-btn" id="lb-close" aria-label="Sluiten"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-  </div>
-  <div class="lb-stage" id="lb-stage">
-    <button type="button" class="lb-btn lb-nav lb-prev" id="lb-prev" aria-label="Vorige foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
-    <img id="lb-img" src="" alt="">
-    <button type="button" class="lb-btn lb-nav lb-next" id="lb-next" aria-label="Volgende foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
-  </div>
-  <div class="lb-info">
-    <h3 id="lb-title"></h3>
-    <p id="lb-desc"></p>
-  </div>
-</div>
-
 <script>
 (function(){
   var C = window.BJL || {};
@@ -681,56 +665,6 @@ window.BJL = {
       setStatus('err', 'Versturen lukt nu niet. Bel ons even.');
     }
   });
-  // ===== Lightbox: foto groot met uitleg =====
-  var lb = document.getElementById('lb');
-  if (lb) {
-    var shots = $$('.shot');
-    var items = shots.map(function(fig){
-      var img = fig.querySelector('img'); var cap = fig.querySelector('figcaption');
-      return { src: img ? img.getAttribute('src') : '', alt: img ? img.alt : '', title: fig.getAttribute('data-title') || (cap ? cap.textContent : ''), desc: fig.getAttribute('data-desc') || '' };
-    });
-    var lbImg = document.getElementById('lb-img'), lbTitle = document.getElementById('lb-title'), lbDesc = document.getElementById('lb-desc'), lbCount = document.getElementById('lb-count');
-    var lbClose = document.getElementById('lb-close'), lbPrev = document.getElementById('lb-prev'), lbNext = document.getElementById('lb-next'), stage = document.getElementById('lb-stage');
-    var cur = -1, opener = null, scrollY = 0;
-    function show(i){
-      cur = (i + items.length) % items.length; var it = items[cur];
-      lbImg.src = it.src; lbImg.alt = it.alt; lbTitle.textContent = it.title; lbDesc.textContent = it.desc;
-      lbCount.textContent = (cur + 1) + ' / ' + items.length;
-      var n = new Image(); n.src = items[(cur + 1) % items.length].src; // volgende alvast laden
-    }
-    function lock(){ scrollY = window.pageYOffset || 0; document.body.classList.add('lb-lock'); document.body.style.top = -scrollY + 'px'; }
-    function unlock(){ document.body.classList.remove('lb-lock'); document.body.style.top = ''; window.scrollTo(0, scrollY); }
-    function openLb(i, btn){
-      opener = btn || null; show(i); lb.hidden = false; lock(); lbClose.focus();
-      try { history.pushState({ lb: 1 }, ''); } catch (e) {}
-    }
-    function closeLb(fromHistory){
-      if (lb.hidden) return;
-      lb.hidden = true; unlock(); if (opener) opener.focus();
-      if (!fromHistory && history.state && history.state.lb) { try { history.back(); } catch (e) {} }
-    }
-    shots.forEach(function(fig, i){
-      fig.addEventListener('click', function(e){ e.preventDefault(); openLb(i, fig.querySelector('.shot-open')); });
-    });
-    lbClose.addEventListener('click', function(){ closeLb(false); });
-    lbPrev.addEventListener('click', function(e){ e.stopPropagation(); show(cur - 1); });
-    lbNext.addEventListener('click', function(e){ e.stopPropagation(); show(cur + 1); });
-    stage.addEventListener('click', function(e){ if (e.target === stage) closeLb(false); });
-    document.addEventListener('keydown', function(e){
-      if (lb.hidden) return;
-      if (e.key === 'Escape') closeLb(false);
-      else if (e.key === 'ArrowLeft') show(cur - 1);
-      else if (e.key === 'ArrowRight') show(cur + 1);
-    });
-    window.addEventListener('popstate', function(){ if (!lb.hidden) closeLb(true); });
-    var tx = null, ty = null;
-    stage.addEventListener('touchstart', function(e){ if (e.touches.length === 1) { tx = e.touches[0].clientX; ty = e.touches[0].clientY; } }, { passive: true });
-    stage.addEventListener('touchend', function(e){
-      if (tx === null) return;
-      var dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty; tx = ty = null;
-      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) show(dx < 0 ? cur + 1 : cur - 1);
-    }, { passive: true });
-  }
   // ===== Lightbox: foto groot met uitleg =====
   var lb = document.getElementById('lb');
   if (lb) {
