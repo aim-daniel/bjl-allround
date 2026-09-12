@@ -36,5 +36,27 @@ Maak foto's max. ~1600px breed en comprimeer ze (bijv. squoosh.app), anders is d
 ## 4. Reviews
 Sectie "Reviews" toont nu een placeholder. Echte reviews plaats je met de kaart die in commentaar in de sectie staat. Geen verzonnen reviews.
 
-## 5. Live zetten
-Map uploaden naar Vercel/Netlify (drag-and-drop) of `index.html` + `img/` naar de webserver. Koppel het domein, klaar.
+## 5. Live zetten (GitHub Pages + Strato-domein)
+Hosting: GitHub Pages, repo `aim-daniel/bjl-allround`, branch `main`, map `/`. Elke push naar `main` is binnen een minuut live.
+
+Eenmalig (in de terminal, ingelogd als aim-daniel):
+
+```bash
+cd ~/bjl-allround && gh repo create aim-daniel/bjl-allround --public --source=. --push && gh api -X POST repos/aim-daniel/bjl-allround/pages -f build_type=legacy -f 'source[branch]=main' -f 'source[path]=/'
+```
+
+Tijdelijke URL: https://aim-daniel.github.io/bjl-allround/
+
+Domein `www.bjlallround.nl` (staat in het bestand `CNAME`). Bij Strato → Domeinen → bjlallround.nl → DNS-instellingen:
+
+| type | naam/host | waarde |
+|---|---|---|
+| A | @ (bjlallround.nl) | 185.199.108.153 |
+| A | @ | 185.199.109.153 |
+| A | @ | 185.199.110.153 |
+| A | @ | 185.199.111.153 |
+| CNAME | www | aim-daniel.github.io |
+
+De bestaande A-record van Strato (217.160.0.231) en de bestaande CNAME `www → bjlallround.nl` verwijderen. Daarna in de repo: Settings → Pages → Custom domain = www.bjlallround.nl, "Enforce HTTPS" aanzetten zodra het certificaat er is (tot 24 uur). Het kale domein bjlallround.nl stuurt GitHub dan automatisch door naar www.
+
+Updates daarna: bestand aanpassen, `git commit -am "…"`, `git push`.
