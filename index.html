@@ -157,6 +157,50 @@ section{padding:56px 0}
 .shot .photo-slot{font-size:.78rem;gap:4px}
 .shot .photo-slot svg{width:24px;height:24px}
 
+.shot figcaption{pointer-events:none}
+.shot-open{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent;font:inherit;color:inherit}
+.shot-open:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+.shot .zoom{position:absolute;top:8px;right:8px;width:30px;height:30px;border-radius:50%;background:rgba(12,14,17,.72);color:#fff;display:grid;place-items:center;pointer-events:none}
+.shot .zoom svg{width:16px;height:16px}
+
+/* ===== Lightbox (foto groot met uitleg) ===== */
+.lb{position:fixed;inset:0;z-index:100;background:#06070a;display:flex;flex-direction:column;color:var(--text)}
+.lb-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 14px;padding-top:calc(10px + env(safe-area-inset-top));color:var(--muted);font-size:.85rem;font-variant-numeric:tabular-nums}
+.lb-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(23,27,33,.9);color:var(--text);display:grid;place-items:center;cursor:pointer;padding:0;-webkit-tap-highlight-color:transparent}
+.lb-btn svg{width:22px;height:22px}
+.lb-btn:hover{border-color:var(--muted)}
+.lb-stage{flex:1;min-height:0;position:relative;display:flex;align-items:center;justify-content:center;padding:0 8px;touch-action:pan-y}
+.lb-stage img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:10px;-webkit-user-select:none;user-select:none}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%)}
+.lb-prev{left:10px}.lb-next{right:10px}
+.lb-info{width:100%;max-width:720px;margin:0 auto;padding:14px 18px calc(18px + env(safe-area-inset-bottom));display:grid;gap:6px}
+.lb-info h3{font-size:1.1rem}
+.lb-info p{color:var(--muted);font-size:.95rem;max-width:62ch}
+.lb-lock{position:fixed;width:100%;overflow:hidden}
+@media (min-width:900px){.lb-stage{padding:0 72px}.lb-info h3{font-size:1.25rem}}
+
+.shot figcaption{pointer-events:none}
+.shot-open{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent;font:inherit;color:inherit}
+.shot-open:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+.shot .zoom{position:absolute;top:8px;right:8px;width:30px;height:30px;border-radius:50%;background:rgba(12,14,17,.72);color:#fff;display:grid;place-items:center;pointer-events:none}
+.shot .zoom svg{width:16px;height:16px}
+
+/* ===== Lightbox (foto groot met uitleg) ===== */
+.lb{position:fixed;inset:0;z-index:100;background:#06070a;display:flex;flex-direction:column;color:var(--text)}
+.lb-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 14px;padding-top:calc(10px + env(safe-area-inset-top));color:var(--muted);font-size:.85rem;font-variant-numeric:tabular-nums}
+.lb-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(23,27,33,.9);color:var(--text);display:grid;place-items:center;cursor:pointer;padding:0;-webkit-tap-highlight-color:transparent}
+.lb-btn svg{width:22px;height:22px}
+.lb-btn:hover{border-color:var(--muted)}
+.lb-stage{flex:1;min-height:0;position:relative;display:flex;align-items:center;justify-content:center;padding:0 8px;touch-action:pan-y}
+.lb-stage img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:10px;-webkit-user-select:none;user-select:none}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%)}
+.lb-prev{left:10px}.lb-next{right:10px}
+.lb-info{width:100%;max-width:720px;margin:0 auto;padding:14px 18px calc(18px + env(safe-area-inset-bottom));display:grid;gap:6px}
+.lb-info h3{font-size:1.1rem}
+.lb-info p{color:var(--muted);font-size:.95rem;max-width:62ch}
+.lb-lock{position:fixed;width:100%;overflow:hidden}
+@media (min-width:900px){.lb-stage{padding:0 72px}.lb-info h3{font-size:1.25rem}}
+
 /* ===== Reviews ===== */
 .reviews-empty{border:1px dashed var(--line);border-radius:14px;padding:26px;color:var(--muted);text-align:center}
 .review{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:12px}
@@ -407,20 +451,20 @@ window.BJL = {
     <div class="sec-head">
       <span class="eyebrow">Werk</span>
       <h2>Recente <span class="script">klussen</span></h2>
-      <p class="lead">Een greep uit het werk: van toilet en badkamer tot vloerverwarming, riool en hemelwaterafvoer.</p>
+      <p class="lead">Een greep uit het werk: van toilet en badkamer tot vloerverwarming, riool en hemelwaterafvoer. Tik op een foto om hem groot te bekijken, met uitleg.</p>
     </div>
     <div class="gallery">
       <!-- Voorbeeld met foto:
-      <figure class="shot"><img src="img/werk-9.jpg" alt="Omschrijving van de klus" loading="lazy"><figcaption>Bijschrift</figcaption></figure>
+      <figure class="shot" data-title="Titel van de klus" data-desc="Uitleg die groot bij de foto verschijnt."><button type="button" class="shot-open" aria-label="Bekijk groot: Titel van de klus"><img src="img/werk-9.jpg" alt="Omschrijving van de klus" loading="lazy"></button><figcaption>Bijschrift</figcaption></figure>
       -->
-      <figure class="shot"><img src="img/werk-1.jpg" alt="Toilet met visgraattegels, zwart fonteinkraantje en zwart toiletgarnituur" loading="lazy" width="900" height="1200"><figcaption>Toiletrenovatie · visgraat &amp; zwart</figcaption></figure>
-      <figure class="shot"><img src="img/werk-2.jpg" alt="Grijs betegeld toilet met hangend closet en fonteintje" loading="lazy" width="900" height="1200"><figcaption>Toilet · hangend closet</figcaption></figure>
-      <figure class="shot"><img src="img/werk-3.jpg" alt="Zwarte regendouche met thermostaatkraan op lichte tegels" loading="lazy" width="693" height="1200"><figcaption>Badkamer · regendouche</figcaption></figure>
-      <figure class="shot"><img src="img/werk-8.jpg" alt="Toilet met antracieten wand, lichte tegels en messing kraan" loading="lazy" width="900" height="1200"><figcaption>Toilet · antraciet &amp; messing</figcaption></figure>
-      <figure class="shot"><img src="img/werk-4.jpg" alt="Vloerverwarmingsleidingen gelegd op wapeningsnet in woonkamer" loading="lazy" width="900" height="1200"><figcaption>Vloerverwarming · woonkamer</figcaption></figure>
-      <figure class="shot"><img src="img/werk-5.jpg" alt="Vloerverwarmingsverdeler met pomp en flowmeters" loading="lazy" width="900" height="1200"><figcaption>Verdeler &amp; pompgroep</figcaption></figure>
-      <figure class="shot"><img src="img/werk-6.jpg" alt="Nieuwe rioolleidingen in de fundering van een woningblok" loading="lazy" width="900" height="1200"><figcaption>Riool · nieuwbouw fundering</figcaption></figure>
-      <figure class="shot"><img src="img/werk-7.jpg" alt="Hemelwaterafvoer gemonteerd op houten gevel van appartementengebouw" loading="lazy" width="900" height="1200"><figcaption>Hemelwaterafvoer · gevel</figcaption></figure>
+      <figure class="shot" data-title="Toiletrenovatie in visgraat en zwart" data-desc="Compleet vernieuwd toilet: wandcloset op inbouwreservoir, fonteintje met zwarte kraan en zwarte sifon, visgraattegels als accentwand en zwart toiletgarnituur. Al het leidingwerk zit weggewerkt in de wand."><button type="button" class="shot-open" aria-label="Bekijk groot: Toiletrenovatie in visgraat en zwart"><img src="img/werk-1.jpg" alt="Toilet met visgraattegels, zwart fonteinkraantje en zwart toiletgarnituur" loading="lazy" width="900" height="1200"><span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Toiletrenovatie · visgraat &amp; zwart</figcaption></figure>
+      <figure class="shot" data-title="Toilet met hangend closet" data-desc="Strak betegeld toilet in grijs: wandcloset met bedieningsplaat, fonteintje met chromen kraan en toiletborstel aan de wand. Geen zichtbare leidingen, makkelijk schoon te houden."><button type="button" class="shot-open" aria-label="Bekijk groot: Toilet met hangend closet"><img src="img/werk-2.jpg" alt="Grijs betegeld toilet met hangend closet en fonteintje" loading="lazy" width="900" height="1200"><span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Toilet · hangend closet</figcaption></figure>
+      <figure class="shot" data-title="Zwarte regendouche" data-desc="Regendouche met thermostaatkraan en handdouche in mat zwart op grootformaat tegels. De leidingen lopen in de wand, dus geen buizen in het zicht."><button type="button" class="shot-open" aria-label="Bekijk groot: Zwarte regendouche"><img src="img/werk-3.jpg" alt="Zwarte regendouche met thermostaatkraan op lichte tegels" loading="lazy" width="693" height="1200"><span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Badkamer · regendouche</figcaption></figure>
+      <figure class="shot" data-title="Toilet in antraciet en messing" data-desc="Toilet met antracieten achterwand en vloer, lichte wandtegels, wandcloset en fonteintje met messing kraan. Inbouwreservoir en afvoer volledig weggewerkt."><button type="button" class="shot-open" aria-label="Bekijk groot: Toilet in antraciet en messing"><img src="img/werk-8.jpg" alt="Toilet met antracieten wand, lichte tegels en messing kraan" loading="lazy" width="900" height="1200"><span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Toilet · antraciet &amp; messing</figcaption></figure>
+      <figure class="shot" data-title="Vloerverwarming in de woonkamer" data-desc="Vloerverwarming gelegd op wapeningsnet, klaar voor de dekvloer. Gelijkmatige lussen met vaste afstand zorgen voor een egale warmteverdeling over de hele vloer."><button type="button" class="shot-open" aria-label="Bekijk groot: Vloerverwarming in de woonkamer"><img src="img/werk-4.jpg" alt="Vloerverwarmingsleidingen gelegd op wapeningsnet in woonkamer" loading="lazy" width="900" height="1200"><span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Vloerverwarming · woonkamer</figcaption></figure>
+      <figure class="shot" data-title="Verdeler en pompgroep" data-desc="Verdeler van de vloerverwarming met pompgroep en per groep een flowmeter, aangesloten op de cv-leidingen en netjes weggewerkt onder de trap. Elke groep is apart in te regelen."><button type="button" class="shot-open" aria-label="Bekijk groot: Verdeler en pompgroep"><img src="img/werk-5.jpg" alt="Vloerverwarmingsverdeler met pomp en flowmeters" loading="lazy" width="900" height="1200"><span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Verdeler &amp; pompgroep</figcaption></figure>
+      <figure class="shot" data-title="Riool in de fundering van nieuwbouw" data-desc="Rioolleidingen aangelegd in de fundering van een nieuwbouwblok: op afschot gelegd en gefixeerd voordat de vloer gestort wordt, zodat alles later goed blijft afvoeren."><button type="button" class="shot-open" aria-label="Bekijk groot: Riool in de fundering van nieuwbouw"><img src="img/werk-6.jpg" alt="Nieuwe rioolleidingen in de fundering van een woningblok" loading="lazy" width="900" height="1200"><span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Riool · nieuwbouw fundering</figcaption></figure>
+      <figure class="shot" data-title="Hemelwaterafvoer op de gevel" data-desc="Hemelwaterafvoer gemonteerd op de houten gevel van een appartementengebouw, inclusief beugels, uitgevoerd vanaf de hoogwerker. Strak in lijn met de gevel."><button type="button" class="shot-open" aria-label="Bekijk groot: Hemelwaterafvoer op de gevel"><img src="img/werk-7.jpg" alt="Hemelwaterafvoer gemonteerd op houten gevel van appartementengebouw" loading="lazy" width="900" height="1200"><span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Hemelwaterafvoer · gevel</figcaption></figure>
     </div>
   </div>
 </section>
@@ -551,6 +595,38 @@ window.BJL = {
   </a>
 </div>
 
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-labelledby="lb-title">
+  <div class="lb-top">
+    <span id="lb-count"></span>
+    <button type="button" class="lb-btn" id="lb-close" aria-label="Sluiten"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="lb-stage" id="lb-stage">
+    <button type="button" class="lb-btn lb-nav lb-prev" id="lb-prev" aria-label="Vorige foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <img id="lb-img" src="" alt="">
+    <button type="button" class="lb-btn lb-nav lb-next" id="lb-next" aria-label="Volgende foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+  <div class="lb-info">
+    <h3 id="lb-title"></h3>
+    <p id="lb-desc"></p>
+  </div>
+</div>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-labelledby="lb-title">
+  <div class="lb-top">
+    <span id="lb-count"></span>
+    <button type="button" class="lb-btn" id="lb-close" aria-label="Sluiten"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="lb-stage" id="lb-stage">
+    <button type="button" class="lb-btn lb-nav lb-prev" id="lb-prev" aria-label="Vorige foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <img id="lb-img" src="" alt="">
+    <button type="button" class="lb-btn lb-nav lb-next" id="lb-next" aria-label="Volgende foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+  <div class="lb-info">
+    <h3 id="lb-title"></h3>
+    <p id="lb-desc"></p>
+  </div>
+</div>
+
 <script>
 (function(){
   var C = window.BJL || {};
@@ -626,6 +702,106 @@ window.BJL = {
       setStatus('err', 'Versturen lukt nu niet. Bel ons even.');
     }
   });
+  // ===== Lightbox: foto groot met uitleg =====
+  var lb = document.getElementById('lb');
+  if (lb) {
+    var shots = $$('.shot');
+    var items = shots.map(function(fig){
+      var img = fig.querySelector('img'); var cap = fig.querySelector('figcaption');
+      return { src: img ? img.getAttribute('src') : '', alt: img ? img.alt : '', title: fig.getAttribute('data-title') || (cap ? cap.textContent : ''), desc: fig.getAttribute('data-desc') || '' };
+    });
+    var lbImg = document.getElementById('lb-img'), lbTitle = document.getElementById('lb-title'), lbDesc = document.getElementById('lb-desc'), lbCount = document.getElementById('lb-count');
+    var lbClose = document.getElementById('lb-close'), lbPrev = document.getElementById('lb-prev'), lbNext = document.getElementById('lb-next'), stage = document.getElementById('lb-stage');
+    var cur = -1, opener = null, scrollY = 0;
+    function show(i){
+      cur = (i + items.length) % items.length; var it = items[cur];
+      lbImg.src = it.src; lbImg.alt = it.alt; lbTitle.textContent = it.title; lbDesc.textContent = it.desc;
+      lbCount.textContent = (cur + 1) + ' / ' + items.length;
+      var n = new Image(); n.src = items[(cur + 1) % items.length].src; // volgende alvast laden
+    }
+    function lock(){ scrollY = window.pageYOffset || 0; document.body.classList.add('lb-lock'); document.body.style.top = -scrollY + 'px'; }
+    function unlock(){ document.body.classList.remove('lb-lock'); document.body.style.top = ''; window.scrollTo(0, scrollY); }
+    function openLb(i, btn){
+      opener = btn || null; show(i); lb.hidden = false; lock(); lbClose.focus();
+      try { history.pushState({ lb: 1 }, ''); } catch (e) {}
+    }
+    function closeLb(fromHistory){
+      if (lb.hidden) return;
+      lb.hidden = true; unlock(); if (opener) opener.focus();
+      if (!fromHistory && history.state && history.state.lb) { try { history.back(); } catch (e) {} }
+    }
+    shots.forEach(function(fig, i){
+      fig.addEventListener('click', function(e){ e.preventDefault(); openLb(i, fig.querySelector('.shot-open')); });
+    });
+    lbClose.addEventListener('click', function(){ closeLb(false); });
+    lbPrev.addEventListener('click', function(e){ e.stopPropagation(); show(cur - 1); });
+    lbNext.addEventListener('click', function(e){ e.stopPropagation(); show(cur + 1); });
+    stage.addEventListener('click', function(e){ if (e.target === stage) closeLb(false); });
+    document.addEventListener('keydown', function(e){
+      if (lb.hidden) return;
+      if (e.key === 'Escape') closeLb(false);
+      else if (e.key === 'ArrowLeft') show(cur - 1);
+      else if (e.key === 'ArrowRight') show(cur + 1);
+    });
+    window.addEventListener('popstate', function(){ if (!lb.hidden) closeLb(true); });
+    var tx = null, ty = null;
+    stage.addEventListener('touchstart', function(e){ if (e.touches.length === 1) { tx = e.touches[0].clientX; ty = e.touches[0].clientY; } }, { passive: true });
+    stage.addEventListener('touchend', function(e){
+      if (tx === null) return;
+      var dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty; tx = ty = null;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) show(dx < 0 ? cur + 1 : cur - 1);
+    }, { passive: true });
+  }
+  // ===== Lightbox: foto groot met uitleg =====
+  var lb = document.getElementById('lb');
+  if (lb) {
+    var shots = $$('.shot');
+    var items = shots.map(function(fig){
+      var img = fig.querySelector('img'); var cap = fig.querySelector('figcaption');
+      return { src: img ? img.getAttribute('src') : '', alt: img ? img.alt : '', title: fig.getAttribute('data-title') || (cap ? cap.textContent : ''), desc: fig.getAttribute('data-desc') || '' };
+    });
+    var lbImg = document.getElementById('lb-img'), lbTitle = document.getElementById('lb-title'), lbDesc = document.getElementById('lb-desc'), lbCount = document.getElementById('lb-count');
+    var lbClose = document.getElementById('lb-close'), lbPrev = document.getElementById('lb-prev'), lbNext = document.getElementById('lb-next'), stage = document.getElementById('lb-stage');
+    var cur = -1, opener = null, scrollY = 0;
+    function show(i){
+      cur = (i + items.length) % items.length; var it = items[cur];
+      lbImg.src = it.src; lbImg.alt = it.alt; lbTitle.textContent = it.title; lbDesc.textContent = it.desc;
+      lbCount.textContent = (cur + 1) + ' / ' + items.length;
+      var n = new Image(); n.src = items[(cur + 1) % items.length].src; // volgende alvast laden
+    }
+    function lock(){ scrollY = window.pageYOffset || 0; document.body.classList.add('lb-lock'); document.body.style.top = -scrollY + 'px'; }
+    function unlock(){ document.body.classList.remove('lb-lock'); document.body.style.top = ''; window.scrollTo(0, scrollY); }
+    function openLb(i, btn){
+      opener = btn || null; show(i); lb.hidden = false; lock(); lbClose.focus();
+      try { history.pushState({ lb: 1 }, ''); } catch (e) {}
+    }
+    function closeLb(fromHistory){
+      if (lb.hidden) return;
+      lb.hidden = true; unlock(); if (opener) opener.focus();
+      if (!fromHistory && history.state && history.state.lb) { try { history.back(); } catch (e) {} }
+    }
+    shots.forEach(function(fig, i){
+      fig.addEventListener('click', function(e){ e.preventDefault(); openLb(i, fig.querySelector('.shot-open')); });
+    });
+    lbClose.addEventListener('click', function(){ closeLb(false); });
+    lbPrev.addEventListener('click', function(e){ e.stopPropagation(); show(cur - 1); });
+    lbNext.addEventListener('click', function(e){ e.stopPropagation(); show(cur + 1); });
+    stage.addEventListener('click', function(e){ if (e.target === stage) closeLb(false); });
+    document.addEventListener('keydown', function(e){
+      if (lb.hidden) return;
+      if (e.key === 'Escape') closeLb(false);
+      else if (e.key === 'ArrowLeft') show(cur - 1);
+      else if (e.key === 'ArrowRight') show(cur + 1);
+    });
+    window.addEventListener('popstate', function(){ if (!lb.hidden) closeLb(true); });
+    var tx = null, ty = null;
+    stage.addEventListener('touchstart', function(e){ if (e.touches.length === 1) { tx = e.touches[0].clientX; ty = e.touches[0].clientY; } }, { passive: true });
+    stage.addEventListener('touchend', function(e){
+      if (tx === null) return;
+      var dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty; tx = ty = null;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) show(dx < 0 ? cur + 1 : cur - 1);
+    }, { passive: true });
+  }
 })();
 </script>
 </body>
