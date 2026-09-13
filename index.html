@@ -3,14 +3,34 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>BJL Allround</title>
-<meta name="description" content="BJL Allround: loodgieter voor water, verwarming, riool en sanitair. Spoed of gepland werk, één telefoontje en het is geregeld.">
+<title>BJL Allround · Loodgieter in Overijssel en heel Nederland</title>
+<meta name="description" content="BJL Allround, loodgieter vanuit Overijssel voor heel Nederland: lekkages, riool ontstoppen, verwarming en vloerverwarming, badkamer en toilet. Bel of app Benjamin direct.">
 <meta name="theme-color" content="#0c0e11">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%232b7de9'/%3E%3Ctext x='32' y='42' font-family='Arial Black,Arial' font-weight='900' font-size='26' text-anchor='middle' fill='%23fff'%3EBJL%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,500;112,700;112,900&family=Instrument+Sans:wght@400;500;600&family=Caveat:wght@600&display=swap">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="canonical" href="https://www.bjlallround.nl/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:url" content="https://www.bjlallround.nl/">
+<meta property="og:site_name" content="BJL Allround">
+<meta property="og:title" content="BJL Allround · Loodgieter in Overijssel en heel Nederland">
+<meta property="og:description" content="Lekkages, riool ontstoppen, verwarming en vloerverwarming, badkamer en toilet. Bel of app Benjamin direct.">
+<meta property="og:image" content="https://www.bjlallround.nl/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Badkamer door BJL Allround met zwart badmeubel en ronde verlichte spiegel">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="fonts/Archivo-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/InstrumentSans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Plumber","name":"BJL Allround","url":"https://www.bjlallround.nl/","image":"https://www.bjlallround.nl/img/og.jpg","telephone":"+31641178935","founder":{"@type":"Person","name":"Benjamin"},"address":{"@type":"PostalAddress","addressRegion":"Overijssel","addressCountry":"NL"},"areaServed":{"@type":"Country","name":"Nederland"},"priceRange":"€€"}
+</script>
 <style>
+/* ===== Lettertypes: lokaal gehost (geen verzoek naar Google) ===== */
+@font-face{font-family:'Archivo';font-style:normal;font-weight:700 900;font-stretch:112%;font-display:swap;src:url('fonts/Archivo-var-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Instrument Sans';font-style:normal;font-weight:400 600;font-display:swap;src:url('fonts/InstrumentSans-var-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Caveat';font-style:normal;font-weight:600;font-display:swap;src:url('fonts/Caveat-600-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
 /* ===== Kleuren en type (één donker thema: zwart, grijs, blauw) ===== */
 :root{
   --bg:#0c0e11;        /* zwart, koel */
@@ -20,11 +40,13 @@
   --line:#2a313b;
   --text:#f2f4f7;
   --muted:#9aa3ad;
-  --accent:#2b7de9;    /* blauw: knoppen en vlakken */
+  --accent:#1f6fd6;    /* blauw: knoppen en vlakken (wit erop = 4.9:1) */
+  --accent-hover:#2b7de9;
+  --line-strong:#616d7d; /* randen van invoervelden en knoppen (>= 3:1) */
   --accent-ink:#ffffff;
   --accent-text:#6fb1ff; /* lichter blauw voor tekst op donker */
-  --accent-soft:rgba(43,125,233,.16);
-  --pending:#f59e0b;   /* amber = nog invullen */
+  --accent-soft:rgba(31,111,214,.16);
+  --err:#f59e0b;       /* foutmelding */
   --ok:#4ade80;
   --radius:12px;
   --display:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -33,9 +55,9 @@
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:72px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
-body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.55;padding-bottom:calc(72px + env(safe-area-inset-bottom))}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.55;padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
 @media (min-width:760px){body{padding-bottom:0}}
 img{max-width:100%;display:block}
 a{color:inherit}
@@ -44,8 +66,8 @@ h1{font-size:clamp(2.2rem,8vw,4.2rem)}
 h2{font-size:clamp(1.7rem,5.5vw,2.8rem)}
 h3{font-size:1.2rem;font-weight:700;line-height:1.2}
 p{margin:0}
-.wrap{width:100%;max-width:1100px;margin:0 auto;padding:0 20px}
-@media (min-width:760px){.wrap{padding:0 32px}}
+.wrap{width:100%;max-width:1100px;margin:0 auto;padding:0 20px;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+@media (min-width:760px){.wrap{padding:0 32px;padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}}
 section{padding:56px 0}
 @media (min-width:760px){section{padding:88px 0}}
 .alt{background:var(--bg-2)}
@@ -60,21 +82,19 @@ section{padding:56px 0}
 .btn:active{transform:scale(.98)}
 .btn svg{width:20px;height:20px;flex:none}
 .btn-accent{background:var(--accent);color:var(--accent-ink)}
-.btn-accent:hover{background:#3d8cf3}
-.btn-ghost{background:transparent;color:var(--text);border-color:var(--line)}
+.btn-accent:hover{background:var(--accent-hover)}
+.btn-ghost{background:transparent;color:var(--text);border-color:var(--line-strong)}
 .btn-ghost:hover{border-color:var(--muted);background:var(--surface)}
 .btn-wa{background:#25d366;color:#0b2e1a}
 .btn-wa:hover{background:#3fe07a}
 .btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .btn-block{width:100%}
 
-/* nog-invullen markering */
-.pending{display:inline-flex;align-items:center;gap:6px;background:rgba(245,158,11,.14);color:var(--pending);border:1px dashed var(--pending);border-radius:999px;padding:2px 10px;font-size:.8rem;font-family:var(--body);font-weight:600;white-space:nowrap;text-decoration:none}
 
 /* ===== Navigatie ===== */
 .nav{position:sticky;top:0;z-index:40;background:rgba(12,14,17,.85);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-weight:900;font-size:1.1rem;letter-spacing:.02em}
+.logo{display:flex;align-items:center;gap:10px;min-height:44px;text-decoration:none;font-family:var(--display);font-weight:900;font-size:1.1rem;letter-spacing:.02em}
 .logo-text{font-family:var(--display);font-weight:900;font-size:1.2rem;letter-spacing:.01em;color:var(--text)}
 .logo-bjl{color:var(--accent-text)}
 .nav-links{display:none;gap:28px;list-style:none;margin:0;padding:0}
@@ -82,14 +102,14 @@ section{padding:56px 0}
 .nav-links a:hover{color:var(--text)}
 .nav-cta{display:none}
 @media (min-width:760px){.nav-links,.nav-cta{display:flex}}
-.nav-call{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-family:var(--display);font-weight:700;font-size:.9rem;text-decoration:none}
+.nav-call{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-family:var(--display);font-weight:700;font-size:.9rem;text-decoration:none}
 .nav-call svg{width:18px;height:18px}
 @media (min-width:760px){.nav-call{display:none}}
 
 /* ===== Hero ===== */
 .hero{padding:48px 0 40px;position:relative;overflow:hidden}
 @media (min-width:760px){.hero{padding:96px 0 72px}}
-.hero::before{content:"";position:absolute;inset:auto -20% -40% auto;width:60vw;max-width:640px;height:60vw;max-height:640px;border-radius:50%;background:radial-gradient(circle,rgba(43,125,233,.22),transparent 62%);pointer-events:none}
+.hero::before{content:"";position:absolute;top:auto;left:auto;right:-20%;bottom:-40%;width:60vw;max-width:640px;height:60vw;max-height:640px;border-radius:50%;background:radial-gradient(circle,rgba(31,111,214,.24),transparent 62%);pointer-events:none}
 .hero .wrap{position:relative;display:grid;gap:28px}
 @media (min-width:900px){.hero .wrap{grid-template-columns:1.15fr .85fr;align-items:center;gap:48px}}
 .hero-copy{display:flex;flex-direction:column;gap:18px}
@@ -102,8 +122,8 @@ section{padding:56px 0}
 @supports not (aspect-ratio:1){.hero-photo{min-height:340px}}
 .hero-photo img{width:100%;height:100%;object-fit:cover}
 .hero-photo .badge{position:absolute;left:14px;bottom:14px;background:var(--accent);color:var(--accent-ink);border-radius:10px;padding:10px 14px;font-family:var(--display);font-weight:900;font-size:.85rem;line-height:1.15}
-.hero-photo .badge span{display:block;font-family:var(--body);font-weight:500;font-size:.72rem;opacity:.85}
-.photo-slot{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:var(--muted);font-size:.9rem;text-align:center;padding:20px;background:repeating-linear-gradient(135deg,var(--surface) 0 18px,var(--surface-2) 18px 20px)}
+.hero-photo .badge span{display:block;font-family:var(--body);font-weight:600;font-size:.76rem}
+.photo-slot{position:absolute;top:0;right:0;bottom:0;left:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:var(--muted);font-size:.9rem;text-align:center;padding:20px;background:repeating-linear-gradient(135deg,var(--surface) 0 18px,var(--surface-2) 18px 20px)}
 .photo-slot svg{width:36px;height:36px;opacity:.6}
 .photo-slot code{font-size:.78rem;color:var(--text);background:var(--bg);padding:2px 7px;border-radius:6px}
 
@@ -158,44 +178,42 @@ section{padding:56px 0}
 .shot .photo-slot svg{width:24px;height:24px}
 
 .shot figcaption{pointer-events:none}
-.shot-open{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent;font:inherit;color:inherit}
+.shot-open{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;padding:0;border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent;font:inherit;color:inherit}
 .shot-open:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
 .shot .zoom{position:absolute;top:8px;right:8px;width:30px;height:30px;border-radius:50%;background:rgba(12,14,17,.72);color:#fff;display:grid;place-items:center;pointer-events:none}
 .shot .zoom svg{width:16px;height:16px}
 
 /* ===== Lightbox (foto groot met uitleg) ===== */
-.lb{position:fixed;inset:0;z-index:100;background:#06070a;display:flex;flex-direction:column;color:var(--text)}
-.lb-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 14px;padding-top:calc(10px + env(safe-area-inset-top));color:var(--muted);font-size:.85rem;font-variant-numeric:tabular-nums}
-.lb-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(23,27,33,.9);color:var(--text);display:grid;place-items:center;cursor:pointer;padding:0;-webkit-tap-highlight-color:transparent}
+.lb{position:fixed;top:0;right:0;bottom:0;left:0;z-index:100;background:#06070a;display:flex;flex-direction:column;color:var(--text)}
+.lb-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 14px;padding-top:calc(10px + env(safe-area-inset-top,0px));color:var(--muted);font-size:.85rem;font-variant-numeric:tabular-nums}
+.lb-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line-strong);background:rgba(23,27,33,.9);color:var(--text);display:grid;place-items:center;cursor:pointer;padding:0;-webkit-tap-highlight-color:transparent}
 .lb-btn svg{width:22px;height:22px}
 .lb-btn:hover{border-color:var(--muted)}
 .lb-stage{flex:1;min-height:0;position:relative;display:flex;align-items:center;justify-content:center;padding:0 8px;touch-action:pan-y}
 .lb-stage img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:10px;-webkit-user-select:none;user-select:none}
 .lb-nav{position:absolute;top:50%;transform:translateY(-50%)}
 .lb-prev{left:10px}.lb-next{right:10px}
-.lb-info{width:100%;max-width:720px;margin:0 auto;padding:14px 18px calc(18px + env(safe-area-inset-bottom));display:grid;gap:6px}
+.lb-info{width:100%;max-width:720px;margin:0 auto;padding:14px 18px calc(18px + env(safe-area-inset-bottom,0px));display:grid;gap:6px}
 .lb-info h3{font-size:1.1rem}
 .lb-info p{color:var(--muted);font-size:.95rem;max-width:62ch}
 .lb-lock{position:fixed;width:100%;overflow:hidden}
 @media (min-width:900px){.lb-stage{padding:0 72px}.lb-info h3{font-size:1.25rem}}
 
 
-/* ===== Reviews ===== */
-.reviews-empty{border:1px dashed var(--line);border-radius:14px;padding:26px;color:var(--muted);text-align:center}
-.review{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:12px}
-.review .who{display:flex;align-items:center;gap:12px}
-.review .avatar{width:42px;height:42px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-family:var(--display);font-weight:900}
-.review .who b{display:block;font-family:var(--display);font-weight:700}
-.review .who span{font-size:.82rem;color:var(--muted)}
-.review .stars{color:var(--accent-text);letter-spacing:2px;font-size:.9rem}
-.review q{quotes:"“" "”";color:var(--text)}
+/* ===== Reacties van klanten ===== */
+.reviews{display:flex;flex-wrap:wrap;gap:14px}
+.review{flex:1 1 240px;margin:0;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 22px 18px;display:flex;flex-direction:column;gap:12px;position:relative}
+.review::before{content:"";position:absolute;top:14px;right:16px;width:26px;height:26px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236fb1ff' opacity='.55'%3E%3Cpath d='M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z'/%3E%3C/svg%3E") center/contain no-repeat}
+.review blockquote{margin:0;padding-right:28px}
+.review blockquote p{font-family:var(--display);font-weight:700;font-size:1.05rem;line-height:1.35;color:var(--text)}
+.review figcaption{font-size:.82rem;color:var(--muted)}
 
 /* ===== FAQ ===== */
 .faq{max-width:760px}
 .faq details{border-bottom:1px solid var(--line)}
 .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;font-family:var(--display);font-weight:700;font-size:1.02rem}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";flex:none;width:28px;height:28px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--accent-text);font-weight:500;transition:transform .2s}
+.faq summary::after{content:"";flex:none;width:28px;height:28px;border-radius:50%;border:1px solid var(--line-strong);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236fb1ff' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E") center/13px no-repeat;transition:transform .2s}
 .faq details[open] summary::after{transform:rotate(45deg)}
 .faq .a{padding:0 0 18px;color:var(--muted);max-width:62ch}
 
@@ -209,14 +227,16 @@ section{padding:56px 0}
 .contact-item .icon svg{width:22px;height:22px}
 .contact-item small{display:block;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-family:var(--display);font-weight:700}
 .contact-item b{font-family:var(--display);font-weight:700;font-size:1.05rem;font-variant-numeric:tabular-nums}
-.contact-item .val{min-width:0;overflow-wrap:anywhere}
+.contact-item .val{min-width:0;word-break:break-word;overflow-wrap:anywhere}
 form{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;display:grid;gap:14px}
 @media (min-width:600px){form{padding:28px}}
 .field{display:grid;gap:6px}
 .field label{font-size:.85rem;font-weight:600}
 .field label em{font-style:normal;color:var(--muted);font-weight:400}
-.field input,.field textarea,.field select{width:100%;font:inherit;font-size:16px;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:13px 14px;min-height:50px}
+.field input,.field textarea,.field select{width:100%;font:inherit;font-size:16px;color:var(--text);background:var(--bg);border:1px solid var(--line-strong);border-radius:10px;padding:13px 14px;min-height:50px}
 .field textarea{min-height:120px;resize:vertical}
+.field [aria-invalid="true"]{border-color:var(--err);box-shadow:0 0 0 1px var(--err)}
+.field select{padding-right:40px}
 .field select{-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a6a69f' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:18px}
 .row-2{display:grid;gap:14px}
 @media (min-width:600px){.row-2{grid-template-columns:1fr 1fr}}
@@ -224,26 +244,28 @@ form{background:var(--surface);border:1px solid var(--line);border-radius:18px;p
 .form-status{display:none;padding:12px 14px;border-radius:10px;font-size:.92rem}
 .form-status.show{display:block}
 .form-status.ok{background:rgba(74,222,128,.12);color:var(--ok);border:1px solid rgba(74,222,128,.35)}
-.form-status.err{background:rgba(245,158,11,.12);color:var(--pending);border:1px solid rgba(245,158,11,.4)}
+.form-status.err{background:rgba(245,158,11,.12);color:var(--err);border:1px solid rgba(245,158,11,.4)}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 
 /* ===== Footer ===== */
 footer{border-top:1px solid var(--line);padding:32px 0 28px;color:var(--muted);font-size:.85rem}
 footer .wrap{display:flex;flex-direction:column;gap:14px}
 @media (min-width:760px){footer .wrap{flex-direction:row;justify-content:space-between;align-items:center}}
-footer .meta{display:flex;flex-wrap:wrap;gap:6px 16px}
+footer .meta{display:flex;flex-wrap:wrap;align-items:center;gap:0 16px}
+footer .meta a{display:inline-flex;align-items:center;min-height:44px}
 
 /* ===== Vaste actiebalk (mobiel) ===== */
-.actionbar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(12,14,17,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid var(--line)}
+.actionbar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(12,14,17,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid var(--line)}
 .actionbar .btn{min-height:48px;padding:0 10px;font-size:.92rem;border-radius:12px}
 @media (min-width:760px){.actionbar{display:none}}
+.kb-open .actionbar{display:none}
 </style>
 </head>
 <body>
 
 <!-- ============================================================
      INSTELLINGEN — vul deze in en de hele pagina gebruikt ze.
-     Laat een waarde op "" staan en er verschijnt een amber "vul in"-pil.
+     Laat een waarde op "" staan en dat onderdeel wordt verborgen (formulier gaat dan via WhatsApp).
      ============================================================ -->
 <script>
 window.BJL = {
@@ -252,8 +274,10 @@ window.BJL = {
   whatsapp: "31641178935",  // zelfde 06-nummer, zonder + of 00
   email: "",            // bijv. "info@bjlallround.nl"
   region: "Heel Nederland, vanuit Overijssel",
-  kvk: "",              // bijv. "12345678"
-  formEndpoint: ""      // bijv. "https://formspree.io/f/xxxx"  — leeg = formulier opent mail-app
+  kvk: "88991490",
+  btw: "",              // btw-id, bijv. "NL001234567B01" (verplicht zichtbaar zodra bekend)
+  adres: "",            // vestigingsadres, bijv. "Straat 1, 1234 AB Plaats"
+  formEndpoint: ""      // eigen endpoint of EU-verwerker; leeg = via WhatsApp (of mail-app als email is ingevuld)
 };
 </script>
 
@@ -270,13 +294,13 @@ window.BJL = {
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-cta">
-      <a class="btn btn-accent" href="#contact" data-tel style="min-height:44px;padding:0 18px;font-size:.92rem">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+      <a class="btn btn-accent" href="tel:+31641178935" data-tel style="min-height:44px;padding:0 18px;font-size:.92rem">
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
         <span data-tel-text>Bel direct</span>
       </a>
     </div>
-    <a class="nav-call" href="#contact" data-tel>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+    <a class="nav-call" href="tel:+31641178935" data-tel>
+      <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
       Bel
     </a>
   </div>
@@ -288,30 +312,30 @@ window.BJL = {
 <section class="hero">
   <div class="wrap">
     <div class="hero-copy">
-      <span class="eyebrow">Loodgieter · W&amp;V · Riool · Sanitair</span>
+      <span class="eyebrow">Loodgieter · Verwarming · Riool · Sanitair</span>
       <h1>Van lekkage tot nieuwe badkamer <span class="dash">—</span></h1>
       <p class="tag">alles onder één dak, netjes geregeld</p>
-      <p class="lead">Lekkende kraan, verstopt riool, CV die het niet doet of een complete verbouwing? BJL Allround pakt het aan. Eén telefoontje, snel ter plaatse, vaste afspraken en een schone werkplek als we weggaan.</p>
+      <p class="lead">Lekkende kraan, verstopt riool, cv die het niet doet of een complete verbouwing? BJL Allround pakt het aan. Eén telefoontje, snel ter plaatse, vaste afspraken en een schone werkplek als we weggaan.</p>
       <div class="hero-actions">
-        <a class="btn btn-accent" href="#contact" data-tel>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+        <a class="btn btn-accent" href="tel:+31641178935" data-tel>
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
           <span data-tel-text>Bel direct</span>
         </a>
-        <a class="btn btn-wa" href="#contact" data-wa>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.5-.3z"/></svg>
+        <a class="btn btn-wa" href="https://wa.me/31641178935" data-wa>
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.5-.3z"/></svg>
           WhatsApp
         </a>
         <a class="btn btn-ghost" href="#contact">Offerte aanvragen</a>
       </div>
-      <div class="stats" aria-label="Kernpunten">
+      <div class="stats" role="group" aria-label="Kernpunten">
         <div class="stat"><b>24/7</b><span>bereikbaar bij spoed</span></div>
         <div class="stat"><b>Gratis</b><span>offerte vooraf</span></div>
         <div class="stat"><b>Vast</b><span>tarief, geen verrassingen</span></div>
       </div>
     </div>
     <div class="hero-photo">
-      <img src="img/hero.jpg" alt="Badkamer door BJL Allround: zwart zwevend badmeubel met dubbele zwarte kraan en ronde verlichte spiegel op visgraattegels" width="1086" height="1448">
-      <div class="badge">BJL Allround<span>Loodgieter · WV · Riool</span></div>
+      <img src="img/hero.jpg" fetchpriority="high" decoding="async" alt="Badkamer door BJL Allround: zwart zwevend badmeubel met dubbele zwarte kraan en ronde verlichte spiegel op visgraattegels" width="1086" height="1448">
+      <div class="badge">BJL Allround<span>Loodgieter · Verwarming · Riool</span></div>
     </div>
   </div>
 </section>
@@ -326,7 +350,7 @@ window.BJL = {
     </div>
     <div class="grid-2">
       <article class="card">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-4-7-13-7-13S5 11 5 15a7 7 0 0 0 7 7z"/></svg></div>
+        <div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-4-7-13-7-13S5 11 5 15a7 7 0 0 0 7 7z"/></svg></div>
         <span class="eyebrow">Loodgieterswerk</span>
         <h3>Lekkages en leidingwerk</h3>
         <p>Lekkende kraan, kapotte leiding of een nieuwe aansluiting voor keuken of wasmachine. Opsporen, repareren en vervangen zonder hak- en breekwerk waar het niet nodig is.</p>
@@ -338,19 +362,19 @@ window.BJL = {
         <a class="btn btn-ghost" href="#contact">Plan een afspraak</a>
       </article>
       <article class="card">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4-.5-2-1-3-1.1-2.2-.2-4.1 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.2.5-2.3 1-3 .5 2 1.5 3 2.5 3z"/></svg></div>
+        <div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4-.5-2-1-3-1.1-2.2-.2-4.1 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.2.5-2.3 1-3 .5 2 1.5 3 2.5 3z"/></svg></div>
         <span class="eyebrow">Water &amp; verwarming</span>
-        <h3>CV, warm water en radiatoren</h3>
-        <p>Geen warm water of een ketel die storing geeft? We onderhouden, repareren en vervangen CV-ketels, plaatsen radiatoren en leggen vloerverwarming aan.</p>
+        <h3>Cv, warm water en radiatoren</h3>
+        <p>Geen warm water of een ketel die storing geeft? We onderhouden, repareren en vervangen cv-ketels, plaatsen radiatoren en leggen vloerverwarming aan.</p>
         <ul class="checks">
-          <li>CV-ketel storing, onderhoud en vervanging</li>
+          <li>Cv-ketelstoring, onderhoud en vervanging</li>
           <li>Radiatoren en vloerverwarming</li>
           <li>Boilers en warmwatervoorzieningen</li>
         </ul>
         <a class="btn btn-ghost" href="#contact">Plan een afspraak</a>
       </article>
       <article class="card">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h5a3 3 0 0 1 3 3v6a3 3 0 0 0 3 3h7"/><path d="M3 3v6M18 15l3 3-3 3"/></svg></div>
+        <div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h5a3 3 0 0 1 3 3v6a3 3 0 0 0 3 3h7"/><path d="M3 3v6M18 15l3 3-3 3"/></svg></div>
         <span class="eyebrow">Riool</span>
         <h3>Ontstoppen en rioolwerk</h3>
         <p>Verstopte afvoer, stank of water dat niet wegloopt? We ontstoppen snel, inspecteren met camera en vervangen of herstellen rioolleidingen en putten.</p>
@@ -362,7 +386,7 @@ window.BJL = {
         <a class="btn btn-ghost" href="#contact">Plan een afspraak</a>
       </article>
       <article class="card">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16v3a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M6 12V5a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1"/></svg></div>
+        <div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16v3a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M6 12V5a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1"/></svg></div>
         <span class="eyebrow">Sanitair &amp; badkamer</span>
         <h3>Badkamer en toilet</h3>
         <p>Van een nieuw toilet tot een complete badkamerrenovatie. We verzorgen het leidingwerk, plaatsen het sanitair en werken het strak af.</p>
@@ -397,9 +421,9 @@ window.BJL = {
       <span class="eyebrow">Over BJL</span>
       <h2>Maak kennis met <span class="script">Benjamin</span></h2>
       <p class="lead">BJL Allround is Benjamin: geen groot bedrijf met een callcenter, maar één vakman die zelf opneemt, zelf langskomt en zelf het werk doet. Je weet wie er over de vloer komt en je krijgt eerlijk advies: repareren als het kan, vervangen als het moet.</p>
-      <p class="lead">Van een lekkende kraan tot een complete badkamer, en van CV-storing tot rioolwerk. Allround betekent hier precies dat: één aanspreekpunt voor alles wat met water, verwarming en afvoer te maken heeft.</p>
+      <p class="lead">Van een lekkende kraan tot een complete badkamer, en van cv-storing tot rioolwerk. Allround betekent hier precies dat: één aanspreekpunt voor alles wat met water, verwarming en afvoer te maken heeft.</p>
       <div class="hero-actions">
-        <a class="btn btn-accent" href="#contact" data-tel><span data-tel-text>Bel direct</span></a>
+        <a class="btn btn-accent" href="tel:+31641178935" data-tel><span data-tel-text>Bel direct</span></a>
         <a class="btn btn-ghost" href="#werk">Bekijk het werk</a>
       </div>
     </div>
@@ -414,12 +438,12 @@ window.BJL = {
       <h2>Zo werken we</h2>
     </div>
     <div class="grid-3">
-      <div class="why"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Snel ter plaatse</h3><p>Bij spoed komen we dezelfde dag. Je hoort direct wanneer we er zijn.</p></div>
-      <div class="why"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div><h3>Prijs vooraf</h3><p>Eerst een duidelijke prijs, dan pas aan het werk. Geen verrassingen achteraf.</p></div>
-      <div class="why"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Vakwerk met garantie</h3><p>Netjes gedaan, met garantie op het werk. Klaar is klaar.</p></div>
-      <div class="why"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l4-1 10-10-3-3L5 16z"/><path d="M13 7l3 3"/></svg></div><h3>Schoon achtergelaten</h3><p>We ruimen op en nemen het afval mee. Alsof we er niet geweest zijn, behalve dat het werkt.</p></div>
-      <div class="why"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>Eén aanspreekpunt</h3><p>Je belt of appt rechtstreeks met degene die het werk doet. Kort lijntje, snelle antwoorden.</p></div>
-      <div class="why"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg></div><h3>Particulier en zakelijk</h3><p>Woningen, VvE's, verhuurders en bedrijfspanden. Ook voor onderhoudscontracten.</p></div>
+      <div class="why"><div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Snel ter plaatse</h3><p>Bij spoed komen we dezelfde dag. Je hoort direct wanneer we er zijn.</p></div>
+      <div class="why"><div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div><h3>Prijs vooraf</h3><p>Eerst een duidelijke prijs, dan pas aan het werk. Geen verrassingen achteraf.</p></div>
+      <div class="why"><div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Vakwerk met garantie</h3><p>Netjes gedaan, met garantie op het werk. Klaar is klaar.</p></div>
+      <div class="why"><div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l4-1 10-10-3-3L5 16z"/><path d="M13 7l3 3"/></svg></div><h3>Schoon achtergelaten</h3><p>We ruimen op en nemen het afval mee. Alsof we er niet geweest zijn, behalve dat het werkt.</p></div>
+      <div class="why"><div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>Eén aanspreekpunt</h3><p>Je belt of appt rechtstreeks met degene die het werk doet. Kort lijntje, snelle antwoorden.</p></div>
+      <div class="why"><div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg></div><h3>Particulier en zakelijk</h3><p>Woningen, VvE's, verhuurders en bedrijfspanden. Ook voor onderhoudscontracten.</p></div>
     </div>
   </div>
 </section>
@@ -436,14 +460,14 @@ window.BJL = {
       <!-- Voorbeeld met foto:
       <figure class="shot" data-title="Titel van de klus" data-desc="Uitleg die groot bij de foto verschijnt."><button type="button" class="shot-open" aria-label="Bekijk groot: Titel van de klus"><img src="img/werk-9.jpg" alt="Omschrijving van de klus" loading="lazy"></button><figcaption>Bijschrift</figcaption></figure>
       -->
-      <figure class="shot" data-title="Toiletrenovatie in visgraat en zwart" data-desc="Compleet vernieuwd toilet: wandcloset op inbouwreservoir, fonteintje met zwarte kraan en zwarte sifon, visgraattegels als accentwand en zwart toiletgarnituur. Al het leidingwerk zit weggewerkt in de wand."><button type="button" class="shot-open" aria-label="Bekijk groot: Toiletrenovatie in visgraat en zwart"><img src="img/werk-1.jpg" alt="Toilet met visgraattegels, zwart fonteinkraantje en zwart toiletgarnituur" loading="lazy" width="900" height="1200"><span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Toiletrenovatie · visgraat &amp; zwart</figcaption></figure>
-      <figure class="shot" data-title="Toilet met hangend closet" data-desc="Strak betegeld toilet in grijs: wandcloset met bedieningsplaat, fonteintje met chromen kraan en toiletborstel aan de wand. Geen zichtbare leidingen, makkelijk schoon te houden."><button type="button" class="shot-open" aria-label="Bekijk groot: Toilet met hangend closet"><img src="img/werk-2.jpg" alt="Grijs betegeld toilet met hangend closet en fonteintje" loading="lazy" width="900" height="1200"><span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Toilet · hangend closet</figcaption></figure>
-      <figure class="shot" data-title="Zwarte regendouche" data-desc="Regendouche met thermostaatkraan en handdouche in mat zwart op grootformaat tegels. De leidingen lopen in de wand, dus geen buizen in het zicht."><button type="button" class="shot-open" aria-label="Bekijk groot: Zwarte regendouche"><img src="img/werk-3.jpg" alt="Zwarte regendouche met thermostaatkraan op lichte tegels" loading="lazy" width="870" height="1200"><span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Badkamer · regendouche</figcaption></figure>
-      <figure class="shot" data-title="Toilet in antraciet en messing" data-desc="Toilet met antracieten achterwand en vloer, lichte wandtegels, wandcloset en fonteintje met messing kraan. Inbouwreservoir en afvoer volledig weggewerkt."><button type="button" class="shot-open" aria-label="Bekijk groot: Toilet in antraciet en messing"><img src="img/werk-8.jpg" alt="Toilet met antracieten wand, lichte tegels en messing kraan" loading="lazy" width="900" height="1200"><span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Toilet · antraciet &amp; messing</figcaption></figure>
-      <figure class="shot" data-title="Vloerverwarming in de woonkamer" data-desc="Vloerverwarming gelegd op wapeningsnet, klaar voor de dekvloer. Gelijkmatige lussen met vaste afstand zorgen voor een egale warmteverdeling over de hele vloer."><button type="button" class="shot-open" aria-label="Bekijk groot: Vloerverwarming in de woonkamer"><img src="img/werk-4.jpg" alt="Vloerverwarmingsleidingen gelegd op wapeningsnet in woonkamer" loading="lazy" width="900" height="1200"><span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Vloerverwarming · woonkamer</figcaption></figure>
-      <figure class="shot" data-title="Verdeler en pompgroep" data-desc="Verdeler van de vloerverwarming met pompgroep en per groep een flowmeter, aangesloten op de cv-leidingen en netjes weggewerkt onder de trap. Elke groep is apart in te regelen."><button type="button" class="shot-open" aria-label="Bekijk groot: Verdeler en pompgroep"><img src="img/werk-5.jpg" alt="Vloerverwarmingsverdeler met pomp en flowmeters" loading="lazy" width="900" height="1200"><span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Verdeler &amp; pompgroep</figcaption></figure>
-      <figure class="shot" data-title="Riool in de fundering van nieuwbouw" data-desc="Rioolleidingen aangelegd in de fundering van een nieuwbouwblok: op afschot gelegd en gefixeerd voordat de vloer gestort wordt, zodat alles later goed blijft afvoeren."><button type="button" class="shot-open" aria-label="Bekijk groot: Riool in de fundering van nieuwbouw"><img src="img/werk-6.jpg" alt="Nieuwe rioolleidingen in de fundering van een woningblok" loading="lazy" width="900" height="1200"><span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Riool · nieuwbouw fundering</figcaption></figure>
-      <figure class="shot" data-title="Hemelwaterafvoer op de gevel" data-desc="Hemelwaterafvoer gemonteerd op de houten gevel van een appartementengebouw, inclusief beugels, uitgevoerd vanaf de hoogwerker. Strak in lijn met de gevel."><button type="button" class="shot-open" aria-label="Bekijk groot: Hemelwaterafvoer op de gevel"><img src="img/werk-7.jpg" alt="Hemelwaterafvoer gemonteerd op houten gevel van appartementengebouw" loading="lazy" width="900" height="1200"><span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Hemelwaterafvoer · gevel</figcaption></figure>
+      <figure class="shot" data-title="Toiletrenovatie in visgraat en zwart" data-desc="Compleet vernieuwd toilet: wandcloset op inbouwreservoir, fonteintje met zwarte kraan en zwarte sifon, visgraattegels als accentwand en zwart toiletgarnituur. Al het leidingwerk zit weggewerkt in de wand." data-full="img/werk-1.jpg"><button type="button" class="shot-open" aria-label="Bekijk groot: Toiletrenovatie in visgraat en zwart"><img src="img/werk-1-s.jpg" srcset="img/werk-1-s.jpg 450w, img/werk-1.jpg 900w" sizes="(min-width:760px) 25vw, 50vw" alt="Toilet met visgraattegels, zwart fonteinkraantje en zwart toiletgarnituur" loading="lazy" decoding="async" width="450" height="600"><span class="zoom" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Toiletrenovatie · visgraat &amp; zwart</figcaption></figure>
+      <figure class="shot" data-title="Toilet met hangend closet" data-desc="Strak betegeld toilet in grijs: wandcloset met bedieningsplaat, fonteintje met chromen kraan en toiletborstel aan de wand. Geen zichtbare leidingen, makkelijk schoon te houden." data-full="img/werk-2.jpg"><button type="button" class="shot-open" aria-label="Bekijk groot: Toilet met hangend closet"><img src="img/werk-2-s.jpg" srcset="img/werk-2-s.jpg 450w, img/werk-2.jpg 900w" sizes="(min-width:760px) 25vw, 50vw" alt="Grijs betegeld toilet met hangend closet en fonteintje" loading="lazy" decoding="async" width="450" height="600"><span class="zoom" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Toilet · hangend closet</figcaption></figure>
+      <figure class="shot" data-title="Zwarte regendouche" data-desc="Regendouche met thermostaatkraan en handdouche in mat zwart op grootformaat tegels. De leidingen lopen in de wand, dus geen buizen in het zicht." data-full="img/werk-3.jpg"><button type="button" class="shot-open" aria-label="Bekijk groot: Zwarte regendouche"><img src="img/werk-3-s.jpg" srcset="img/werk-3-s.jpg 450w, img/werk-3.jpg 900w" sizes="(min-width:760px) 25vw, 50vw" alt="Zwarte regendouche met thermostaatkraan op lichte tegels" loading="lazy" decoding="async" width="450" height="621"><span class="zoom" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Badkamer · regendouche</figcaption></figure>
+      <figure class="shot" data-title="Toilet in antraciet en messing" data-desc="Toilet met antracieten achterwand en vloer, lichte wandtegels, wandcloset en fonteintje met messing kraan. Inbouwreservoir en afvoer volledig weggewerkt." data-full="img/werk-8.jpg"><button type="button" class="shot-open" aria-label="Bekijk groot: Toilet in antraciet en messing"><img src="img/werk-8-s.jpg" srcset="img/werk-8-s.jpg 450w, img/werk-8.jpg 900w" sizes="(min-width:760px) 25vw, 50vw" alt="Toilet met antracieten wand, lichte tegels en messing kraan" loading="lazy" decoding="async" width="450" height="600"><span class="zoom" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Toilet · antraciet &amp; messing</figcaption></figure>
+      <figure class="shot" data-title="Vloerverwarming in de woonkamer" data-desc="Vloerverwarming gelegd op wapeningsnet, klaar voor de dekvloer. Gelijkmatige lussen met vaste afstand zorgen voor een egale warmteverdeling over de hele vloer." data-full="img/werk-4.jpg"><button type="button" class="shot-open" aria-label="Bekijk groot: Vloerverwarming in de woonkamer"><img src="img/werk-4-s.jpg" srcset="img/werk-4-s.jpg 450w, img/werk-4.jpg 900w" sizes="(min-width:760px) 25vw, 50vw" alt="Vloerverwarmingsleidingen gelegd op wapeningsnet in woonkamer" loading="lazy" decoding="async" width="450" height="600"><span class="zoom" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Vloerverwarming · woonkamer</figcaption></figure>
+      <figure class="shot" data-title="Verdeler en pompgroep" data-desc="Verdeler van de vloerverwarming met pompgroep en per groep een flowmeter, aangesloten op de cv-leidingen en netjes weggewerkt onder de trap. Elke groep is apart in te regelen." data-full="img/werk-5.jpg"><button type="button" class="shot-open" aria-label="Bekijk groot: Verdeler en pompgroep"><img src="img/werk-5-s.jpg" srcset="img/werk-5-s.jpg 450w, img/werk-5.jpg 900w" sizes="(min-width:760px) 25vw, 50vw" alt="Vloerverwarmingsverdeler met pomp en flowmeters" loading="lazy" decoding="async" width="450" height="600"><span class="zoom" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Verdeler &amp; pompgroep</figcaption></figure>
+      <figure class="shot" data-title="Riool in de fundering van nieuwbouw" data-desc="Rioolleidingen aangelegd in de fundering van een nieuwbouwblok: op afschot gelegd en gefixeerd voordat de vloer gestort wordt, zodat alles later goed blijft afvoeren." data-full="img/werk-6.jpg"><button type="button" class="shot-open" aria-label="Bekijk groot: Riool in de fundering van nieuwbouw"><img src="img/werk-6-s.jpg" srcset="img/werk-6-s.jpg 450w, img/werk-6.jpg 900w" sizes="(min-width:760px) 25vw, 50vw" alt="Nieuwe rioolleidingen in de fundering van een woningblok" loading="lazy" decoding="async" width="450" height="600"><span class="zoom" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Riool · nieuwbouw fundering</figcaption></figure>
+      <figure class="shot" data-title="Hemelwaterafvoer op de gevel" data-desc="Hemelwaterafvoer gemonteerd op de houten gevel van een appartementengebouw, inclusief beugels, uitgevoerd vanaf de hoogwerker. Strak in lijn met de gevel." data-full="img/werk-7.jpg"><button type="button" class="shot-open" aria-label="Bekijk groot: Hemelwaterafvoer op de gevel"><img src="img/werk-7-s.jpg" srcset="img/werk-7-s.jpg 450w, img/werk-7.jpg 900w" sizes="(min-width:760px) 25vw, 50vw" alt="Hemelwaterafvoer gemonteerd op houten gevel van appartementengebouw" loading="lazy" decoding="async" width="450" height="600"><span class="zoom" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Hemelwaterafvoer · gevel</figcaption></figure>
     </div>
   </div>
 </section>
@@ -452,19 +476,18 @@ window.BJL = {
 <section id="reviews" class="alt">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">Reviews</span>
-      <h2>Wat klanten zeggen</h2>
+      <span class="eyebrow">Reacties</span>
+      <h2>Wat klanten <span class="script">zeggen</span></h2>
+      <p class="lead">Berichtjes die Benjamin na een klus kreeg, precies zoals ze binnenkwamen.</p>
     </div>
-    <!-- Echte reviews hier plaatsen. Voorbeeld van één kaart (kopieer per review):
-    <div class="grid-3">
-      <div class="review">
-        <div class="who"><div class="avatar">J</div><div><b>Jan de Vries</b><span>Badkamerrenovatie · Rotterdam</span></div></div>
-        <div class="stars" aria-label="5 van 5 sterren">★★★★★</div>
-        <q>Snel gereageerd, nette prijs en strak afgewerkt.</q>
-      </div>
+    <!-- Reacties van klanten, letterlijk uit WhatsApp, zonder naam. Nieuwe toevoegen: kopieer een <figure class="review">. -->
+    <div class="reviews">
+      <figure class="review"><blockquote><p>Dan was jij er wel snel bij en snel gefixed 👍🏻💪🏻</p></blockquote><figcaption>Klant van BJL Allround, via WhatsApp</figcaption></figure>
+      <figure class="review"><blockquote><p>Super gedaan Benjamin! Bedankt, goed weekend!</p></blockquote><figcaption>Klant van BJL Allround, via WhatsApp</figcaption></figure>
+      <figure class="review"><blockquote><p>Ziet er goed uit man!</p></blockquote><figcaption>Klant van BJL Allround, via WhatsApp</figcaption></figure>
+      <figure class="review"><blockquote><p>Fijn dat je het zo oppakt 👍</p></blockquote><figcaption>Klant van BJL Allround, via WhatsApp</figcaption></figure>
+      <figure class="review"><blockquote><p>Dat je je best doet, zie ik wel 😉💪🏻 Dus komt goed</p></blockquote><figcaption>Klant van BJL Allround, via WhatsApp</figcaption></figure>
     </div>
-    -->
-    <div class="reviews-empty">Beoordelingen van klanten volgen hier. Heb je werk door BJL laten doen? Laat het weten via <a href="#contact">het contactformulier</a>.</div>
   </div>
 </section>
 
@@ -480,7 +503,7 @@ window.BJL = {
       <details><summary>Wat kost een loodgieter?</summary><div class="a">Dat hangt af van de klus. Voor kleine reparaties rekenen we een vast tarief, voor grotere klussen maak je vooraf een offerte. Je weet altijd de prijs voordat we beginnen.</div></details>
       <details><summary>In welke regio werken jullie?</summary><div class="a">Door heel Nederland. Benjamin zit in Overijssel; buiten Overijssel rekenen we reiskosten, en die hoor je vooraf.</div></details>
       <details><summary>Kan ik een foto sturen van het probleem?</summary><div class="a">Graag zelfs. Stuur een foto via WhatsApp, dan kunnen we vaak al inschatten wat er nodig is en de juiste onderdelen meenemen.</div></details>
-      <details><summary>Doen jullie ook onderhoud aan de CV-ketel?</summary><div class="a">Ja. Jaarlijks onderhoud, storingen en vervanging van de ketel. Ook voor VvE's en verhuurders met meerdere ketels.</div></details>
+      <details><summary>Doen jullie ook onderhoud aan de cv-ketel?</summary><div class="a">Ja. Jaarlijks onderhoud, storingen en vervanging van de ketel. Ook voor VvE's en verhuurders met meerdere ketels.</div></details>
       <details><summary>Werken jullie ook voor bedrijven en VvE's?</summary><div class="a">Zeker. We doen zowel losse klussen als onderhoudscontracten voor bedrijfspanden, VvE's en verhuurders.</div></details>
       <details><summary>Krijg ik garantie op het werk?</summary><div class="a">Ja, op het uitgevoerde werk en op de geplaatste onderdelen volgens de fabrieksgarantie. De precieze termijn staat in de offerte of op de factuur.</div></details>
       <details><summary>Hoe kan ik betalen?</summary><div class="a">Na afronding ontvang je een factuur die je per bankoverschrijving of betaalverzoek kunt voldoen. Bij grotere klussen spreken we vooraf de termijnen af.</div></details>
@@ -494,25 +517,25 @@ window.BJL = {
     <div>
       <div class="sec-head">
         <span class="eyebrow">Contact</span>
-        <h2>Bel, app of <span class="script">mail</span></h2>
+        <h2 id="contact-kop">Bel, app of <span class="script">mail</span></h2>
         <p class="lead">Bij spoed: bel Benjamin direct. Voor een offerte of vraag: vul het formulier in of stuur een appje met een foto.</p>
       </div>
       <div class="contact-list">
-        <a class="contact-item" href="#contact" data-tel>
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></div>
-          <div class="val"><small>Telefoon</small><b data-phone-display>—</b></div>
+        <a class="contact-item" href="tel:+31641178935" data-tel>
+          <div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></div>
+          <div class="val"><small>Telefoon</small><b data-phone-display>06-41178935</b></div>
         </a>
-        <a class="contact-item" href="#contact" data-wa>
-          <div class="icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.5-.3z"/></svg></div>
-          <div class="val"><small>WhatsApp</small><b data-wa-display>—</b></div>
+        <a class="contact-item" href="https://wa.me/31641178935" data-wa>
+          <div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.5-.3z"/></svg></div>
+          <div class="val"><small>WhatsApp</small><b data-wa-display>06-41178935</b></div>
         </a>
         <a class="contact-item" href="#contact" data-mail>
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+          <div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
           <div class="val"><small>E-mail</small><b data-email-display>—</b></div>
         </a>
         <div class="contact-item">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
-          <div class="val"><small>Werkgebied</small><b data-region-display>—</b></div>
+          <div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+          <div class="val"><small>Werkgebied</small><b data-region-display>Heel Nederland, vanuit Overijssel</b></div>
         </div>
       </div>
     </div>
@@ -533,7 +556,7 @@ window.BJL = {
           <option value="">Kies een onderwerp</option>
           <option>Spoed: lekkage of verstopping</option>
           <option>Loodgieterswerk</option>
-          <option>CV, verwarming of warm water</option>
+          <option>Cv, verwarming of warm water</option>
           <option>Riool of ontstoppen</option>
           <option>Badkamer of toilet</option>
           <option>Dak, goot of zinkwerk</option>
@@ -542,9 +565,10 @@ window.BJL = {
       </div>
       <div class="field"><label for="f-msg">Omschrijving</label><textarea id="f-msg" name="omschrijving" required placeholder="Wat is er aan de hand en wanneer komt het uit?"></textarea></div>
       <div class="hp" aria-hidden="true"><label>Laat dit veld leeg<input name="_gotcha" type="text" tabindex="-1" autocomplete="off"></label></div>
-      <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+      <div class="form-status" id="form-status" role="status" aria-live="polite" aria-atomic="true"></div>
       <button class="btn btn-accent btn-block" type="submit" id="form-submit">Verstuur aanvraag</button>
       <p class="form-note" id="form-note">Je krijgt binnen één werkdag reactie. Spoed? Bel dan direct.</p>
+      <p class="form-note" id="form-privacy">Je gegevens gebruiken we alleen om je aanvraag te beantwoorden en geven we niet door aan anderen.</p>
     </form>
   </div>
 </section>
@@ -555,34 +579,36 @@ window.BJL = {
   <div class="wrap">
     <div><span class="logo-text"><span class="logo-bjl">BJL</span> Allround</span><br>Installatie- en montagewerkzaamheden · Loodgieter, water &amp; verwarming, riool</div>
     <div class="meta">
-      <span>KvK <span data-kvk>—</span></span>
-      <span data-region-display>—</span>
+      <span>KvK <span data-kvk>88991490</span></span>
+      <span data-btw-wrap hidden>Btw-id <span data-btw></span></span>
+      <span data-adres hidden></span>
+      <span data-region-display>Heel Nederland, vanuit Overijssel</span>
       <a href="#top">Naar boven</a>
     </div>
   </div>
 </footer>
 
-<div class="actionbar" aria-label="Snel contact">
-  <a class="btn btn-accent" href="#contact" data-tel>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Bel
+<nav class="actionbar" aria-label="Snel contact">
+  <a class="btn btn-accent" href="tel:+31641178935" data-tel>
+    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Bel
   </a>
-  <a class="btn btn-wa" href="#contact" data-wa>
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.5-.3z"/></svg>App
+  <a class="btn btn-wa" href="https://wa.me/31641178935" data-wa>
+    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.5-.3z"/></svg>App
   </a>
   <a class="btn btn-ghost" href="#contact" data-mail>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Mail
+    <svg class="ic-mail" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><svg class="ic-form" hidden aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg><span data-mail-label>Mail</span>
   </a>
-</div>
+</nav>
 
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-labelledby="lb-title">
   <div class="lb-top">
     <span id="lb-count"></span>
-    <button type="button" class="lb-btn" id="lb-close" aria-label="Sluiten"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <button type="button" class="lb-btn" id="lb-close" aria-label="Sluiten"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
   <div class="lb-stage" id="lb-stage">
-    <button type="button" class="lb-btn lb-nav lb-prev" id="lb-prev" aria-label="Vorige foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button type="button" class="lb-btn lb-nav lb-prev" id="lb-prev" aria-label="Vorige foto"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
     <img id="lb-img" src="" alt="">
-    <button type="button" class="lb-btn lb-nav lb-next" id="lb-next" aria-label="Volgende foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+    <button type="button" class="lb-btn lb-nav lb-next" id="lb-next" aria-label="Volgende foto"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
   </div>
   <div class="lb-info">
     <h3 id="lb-title"></h3>
@@ -594,34 +620,47 @@ window.BJL = {
 (function(){
   var C = window.BJL || {};
   var $$ = function(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); };
-  var pendingPill = function(label){ return '<span class="pending">' + label + ' invullen</span>'; };
 
   // Telefoon
   var telHref = C.phoneRaw ? 'tel:' + C.phoneRaw.replace(/[^+\d]/g,'') : (C.phone ? 'tel:' + C.phone.replace(/[^+\d]/g,'') : '');
   $$('[data-tel]').forEach(function(a){ if (telHref) a.href = telHref; });
   $$('[data-tel-text]').forEach(function(el){ if (C.phone) el.textContent = 'Bel ' + C.phone; });
-  $$('[data-phone-display]').forEach(function(el){ el.innerHTML = C.phone ? C.phone : ''; if (!C.phone) el.parentNode.parentNode.hidden = true; });
+  var hideItem = function(el){ var it = el.closest ? el.closest('.contact-item') : null; (it || el).hidden = true; };
+  $$('[data-phone-display]').forEach(function(el){ el.textContent = C.phone || ''; if (!C.phone) hideItem(el); });
 
   // WhatsApp
   var waHref = C.whatsapp ? 'https://wa.me/' + C.whatsapp.replace(/\D/g,'') + '?text=' + encodeURIComponent('Hoi, ik heb een vraag voor BJL Allround: ') : '';
   $$('[data-wa]').forEach(function(a){ if (waHref){ a.href = waHref; a.target = '_blank'; a.rel = 'noopener'; } });
-  $$('[data-wa-display]').forEach(function(el){ el.innerHTML = C.whatsapp ? (C.phone || 'Stuur een appje') : ''; if (!C.whatsapp) el.parentNode.parentNode.hidden = true; });
+  $$('[data-wa-display]').forEach(function(el){ el.textContent = C.whatsapp ? (C.phone || 'Stuur een appje') : ''; if (!C.whatsapp) hideItem(el); });
 
   // E-mail
   $$('[data-mail]').forEach(function(a){ if (C.email) a.href = 'mailto:' + C.email + '?subject=' + encodeURIComponent('Aanvraag via bjlallround'); });
-  $$('[data-email-display]').forEach(function(el){ el.innerHTML = C.email ? C.email : ''; });
-  if (!C.email) { $$('.contact-item[data-mail]').forEach(function(el){ el.hidden = true; }); $$('.actionbar [data-mail]').forEach(function(a){ a.href = '#offerte'; a.lastChild.textContent = 'Offerte'; }); }
+  $$('[data-email-display]').forEach(function(el){ el.textContent = C.email || ''; });
+  if (!C.email) {
+    $$('.contact-item[data-mail]').forEach(function(el){ el.hidden = true; });
+    $$('.actionbar [data-mail]').forEach(function(a){
+      a.href = '#offerte';
+      var lbl = a.querySelector('[data-mail-label]'); if (lbl) lbl.textContent = 'Offerte';
+      var im = a.querySelector('.ic-mail'), ifm = a.querySelector('.ic-form'); if (im) im.hidden = true; if (ifm) ifm.hidden = false;
+    });
+    var kop = document.getElementById('contact-kop'); if (kop) kop.innerHTML = 'Bel of <span class="script">app</span>';
+  }
 
   // Regio en KvK
-  $$('[data-region-display]').forEach(function(el){ el.innerHTML = C.region ? C.region : ''; if (!C.region) el.parentNode.parentNode.hidden = true; });
+  $$('[data-region-display]').forEach(function(el){ el.textContent = C.region || ''; if (!C.region) hideItem(el); });
   $$('[data-kvk]').forEach(function(el){ if (C.kvk) { el.textContent = C.kvk; } else { el.parentNode.hidden = true; } });
+  $$('[data-btw-wrap]').forEach(function(el){ var v = el.querySelector('[data-btw]'); if (C.btw && v) { v.textContent = C.btw; el.hidden = false; } });
+  $$('[data-adres]').forEach(function(el){ if (C.adres) { el.textContent = C.adres; el.hidden = false; } });
 
   // Formulier
   var form = document.getElementById('offerte');
   var status = document.getElementById('form-status');
   var submit = document.getElementById('form-submit');
   var note = document.getElementById('form-note');
-  var setStatus = function(kind, msg){ status.className = 'form-status show ' + kind; status.textContent = msg; };
+  var setStatus = function(kind, msg){ status.setAttribute('role', kind === 'err' ? 'alert' : 'status'); status.className = 'form-status show ' + kind; status.textContent = msg; };
+  // Vaste actiebalk verbergen zolang een formulierveld focus heeft (anders zweeft hij over het toetsenbord op iOS)
+  form.addEventListener('focusin', function(){ document.body.classList.add('kb-open'); });
+  form.addEventListener('focusout', function(){ setTimeout(function(){ if (!form.contains(document.activeElement)) document.body.classList.remove('kb-open'); }, 50); });
 
   var viaWa = !C.formEndpoint && !C.email && C.whatsapp;
   if (viaWa) { submit.textContent = 'Verstuur via WhatsApp'; note.textContent = 'Je aanvraag opent in WhatsApp; druk daar op verzenden. Spoed? Bel dan direct.'; }
@@ -629,9 +668,14 @@ window.BJL = {
   form.addEventListener('submit', function(e){
     e.preventDefault();
     status.className = 'form-status';
+    $$('#offerte [aria-invalid]').forEach(function(el){ el.removeAttribute('aria-invalid'); });
     if (!form.checkValidity()) {
-      setStatus('err', 'Vul naam, telefoon, plaats, onderwerp en omschrijving in.');
-      var first = form.querySelector(':invalid'); if (first) first.focus();
+      var first = form.querySelector(':invalid');
+      var msg = 'Vul naam, telefoon, plaats, onderwerp en omschrijving in.';
+      if (first && first.name === 'email') { msg = 'Het e-mailadres klopt niet. Vul een geldig adres in of laat het veld leeg.'; }
+      else if (first) { var lbl = form.querySelector('label[for="' + first.id + '"]'); var nm = lbl ? lbl.textContent.replace(/\(optioneel\)/, '').trim().toLowerCase() : 'dit veld'; msg = (first.tagName === 'SELECT' ? 'Kies een onderwerp bij "' + nm + '".' : 'Vul ' + nm + ' in.'); }
+      if (first) { first.setAttribute('aria-invalid', 'true'); first.focus(); }
+      setStatus('err', msg);
       return;
     }
     var fd = new FormData(form);
@@ -671,7 +715,7 @@ window.BJL = {
     var shots = $$('.shot');
     var items = shots.map(function(fig){
       var img = fig.querySelector('img'); var cap = fig.querySelector('figcaption');
-      return { src: img ? img.getAttribute('src') : '', alt: img ? img.alt : '', title: fig.getAttribute('data-title') || (cap ? cap.textContent : ''), desc: fig.getAttribute('data-desc') || '' };
+      return { src: fig.getAttribute('data-full') || (img ? img.getAttribute('src') : ''), alt: img ? img.alt : '', title: fig.getAttribute('data-title') || (cap ? cap.textContent : ''), desc: fig.getAttribute('data-desc') || '' };
     });
     var lbImg = document.getElementById('lb-img'), lbTitle = document.getElementById('lb-title'), lbDesc = document.getElementById('lb-desc'), lbCount = document.getElementById('lb-count');
     var lbClose = document.getElementById('lb-close'), lbPrev = document.getElementById('lb-prev'), lbNext = document.getElementById('lb-next'), stage = document.getElementById('lb-stage');

@@ -1,6 +1,6 @@
 # BJL Allround — landingspage
 
-Eén bestand: `index.html`. Geen build, geen framework. Werkt op elke hosting (Vercel, Netlify, Cloudflare Pages, of gewoon een map op een webserver).
+Eén bestand: `index.html`, plus `img/` (foto's) en `fonts/` (lettertypes, lokaal gehost). Geen build, geen framework. Live via GitHub Pages op https://www.bjlallround.nl (zie §5).
 
 ## 1. Gegevens invullen
 Bovenaan `index.html` staat een blok `window.BJL = { ... }`. Vul daar in:
@@ -13,9 +13,11 @@ Bovenaan `index.html` staat een blok `window.BJL = { ... }`. Vul daar in:
 | `email` | `"info@bjlallround.nl"` | mailknop én fallback van het formulier |
 | `region` | `"Rotterdam en omstreken"` | werkgebied in FAQ, contact en footer |
 | `kvk` | `"12345678"` | footer |
-| `formEndpoint` | `"https://formspree.io/f/xxxx"` | formulier direct versturen (zie 3) |
+| `formEndpoint` | `"https://…"` (eigen endpoint of EU-verwerker) | formulier direct versturen (zie 3) |
+| `btw` | `"NL001234567B01"` | btw-id in de footer |
+| `adres` | `"Straat 1, 1234 AB Plaats"` | vestigingsadres in de footer |
 
-Zolang een veld leeg is, staat er op de pagina een amber pil "… invullen". Zo zie je meteen wat nog mist. Niet live zetten met ambers.
+Zolang een veld leeg is, wordt dat onderdeel op de pagina verborgen (lege e-mail: mailknop weg en het formulier gaat via WhatsApp). Extra velden: `btw` (btw-id) en `adres` (vestigingsadres) verschijnen in de footer zodra ze zijn ingevuld; wettelijk moeten KvK, btw-id en een contactmogelijkheid zichtbaar zijn.
 
 ## 2. Foto's
 Staan al in `img/` (verkleind, EXIF/locatie verwijderd):
@@ -29,12 +31,18 @@ Extra klus toevoegen: kopieer een `<figure class="shot">` in de sectie Werk (voo
 Maak foto's max. ~1600px breed en comprimeer ze (bijv. squoosh.app), anders is de pagina traag op mobiel.
 
 ## 3. Formulier
-- **Zonder endpoint**: het formulier opent de mail-app van de bezoeker met alles voorgevuld (mailto naar `email`). Werkt overal, geen backend.
-- **Met endpoint**: vul `formEndpoint` in met een Formspree-, Basin- of eigen URL die `multipart/form-data` accepteert en JSON terugstuurt. Dan blijft de bezoeker op de pagina en krijgt een bevestiging. Het veld `_gotcha` is een honeypot tegen bots.
+- **Zonder endpoint en zonder e-mail**: het formulier opent WhatsApp met de aanvraag voorgevuld; de bezoeker ziet het bericht eerst en drukt zelf op verzenden.
+- **Zonder endpoint, met e-mail**: het formulier opent de mail-app van de bezoeker met alles voorgevuld (mailto naar `email`). Werkt overal, geen backend.
+- **Met endpoint**: vul `formEndpoint` in met een eigen URL of een verwerker binnen de EU die `multipart/form-data` accepteert en JSON terugstuurt (let op: een Amerikaanse dienst zoals Formspree vraagt om een verwerkersovereenkomst en doorgiftegrondslag onder de AVG). Dan blijft de bezoeker op de pagina en krijgt een bevestiging. Het veld `_gotcha` is een honeypot tegen bots.
 - Later CRM: het formulier stuurt de velden `naam, telefoon, email, plaats, type, omschrijving, _subject`. Een eigen endpoint kan die direct in een database schrijven.
 
-## 4. Reviews
-Sectie "Reviews" toont nu een placeholder. Echte reviews plaats je met de kaart die in commentaar in de sectie staat. Geen verzonnen reviews.
+## 4. Reacties van klanten
+De sectie "Reacties" toont letterlijke WhatsApp-berichtjes van klanten, zonder naam. Nieuwe toevoegen: kopieer een `<figure class="review">` in die sectie. Geen verzonnen reviews; namen alleen met toestemming.
+
+## 4b. Lettertypes en overige bestanden
+- `fonts/` bevat Archivo, Instrument Sans en Caveat als woff2 (OFL-licentie), zodat er geen verzoek naar Google Fonts gaat (AVG).
+- `404.html`, `robots.txt`, `sitemap.xml`, favicons (`favicon.ico`, `favicon-32.png`, `apple-touch-icon.png`) en `img/og.jpg` (deel-afbeelding voor WhatsApp/socials) staan in de root.
+- Galerijfoto's: `img/werk-N.jpg` (groot, voor de lightbox) én `img/werk-N-s.jpg` (450 px, voor de tegels). Nieuwe foto: beide maten aanmaken.
 
 ## 5. Live zetten (GitHub Pages + Strato-domein)
 Hosting: GitHub Pages, repo `aim-daniel/bjl-allround`, branch `main`, map `/`. Elke push naar `main` is binnen een minuut live.
