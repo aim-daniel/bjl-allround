@@ -40,7 +40,7 @@ Maak foto's max. ~1600px breed en comprimeer ze (bijv. squoosh.app), anders is d
 De sectie "Reacties" toont letterlijke WhatsApp-berichtjes van klanten, zonder naam. Nieuwe toevoegen: kopieer een `<figure class="review">` in die sectie. Geen verzonnen reviews; namen alleen met toestemming.
 
 ## 4b. Lettertypes en overige bestanden
-- `fonts/` bevat Archivo, Instrument Sans en Caveat als woff2 (OFL-licentie), zodat er geen verzoek naar Google Fonts gaat (AVG).
+- `fonts/` bevat Archivo en Instrument Sans als woff2 en Caveat als woff (OFL-licentie), zodat er geen verzoek naar Google Fonts gaat (AVG).
 - `404.html`, `robots.txt`, `sitemap.xml`, favicons (`favicon.ico`, `favicon-32.png`, `apple-touch-icon.png`) en `img/og.jpg` (deel-afbeelding voor WhatsApp/socials) staan in de root.
 - Galerijfoto's: `img/werk-N.jpg` (groot, voor de lightbox) én `img/werk-N-s.jpg` (450 px, voor de tegels). Nieuwe foto: beide maten aanmaken.
 
