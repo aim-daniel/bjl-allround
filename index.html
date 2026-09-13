@@ -24,7 +24,7 @@
 <link rel="preload" href="fonts/Archivo-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/InstrumentSans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Plumber","name":"BJL Allround","url":"https://www.bjlallround.nl/","image":"https://www.bjlallround.nl/img/og.jpg","telephone":"+31641178935","founder":{"@type":"Person","name":"Benjamin"},"address":{"@type":"PostalAddress","addressRegion":"Overijssel","addressCountry":"NL"},"areaServed":{"@type":"Country","name":"Nederland"},"priceRange":"€€"}
+{"@context":"https://schema.org","@type":"Plumber","name":"BJL Allround","url":"https://www.bjlallround.nl/","image":"https://www.bjlallround.nl/img/og.jpg","telephone":"+31641178935","email":"info@bjlallround.nl","vatID":"NL004679991B76","founder":{"@type":"Person","name":"Benjamin"},"address":{"@type":"PostalAddress","addressRegion":"Overijssel","addressCountry":"NL"},"areaServed":{"@type":"Country","name":"Nederland"},"priceRange":"€€"}
 </script>
 <style>
 /* ===== Lettertypes: lokaal gehost (geen verzoek naar Google) ===== */
@@ -272,10 +272,10 @@ window.BJL = {
   phone: "06-41178935",  // getoond
   phoneRaw: "+31641178935", // voor tel:-link
   whatsapp: "31641178935",  // zelfde 06-nummer, zonder + of 00
-  email: "",            // bijv. "info@bjlallround.nl"
+  email: "info@bjlallround.nl",
   region: "Heel Nederland, vanuit Overijssel",
   kvk: "88991490",
-  btw: "",              // btw-id, bijv. "NL001234567B01" (verplicht zichtbaar zodra bekend)
+  btw: "NL004679991B76", // btw-id (verplicht zichtbaar)
   adres: "",            // vestigingsadres, bijv. "Straat 1, 1234 AB Plaats"
   formEndpoint: ""      // eigen endpoint of EU-verwerker; leeg = via WhatsApp (of mail-app als email is ingevuld)
 };
@@ -368,6 +368,7 @@ window.BJL = {
         <p>Geen warm water of een ketel die storing geeft? We onderhouden, repareren en vervangen cv-ketels, plaatsen radiatoren en leggen vloerverwarming aan.</p>
         <ul class="checks">
           <li>Cv-ketelstoring, onderhoud en vervanging</li>
+          <li>CO-gecertificeerd, zoals de wet vereist voor werk aan cv-ketels</li>
           <li>Radiatoren en vloerverwarming</li>
           <li>Boilers en warmwatervoorzieningen</li>
         </ul>
@@ -400,6 +401,7 @@ window.BJL = {
     </div>
     <div class="chips">
       <span class="chips-label">Ook voor</span>
+      <span>CO-gecertificeerd voor cv-ketels</span>
       <span>Dakgoten en hemelwaterafvoer</span>
       <span>Zinkwerk</span>
       <span>Gasleidingen</span>
@@ -641,7 +643,7 @@ window.BJL = {
     $$('.actionbar [data-mail]').forEach(function(a){
       a.href = '#offerte';
       var lbl = a.querySelector('[data-mail-label]'); if (lbl) lbl.textContent = 'Offerte';
-      var im = a.querySelector('.ic-mail'), ifm = a.querySelector('.ic-form'); if (im) im.hidden = true; if (ifm) ifm.hidden = false;
+      var im = a.querySelector('.ic-mail'), ifm = a.querySelector('.ic-form'); if (im) im.setAttribute('hidden', ''); if (ifm) ifm.removeAttribute('hidden'); // svg heeft geen .hidden-property
     });
     var kop = document.getElementById('contact-kop'); if (kop) kop.innerHTML = 'Bel of <span class="script">app</span>';
   }
@@ -662,8 +664,10 @@ window.BJL = {
   form.addEventListener('focusin', function(){ document.body.classList.add('kb-open'); });
   form.addEventListener('focusout', function(){ setTimeout(function(){ if (!form.contains(document.activeElement)) document.body.classList.remove('kb-open'); }, 50); });
 
-  var viaWa = !C.formEndpoint && !C.email && C.whatsapp;
-  if (viaWa) { submit.textContent = 'Verstuur via WhatsApp'; note.textContent = 'Je aanvraag opent in WhatsApp; druk daar op verzenden. Spoed? Bel dan direct.'; }
+  // Zonder eigen endpoint gaat het formulier bij voorkeur via WhatsApp (komt direct op Benjamins telefoon); zonder WhatsApp via de mail-app.
+  var viaWa = !C.formEndpoint && C.whatsapp;
+  if (viaWa) { submit.textContent = 'Verstuur via WhatsApp'; note.textContent = 'Je aanvraag opent in WhatsApp; druk daar op verzenden.' + (C.email ? ' Liever mailen? Dat kan naar ' + C.email + '.' : '') + ' Spoed? Bel dan direct.'; }
+  else if (!C.formEndpoint && C.email) { note.textContent = 'Je aanvraag opent in je mail-app; druk daar op verzenden. Spoed? Bel dan direct.'; }
 
   form.addEventListener('submit', function(e){
     e.preventDefault();
