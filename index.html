@@ -283,7 +283,7 @@ window.BJL = {
   kvk: "88991490",
   btw: "NL004679991B76", // btw-id (verplicht zichtbaar)
   adres: "",            // vestigingsadres, bijv. "Straat 1, 1234 AB Plaats"
-  formEndpoint: ""      // eigen endpoint of EU-verwerker; leeg = via WhatsApp (of mail-app als email is ingevuld)
+  formEndpoint: "https://app.bjlallround.nl/api/aanvraag" // Klusboek-app; leeg = via WhatsApp (of mail-app als email is ingevuld)
 };
 </script>
 
@@ -712,7 +712,11 @@ window.BJL = {
       fetch(C.formEndpoint, { method:'POST', body: fd, headers:{ 'Accept':'application/json' } })
         .then(function(r){ if(!r.ok) throw new Error(r.status); return r; })
         .then(function(){ setStatus('ok', 'Verstuurd. Je hoort snel van ons.'); form.reset(); })
-        .catch(function(){ setStatus('err', 'Versturen lukte niet. Bel of app ons even, of probeer het later opnieuw.'); })
+        .catch(function(){
+          // Storing bij de app: dan alsnog via WhatsApp, zodat een aanvraag nooit verloren gaat.
+          if (C.whatsapp) { window.open('https://wa.me/' + C.whatsapp.replace(/\D/g,'') + '?text=' + encodeURIComponent(subject + '\n' + lines.join('\n')), '_blank', 'noopener'); setStatus('ok', 'Versturen via de site lukte even niet; WhatsApp opent met je aanvraag. Druk daar op verzenden.'); }
+          else { setStatus('err', 'Versturen lukte niet. Bel of app ons even, of probeer het later opnieuw.'); }
+        })
         .then(function(){ submit.disabled = false; submit.textContent = 'Verstuur aanvraag'; });
     } else if (viaWa) {
       window.open('https://wa.me/' + C.whatsapp.replace(/\D/g,'') + '?text=' + encodeURIComponent(subject + '\n' + lines.join('\n')), '_blank', 'noopener');
