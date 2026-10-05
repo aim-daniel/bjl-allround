@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>BJL Allround · Loodgieter in Overijssel en heel Nederland</title>
 <meta name="description" content="BJL Allround, loodgieter vanuit Overijssel voor heel Nederland: lekkages, riool ontstoppen, verwarming, badkamer en toilet. Bel of app Benjamin direct.">
-<meta name="theme-color" content="#0c0e11">
+<meta name="theme-color" content="#070D18">
 <link rel="icon" href="favicon.ico" sizes="16x16 32x32">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -22,248 +22,292 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Badkamer door BJL Allround met zwart badmeubel en ronde verlichte spiegel">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preload" href="fonts/Archivo-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/BricolageGrotesque-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/InstrumentSans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/Caveat-600-latin.woff" as="font" type="font/woff" crossorigin>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Plumber","name":"BJL Allround","url":"https://www.bjlallround.nl/","image":"https://www.bjlallround.nl/img/og.jpg","telephone":"+31641178935","email":"bjlzakelijk@gmail.com","vatID":"NL004679991B76","founder":{"@type":"Person","name":"Benjamin"},"address":{"@type":"PostalAddress","addressRegion":"Overijssel","addressCountry":"NL"},"areaServed":{"@type":"Country","name":"Nederland"}}
 </script>
 <style>
 /* ===== Lettertypes: lokaal gehost (geen verzoek naar Google) ===== */
-@font-face{font-family:'Archivo';font-style:normal;font-weight:700 900;font-stretch:112%;font-display:swap;src:url('fonts/Archivo-var-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:500 800;font-display:swap;src:url('fonts/BricolageGrotesque-var-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
 @font-face{font-family:'Instrument Sans';font-style:normal;font-weight:400 600;font-display:swap;src:url('fonts/InstrumentSans-var-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
-@font-face{font-family:'Caveat';font-style:normal;font-weight:600;font-display:swap;src:url('fonts/Caveat-600-latin.woff') format('woff');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
-/* ===== Kleuren en type (één donker thema: zwart, grijs, blauw) ===== */
+/* ===== Kleuren en type: één verhaal in banden (donker, licht, donker, licht, donker) ===== */
 :root{
-  --bg:#0c0e11;        /* zwart, koel */
-  --bg-2:#111418;      /* afwisselende sectie */
-  --surface:#171b21;   /* kaart, grijs */
-  --surface-2:#212730; /* kaart hover / pill */
-  --line:#2a313b;
-  --text:#f2f4f7;
-  --muted:#9aa3ad;
-  --accent:#1f6fd6;    /* blauw: knoppen en vlakken (wit erop = 4.9:1) */
-  --accent-hover:#1b62c0;
-  --line-strong:#616d7d; /* randen van invoervelden en knoppen (>= 3:1) */
-  --accent-ink:#ffffff;
-  --accent-text:#6fb1ff; /* lichter blauw voor tekst op donker */
-  --accent-soft:rgba(31,111,214,.16);
-  --err:#f59e0b;       /* foutmelding */
-  --ok:#4ade80;
-  --radius:12px;
-  --display:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --bg:#F4F6FA; --surface:#FFFFFF; --ink:#0B1526; --ink-2:#566378; --line:#D8DFE9; --line-2:#EAEEF4;
+  --donker:#070D18; --donker-2:#0D1727; --donker-3:#13203A; --donker-text:#F3F6FA; --donker-muted:#A3B0C4; --donker-line:#1F2E48;
+  --accent:#2B7DE9; --accent-2:#5EA0FF; --accent-ink:#FFFFFF; --koper:#C9843F; --err:#F59E0B; --ok:#4ADE80;
+  --display:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;
   --body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --script:"Caveat","Bradley Hand","Segoe Script",cursive;
+  --r:8px; --gutter:clamp(16px,4vw,44px); --maxw:1200px;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:72px}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
-body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.55;padding-bottom:72px;padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
-@media (min-width:760px){body{padding-bottom:0}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:inherit}
-h1,h2,h3{font-family:var(--display);font-weight:900;line-height:1.05;margin:0;letter-spacing:-.01em;text-wrap:balance}
-h1{font-size:clamp(2.2rem,8vw,4.2rem)}
-h2{font-size:clamp(1.7rem,5.5vw,2.8rem)}
-h3{font-size:1.2rem;font-weight:700;line-height:1.2}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.02;letter-spacing:-.03em;text-wrap:balance}
+h1{font-size:clamp(42px,7.4vw,96px);font-weight:800}
+h2{font-size:clamp(32px,4.6vw,60px);font-weight:800}
+h3{font-size:22px;font-weight:700;letter-spacing:-.015em;line-height:1.2}
 p{margin:0}
-.wrap{width:100%;max-width:1100px;margin:0 auto;padding:0 20px;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
-@media (min-width:760px){.wrap{padding:0 32px;padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}}
-section{padding:56px 0}
-@media (min-width:760px){section{padding:88px 0}}
-.alt{background:var(--bg-2)}
-.eyebrow{display:inline-block;font-family:var(--display);font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-text)}
-.lead{color:var(--muted);font-size:1.05rem;max-width:62ch}
-.script{font-family:var(--script);font-weight:600;color:var(--accent-text);font-size:1.25em;letter-spacing:0}
-.sec-head{display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
-@media (min-width:760px){.sec-head{margin-bottom:44px}}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.eyebrow{font:600 12px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px}
+.donker .eyebrow,.hero .eyebrow{color:var(--accent-2)}
+.hero .eyebrow{text-shadow:0 1px 12px rgba(7,13,24,.8)}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--koper)}
+.lead{font-size:clamp(17px,1.5vw,21px);color:var(--ink-2);max-width:52ch;line-height:1.55}
+.muted{color:var(--ink-2)}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:2px solid var(--accent-2);outline-offset:3px}
+svg{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
 /* ===== Knoppen ===== */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border-radius:999px;font-family:var(--display);font-weight:700;font-size:1rem;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .12s,background .15s,border-color .15s;-webkit-tap-highlight-color:transparent}
-.btn:active{transform:scale(.98)}
-.btn svg{width:20px;height:20px;flex:none}
-.btn-accent{background:var(--accent);color:var(--accent-ink)}
-.btn-accent:hover{background:var(--accent-hover)}
-.btn-ghost{background:transparent;color:var(--text);border-color:var(--line-strong)}
-.btn-ghost:hover{border-color:var(--muted);background:var(--surface)}
-.btn-wa{background:#25d366;color:#0b2e1a}
-.btn-wa:hover{background:#3fe07a}
-.btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 24px;border-radius:999px;font:600 16px/1 var(--body);text-decoration:none;border:1px solid currentColor;color:var(--ink);background:transparent;cursor:pointer;white-space:nowrap;transition:transform .25s ease,background .25s ease,color .25s ease}
+.btn svg{width:18px;height:18px;flex:none}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn-primary:hover{background:#3A8BF4}
+.btn-primary::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.35) 50%,transparent 65%);transform:translateX(-120%)}
+.btn-primary:hover::after{animation:glans .9s ease}
+@keyframes glans{to{transform:translateX(120%)}}
+.btn-wit{color:var(--donker-text);border-color:rgba(255,255,255,.35)}
+.btn-wit:hover{background:rgba(255,255,255,.08)}
 .btn-block{width:100%}
+.btn[disabled]{opacity:.7;cursor:default;transform:none}
 
-
-/* ===== Navigatie ===== */
-.nav{position:sticky;top:0;z-index:40;background:rgba(12,14,17,.85);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
-.logo{display:flex;align-items:center;gap:10px;min-height:44px;text-decoration:none;font-family:var(--display);font-weight:900;font-size:1.1rem;letter-spacing:.02em}
-.logo-text{font-family:var(--display);font-weight:900;font-size:1.2rem;letter-spacing:.01em;color:var(--text)}
-.logo-bjl{color:var(--accent-text)}
-.nav-main{display:none}
-.nav-links{display:flex;gap:28px;list-style:none;margin:0;padding:0}
-.nav-links a{text-decoration:none;color:var(--muted);font-weight:500;font-size:.95rem}
-.nav-links a:hover{color:var(--text)}
-.nav-cta{display:none}
-@media (min-width:760px){.nav-main{display:block}.nav-cta{display:flex}}
-.nav-call{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-family:var(--display);font-weight:700;font-size:.9rem;text-decoration:none}
-.nav-call svg{width:18px;height:18px}
-@media (min-width:760px){.nav-call{display:none}}
+/* ===== Kop: transparant boven de foto, glas zodra je scrolt ===== */
+.top{position:fixed;top:0;left:0;right:0;z-index:20;transition:background .35s ease,border-color .35s ease;border-bottom:1px solid transparent;color:var(--donker-text)}
+.top.vast{background:rgba(7,13,24,.78);-webkit-backdrop-filter:saturate(140%) blur(12px);backdrop-filter:saturate(140%) blur(12px);border-color:var(--donker-line)}
+.top .wrap{display:flex;align-items:center;gap:28px;height:74px}
+.merk{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;text-decoration:none;white-space:nowrap}
+.merk span{color:var(--accent-2)}
+.nav-main{display:flex;gap:26px;margin-left:10px}
+.nav-main a{text-decoration:none;color:var(--donker-muted);font-weight:500;font-size:15px;transition:color .2s}
+.nav-main a:hover{color:var(--donker-text)}
+.top .btn{margin-left:auto;min-height:44px;padding:0 18px;font-size:15px}
 
 /* ===== Hero ===== */
-.hero{padding:48px 0 40px;position:relative;overflow:hidden}
-@media (min-width:760px){.hero{padding:96px 0 72px}}
-.hero::before{content:"";position:absolute;top:auto;left:auto;right:-20%;bottom:-40%;width:60vw;max-width:640px;height:60vw;max-height:640px;border-radius:50%;background:radial-gradient(circle,rgba(31,111,214,.24),transparent 62%);pointer-events:none}
-.hero .wrap{position:relative;display:grid;gap:28px}
-@media (min-width:900px){.hero .wrap{grid-template-columns:1.15fr .85fr;align-items:center;gap:48px}}
-.hero-copy{display:flex;flex-direction:column;gap:18px}
-.hero h1 .dash{color:var(--accent-text)}
-.hero .tag{font-family:var(--script);font-size:clamp(1.5rem,5.5vw,2.4rem);color:var(--accent-text);line-height:1.1}
-.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
-.hero-actions .btn{flex:1 1 180px}
-@media (min-width:760px){.hero-actions .btn{flex:0 0 auto}}
-.hero-photo{position:relative;aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:var(--surface);border:1px solid var(--line)}
-@supports not (aspect-ratio:1){.hero-photo{min-height:340px}}
-.hero-photo img{width:100%;height:100%;object-fit:cover}
-.hero-photo .badge{position:absolute;left:14px;bottom:14px;background:var(--accent);color:var(--accent-ink);border-radius:10px;padding:10px 14px;font-family:var(--display);font-weight:900;font-size:.85rem;line-height:1.15}
-.hero-photo .badge span{display:block;font-family:var(--body);font-weight:600;font-size:.76rem}
-.photo-slot{position:absolute;top:0;right:0;bottom:0;left:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:var(--muted);font-size:.9rem;text-align:center;padding:20px;background:repeating-linear-gradient(135deg,var(--surface) 0 18px,var(--surface-2) 18px 20px)}
-.photo-slot svg{width:36px;height:36px;opacity:.6}
-.photo-slot code{font-size:.78rem;color:var(--text);background:var(--bg);padding:2px 7px;border-radius:6px}
+.hero{position:relative;min-height:92vh;min-height:92svh;display:grid;align-items:end;color:var(--donker-text);background:var(--donker);overflow:hidden;isolation:isolate}
+.hero-bg{position:absolute;inset:-12% 0 0;z-index:-2;will-change:transform}
+.hero .wrap{will-change:transform,opacity}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:60% 45%;transform-origin:60% 40%}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,13,24,.55) 0%,rgba(7,13,24,.25) 35%,rgba(7,13,24,.82) 70%,var(--donker) 100%)}
+.gloed{position:absolute;z-index:-1;width:60vw;height:60vw;max-width:760px;max-height:760px;left:-12vw;bottom:-20vw;border-radius:50%;background:radial-gradient(closest-side,rgba(43,125,233,.42),transparent 70%);filter:blur(10px);pointer-events:none}
+.hero .wrap{position:relative;padding-top:130px;padding-bottom:clamp(44px,7vw,96px);display:grid;gap:24px}
+.hero h1{max-width:12ch}
+.hero h1 .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em;margin-bottom:-.08em}
+.hero h1 .w>span{display:inline-block}
+.hero h1 em{font-style:normal;color:var(--accent-2)}
+.hero .lead{color:var(--donker-muted)}
+.acties{display:flex;flex-wrap:wrap;gap:12px}
+.feiten{display:flex;flex-wrap:wrap;gap:10px 32px;list-style:none;margin:0;padding:22px 0 0;border-top:1px solid rgba(255,255,255,.14);color:var(--donker-muted);font-size:15px}
+.feiten li{display:flex;align-items:center;gap:10px}
+.feiten svg{width:18px;height:18px;color:var(--koper);flex:none}
+.scrollhint{position:absolute;right:var(--gutter);bottom:28px;width:1px;height:64px;background:rgba(255,255,255,.25);overflow:hidden}
+.scrollhint::after{content:"";position:absolute;left:0;top:-40%;width:100%;height:40%;background:var(--accent-2);animation:val 1.8s ease-in-out infinite}
+@keyframes val{to{top:110%}}
 
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:36px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.stat{padding:18px 6px;text-align:center;border-right:1px solid var(--line)}
-.stat:last-child{border-right:0}
-.stat b{display:block;font-family:var(--display);font-weight:900;font-size:clamp(1.3rem,5vw,2rem);color:var(--accent-text);line-height:1;font-variant-numeric:tabular-nums}
-.stat span{display:block;margin-top:6px;font-size:.78rem;color:var(--muted);line-height:1.25}
+/* ===== Lopende band ===== */
+.band{background:var(--donker);color:var(--donker-text);border-block:1px solid var(--donker-line);overflow:hidden;padding:18px 0;font-family:var(--display);font-weight:700;font-size:clamp(18px,2.2vw,26px);letter-spacing:-.01em}
+.band-spoor{display:flex;width:max-content;animation:loop 38s linear infinite}
+.band:hover .band-spoor{animation-play-state:paused}
+.band-spoor>div{display:flex;align-items:center;gap:26px;padding-right:26px;white-space:nowrap}
+.band i{width:8px;height:8px;border-radius:50%;background:var(--koper);display:inline-block}
+@keyframes loop{to{transform:translateX(-50%)}}
+
+/* ===== Secties en binnenglijden ===== */
+section.blok{padding-block:clamp(64px,9vw,128px)}
+.donker{background:var(--donker);color:var(--donker-text)}
+.donker .lead,.donker .muted{color:var(--donker-muted)}
+.kop{display:grid;gap:16px;max-width:64ch;margin-bottom:clamp(36px,5vw,64px)}
+.js .reveal{opacity:0;transform:translateY(32px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.js .reveal.in{opacity:1;transform:none}
+.js .reveal[data-vertraag="1"]{transition-delay:.12s} .js .reveal[data-vertraag="2"]{transition-delay:.24s} .js .reveal[data-vertraag="3"]{transition-delay:.36s}
+
+/* ===== Zo werkt het: lijn die zich vult (horizontaal op desktop, verticaal op telefoon) ===== */
+.stappen{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;padding-top:34px;--vul:0}
+.stappen::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--donker-line)}
+.lijnvul{position:absolute;left:0;top:0;height:2px;width:calc(var(--vul) * 100%);background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width .25s linear}
+.stap{display:grid;gap:14px}
+.js .stap-reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .stap-reveal.in{opacity:1;transform:none}
+.stap .ic{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--donker-3);border:1px solid var(--donker-line);color:var(--accent-2);transition:transform .4s ease,background .4s ease,color .4s ease}
+.stap .ic svg{width:26px;height:26px}
+.stap.actief .ic{background:var(--accent);color:#fff;transform:scale(1.08)}
+.stap p{color:var(--donker-muted)}
 
 /* ===== Diensten ===== */
-.grid-2{display:grid;gap:16px}
-@media (min-width:760px){.grid-2{grid-template-columns:1fr 1fr;gap:22px}}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px}
-.card .icon{width:46px;height:46px;border-radius:12px;background:var(--accent-soft);color:var(--accent-text);display:grid;place-items:center}
-.card .icon svg{width:24px;height:24px}
-.card p{color:var(--muted)}
-.checks{list-style:none;margin:4px 0 0;padding:0;display:grid;gap:8px}
-.checks li{display:flex;gap:10px;align-items:flex-start;font-size:.95rem}
-.checks li::before{content:"";flex:none;width:18px;height:18px;margin-top:2px;border-radius:50%;background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L19 7'/%3E%3C/svg%3E") center/11px no-repeat}
-.card .btn{margin-top:auto;align-self:flex-start}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
-.chips span{background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:.88rem;color:var(--text)}
-.chips-label{width:100%;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-family:var(--display);font-weight:700;margin-bottom:2px}
+.diensten{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.dienst{position:relative;overflow:hidden;display:grid;grid-template-columns:52px 1fr;gap:6px 18px;padding:30px 28px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);transition:transform .35s ease,box-shadow .35s ease}
+.dienst:hover{transform:translateY(-4px);box-shadow:0 18px 50px rgba(11,21,38,.10)}
+.dienst>svg{width:30px;height:30px;color:var(--accent);grid-row:span 3;margin-top:2px}
+.dienst p{color:var(--ink-2)}
+.dienst ul{margin:10px 0 0;padding:0;list-style:none;display:grid;gap:6px;font-size:15px}
+.dienst li{display:flex;gap:10px;align-items:baseline}
+.dienst li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--koper);flex:none;transform:translateY(-2px)}
+.ook{margin-top:24px;color:var(--ink-2);display:flex;flex-wrap:wrap;gap:8px 10px;align-items:baseline}
+.ook b{color:var(--ink);font-weight:600;margin-right:6px}
+.ook span{padding:6px 12px;border:1px solid var(--line);border-radius:999px;font-size:14px;background:var(--surface)}
 
-/* ===== Over ===== */
-.about .wrap{display:grid;gap:28px}
-@media (min-width:900px){.about .wrap{grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}}
-.about-photo{position:relative;aspect-ratio:1;border-radius:18px;overflow:hidden;background:var(--surface);border:1px solid var(--line)}
-@supports not (aspect-ratio:1){.about-photo{min-height:300px}}
-.about-photo img{width:100%;height:100%;object-fit:cover}
-.about-copy{display:flex;flex-direction:column;gap:16px}
-.about-copy h2 .script{display:block;font-size:1.4em;margin-top:2px}
+/* ===== Over Benjamin ===== */
+.over .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px);align-items:center}
+.portret{position:relative}
+.portret img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r)}
+.portret::after{content:"";position:absolute;inset:18px -18px -18px 18px;border:1px solid var(--koper);border-radius:var(--r);z-index:-1;opacity:.7}
+.over-tekst{display:grid;gap:22px}
+.over-tekst blockquote{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(28px,3.4vw,44px);line-height:1.12;letter-spacing:-.025em;text-wrap:balance}
+.over-tekst blockquote em{font-style:normal;color:var(--accent)}
+.kenmerken{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;padding-top:6px}
+.kenmerk{display:grid;gap:4px;padding-top:14px;border-top:2px solid var(--ink)}
+.kenmerk b{font-family:var(--display);font-size:19px}
+.kenmerk span{color:var(--ink-2);font-size:14px}
 
-/* ===== Waarom ===== */
-.grid-3{display:grid;gap:14px}
-@media (min-width:600px){.grid-3{grid-template-columns:1fr 1fr}}
-@media (min-width:960px){.grid-3{grid-template-columns:1fr 1fr 1fr;gap:20px}}
-.why{padding:22px;border:1px solid var(--line);border-radius:14px;display:flex;flex-direction:column;gap:8px;background:transparent}
-.why .icon{color:var(--accent-text);width:28px;height:28px}
-.why .icon svg{width:28px;height:28px}
-.why h3{font-size:1.05rem}
-.why p{color:var(--muted);font-size:.95rem}
+/* ===== Werk: zijwaarts scrollende galerij met lightbox ===== */
+.werk .kop{max-width:none;display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.werk .kop>div{display:grid;gap:16px;max-width:60ch}
+.pijlen{display:flex;gap:10px}
+.pijl{width:48px;height:48px;border-radius:50%;border:1px solid var(--donker-line);background:transparent;color:var(--donker-text);cursor:pointer;display:grid;place-items:center;transition:background .2s,transform .2s}
+.pijl:hover{background:var(--donker-3);transform:translateY(-2px)}
+.pijl svg{width:18px;height:18px}
+.strook-rand{position:relative}
+.strook-rand::after{content:"";position:absolute;top:0;bottom:24px;right:calc(-1 * var(--gutter));width:80px;background:linear-gradient(90deg,transparent,var(--donker));pointer-events:none}
+.strook{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px var(--gutter) 24px;margin-inline:calc(-1 * var(--gutter));scrollbar-width:none;cursor:grab;-webkit-overflow-scrolling:touch}
+.strook::-webkit-scrollbar{display:none}
+.strook.sleep{cursor:grabbing;scroll-snap-type:none}
+.kaart{margin:0;flex:0 0 clamp(260px,30vw,400px);scroll-snap-align:start;display:grid;gap:12px}
+.shot-open{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;border-radius:var(--r);overflow:hidden}
+.kaart img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--r);transition:transform .6s cubic-bezier(.2,.7,.2,1);user-select:none;-webkit-user-select:none}
+.kaart:hover img{transform:scale(1.03)}
+.kaart figcaption{display:grid;gap:3px;font-size:14px}
+.kaart b{font-weight:600;color:var(--donker-text)}
+.kaart span{color:var(--donker-muted)}
 
-/* ===== Werk / foto's ===== */
-.gallery{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-@media (min-width:760px){.gallery{grid-template-columns:repeat(4,1fr);gap:14px}}
-.shot{margin:0;position:relative;aspect-ratio:1;border-radius:12px;overflow:hidden;background:var(--surface);border:1px solid var(--line)}
-@supports not (aspect-ratio:1){.shot{min-height:160px}}
-.shot img{width:100%;height:100%;object-fit:cover}
-.shot figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 12px 10px;font-size:.8rem;background:linear-gradient(transparent,rgba(0,0,0,.75));color:#fff}
-.shot .photo-slot{font-size:.78rem;gap:4px}
-.shot .photo-slot svg{width:24px;height:24px}
+/* ===== Reacties ===== */
+.reacties{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.reactie{margin:0;background:var(--donker-2);border:1px solid var(--donker-line);border-radius:var(--r);padding:30px 28px;display:grid;gap:20px;align-content:start}
+.reactie blockquote{margin:0}
+.reactie p{font-family:var(--display);font-weight:500;font-size:22px;line-height:1.3;letter-spacing:-.01em}
+.reactie figcaption{display:flex;align-items:center;gap:8px;color:var(--donker-muted);font-size:14px}
+.reactie svg{width:16px;height:16px;color:#25D366;flex:none}
 
-.shot figcaption{pointer-events:none}
-.shot-open{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;padding:0;border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent;font:inherit;color:inherit}
-.shot-open:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
-.shot .zoom{position:absolute;top:8px;right:8px;width:30px;height:30px;border-radius:50%;background:rgba(12,14,17,.72);color:#fff;display:grid;place-items:center;pointer-events:none}
-.shot .zoom svg{width:16px;height:16px}
-
-/* ===== Lightbox (foto groot met uitleg) ===== */
-.lb{position:fixed;top:0;right:0;bottom:0;left:0;z-index:100;background:#06070a;display:flex;flex-direction:column;color:var(--text)}
-.lb-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 14px;padding-top:calc(10px + env(safe-area-inset-top,0px));color:var(--muted);font-size:.85rem;font-variant-numeric:tabular-nums}
-.lb-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line-strong);background:rgba(23,27,33,.9);color:var(--text);display:grid;place-items:center;cursor:pointer;padding:0;-webkit-tap-highlight-color:transparent}
-.lb-btn svg{width:22px;height:22px}
-.lb-btn:hover{border-color:var(--muted)}
-.lb-stage{flex:1;min-height:0;position:relative;display:flex;align-items:center;justify-content:center;padding:0 8px;touch-action:pan-y}
-.lb-stage img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:10px;-webkit-user-select:none;user-select:none}
-.lb-nav{position:absolute;top:50%;transform:translateY(-50%)}
-.lb-prev{left:10px}.lb-next{right:10px}
-.lb-info{width:100%;max-width:720px;margin:0 auto;padding:14px 18px 18px;padding-bottom:calc(18px + env(safe-area-inset-bottom,0px));display:grid;gap:6px}
-.lb-info h3{font-size:1.1rem}
-.lb-info p{color:var(--muted);font-size:.95rem;max-width:62ch}
-.lb-lock{position:fixed;width:100%;overflow:hidden}
-@media (min-width:900px){.lb-stage{padding:0 72px}.lb-info h3{font-size:1.25rem}}
-
-
-/* ===== Reacties van klanten ===== */
-.reviews{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
-.review{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 22px 18px;display:flex;flex-direction:column;gap:12px;position:relative}
-.review::before{content:"";position:absolute;top:14px;right:16px;width:26px;height:26px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236fb1ff' opacity='.55'%3E%3Cpath d='M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z'/%3E%3C/svg%3E") center/contain no-repeat}
-.review blockquote{margin:0;padding-right:28px}
-.review blockquote p{font-family:var(--display);font-weight:700;font-size:1.05rem;line-height:1.35;color:var(--text)}
-.review figcaption{font-size:.82rem;color:var(--muted)}
-
-/* ===== FAQ ===== */
-.faq{max-width:760px}
-.faq details{border-bottom:1px solid var(--line)}
-.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;font-family:var(--display);font-weight:700;font-size:1.02rem}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"";flex:none;width:28px;height:28px;border-radius:50%;border:1px solid var(--line-strong);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236fb1ff' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E") center/13px no-repeat;transition:transform .2s}
-.faq details[open] summary::after{transform:rotate(45deg)}
-.faq .a{padding:0 0 18px;color:var(--muted);max-width:62ch}
+/* ===== Vragen ===== */
+.vragen{max-width:780px}
+.vragen details{border-top:1px solid var(--line)}
+.vragen details:last-child{border-bottom:1px solid var(--line)}
+.vragen summary{list-style:none;cursor:pointer;padding:22px 0;font:600 17px/1.35 var(--body);display:flex;justify-content:space-between;gap:20px}
+.vragen summary::-webkit-details-marker{display:none}
+.vragen summary::after{content:"+";font-family:var(--display);font-size:26px;line-height:1;color:var(--accent);flex:none;transition:transform .3s}
+.vragen details[open] summary::after{transform:rotate(45deg)}
+.vragen .a{padding:0 0 24px;color:var(--ink-2);max-width:64ch}
 
 /* ===== Contact ===== */
-.contact .wrap{display:grid;gap:28px}
-@media (min-width:900px){.contact .wrap{grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}}
-.contact-list{display:grid;gap:10px;margin-top:8px}
-.contact-item{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--line);border-radius:14px;text-decoration:none;background:var(--surface);transition:border-color .15s}
-.contact-item:hover{border-color:var(--muted)}
-.contact-item .icon{flex:none;width:42px;height:42px;border-radius:11px;background:var(--accent-soft);color:var(--accent-text);display:grid;place-items:center}
-.contact-item .icon svg{width:22px;height:22px}
-.contact-item small{display:block;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-family:var(--display);font-weight:700}
-.contact-item b{font-family:var(--display);font-weight:700;font-size:1.05rem;font-variant-numeric:tabular-nums}
-.contact-item .val{min-width:0;word-break:break-word;overflow-wrap:anywhere}
-form{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;display:grid;gap:14px}
-@media (min-width:600px){form{padding:28px}}
-.field{display:grid;gap:6px}
-.field label{font-size:.85rem;font-weight:600}
-.field label em{font-style:normal;color:var(--muted);font-weight:400}
-.field input,.field textarea,.field select{width:100%;font:inherit;font-size:16px;color:var(--text);background:var(--bg);border:1px solid var(--line-strong);border-radius:10px;padding:13px 14px;min-height:50px}
-.field textarea{min-height:120px;resize:vertical}
-.field [aria-invalid="true"]{border-color:var(--err);box-shadow:0 0 0 1px var(--err)}
-.field [aria-invalid="true"]:focus-visible{outline-color:var(--err)}
-.field-err{font-size:.82rem;color:var(--err)}
-.field select{padding-right:40px}
-.field select{-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a6a69f' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:18px}
-.row-2{display:grid;gap:14px}
-@media (min-width:600px){.row-2{grid-template-columns:1fr 1fr}}
-.form-note{font-size:.82rem;color:var(--muted)}
-.form-status{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;padding:0;border:0}
-.form-status.show{position:static;width:auto;height:auto;overflow:visible;clip:auto;white-space:normal;padding:12px 14px;border-radius:10px;font-size:.92rem}
-.form-status.ok{background:rgba(74,222,128,.12);color:var(--ok);border:1px solid rgba(74,222,128,.35)}
-.form-status.err{background:rgba(245,158,11,.12);color:var(--err);border:1px solid rgba(245,158,11,.4)}
+.contact{position:relative;overflow:hidden}
+.contact .gloed{left:auto;right:-20vw;bottom:auto;top:-20vw}
+.contact .wrap{position:relative;display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(32px,6vw,96px)}
+.contact-kop{display:grid;gap:18px;align-content:start}
+.contact-list{display:grid;margin-top:12px}
+.contact-item{display:grid;grid-template-columns:48px 1fr auto;align-items:center;gap:2px 16px;padding:22px 0;border-top:1px solid var(--donker-line);text-decoration:none;color:inherit;transition:padding-left .3s ease}
+a.contact-item:hover{padding-left:8px}
+.contact-item:last-child{border-bottom:1px solid var(--donker-line)}
+.contact-item .icon svg{width:26px;height:26px;color:var(--accent-2)}
+.contact-item .icon{grid-row:span 2;display:grid;place-items:center}
+.contact-item small{color:var(--donker-muted);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;display:block}
+.contact-item b{font-family:var(--display);font-size:clamp(20px,2vw,26px);font-weight:700;letter-spacing:-.015em;overflow-wrap:anywhere}
+.contact-item .pijltje{grid-row:span 2;width:22px;height:22px;color:var(--donker-muted)}
+#offerte{background:var(--donker-2);border:1px solid var(--donker-line);border-radius:12px;padding:30px;display:grid;gap:16px;align-self:start}
+#offerte h3{color:var(--donker-text)}
+.field{display:grid;gap:6px;font-size:14px;color:var(--donker-muted)}
+.field label em{font-style:normal;opacity:.8}
+.field input,.field textarea,.field select{background:var(--donker);color:var(--donker-text);border:1px solid var(--donker-line);border-radius:var(--r);padding:12px 14px;font:16px/1.4 var(--body);min-height:50px;width:100%}
+.field textarea{min-height:110px;resize:vertical}
+.field [aria-invalid="true"]{border-color:var(--err)}
+.field-err{color:var(--err);font-size:13px}
+.row-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form-status{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.form-status.show{position:static;width:auto;height:auto;overflow:visible;clip:auto;white-space:normal;padding:12px 14px;border-radius:var(--r);font-size:15px;border:1px solid}
+.form-status.ok{color:var(--ok);border-color:rgba(74,222,128,.4);background:rgba(74,222,128,.08)}
+.form-status.err{color:var(--err);border-color:rgba(245,158,11,.4);background:rgba(245,158,11,.08)}
+.form-note{color:var(--donker-muted);font-size:13px}
 
-/* ===== Footer ===== */
-footer{border-top:1px solid var(--line);padding:32px 0 28px;color:var(--muted);font-size:.85rem}
-footer .wrap{display:flex;flex-direction:column;gap:14px}
-@media (min-width:760px){footer .wrap{flex-direction:row;justify-content:space-between;align-items:center}}
-footer .meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px}
-footer .meta a{display:inline-flex;align-items:center;min-height:44px}
+footer{background:var(--donker);color:var(--donker-muted);border-top:1px solid var(--donker-line);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 28px;align-items:center;padding-block:28px}
+footer .merk{color:var(--donker-text);font-size:18px}
+footer .meta{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center}
+footer a{color:var(--donker-muted)}
 
-/* ===== Vaste actiebalk (mobiel) ===== */
-.actionbar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:8px;padding:10px 12px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));background:rgba(12,14,17,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid var(--line)}
-.actionbar .btn{min-height:48px;padding:0 10px;font-size:.92rem;border-radius:12px}
-@media (min-width:760px){.actionbar{display:none}}
+/* ===== Vaste belbalk op de telefoon ===== */
+.actionbar{display:none}
 .kb-open .actionbar{display:none}
+
+/* ===== Lightbox ===== */
+.lb{position:fixed;inset:0;z-index:50;background:rgba(4,8,15,.96);color:var(--donker-text);display:grid;grid-template-rows:auto 1fr auto}
+.lb-top{display:flex;justify-content:space-between;align-items:center;padding:14px var(--gutter);color:var(--donker-muted);font-size:14px;padding-top:calc(14px + env(safe-area-inset-top,0px))}
+.lb-stage{position:relative;display:grid;place-items:center;min-height:0;padding:0 var(--gutter)}
+.lb-stage img{max-width:100%;max-height:100%;object-fit:contain;border-radius:var(--r)}
+.lb-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--donker-line);background:rgba(13,23,39,.8);color:var(--donker-text);cursor:pointer;display:grid;place-items:center}
+.lb-btn svg{width:20px;height:20px}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%)}
+.lb-prev{left:calc(var(--gutter) + 6px)} .lb-next{right:calc(var(--gutter) + 6px)}
+.lb-info{padding:16px var(--gutter) calc(20px + env(safe-area-inset-bottom,0px));max-width:760px;display:grid;gap:6px}
+.lb-info h3{font-size:20px} .lb-info p{color:var(--donker-muted);font-size:15px}
+body.lb-lock{position:fixed;left:0;right:0;overflow:hidden}
+
+/* ===== Telefoon ===== */
+@media (max-width:900px){
+  .nav-main{display:none}
+  html{scroll-padding-top:76px}
+  .hero{min-height:86vh;min-height:86svh}
+  .hero .wrap{padding-top:110px}
+  .hero h1{font-size:clamp(40px,12vw,64px)}
+  .over .wrap,.contact .wrap{grid-template-columns:1fr}
+  .portret::after{display:none}
+  .stappen{grid-template-columns:1fr;gap:28px;padding-top:0;padding-left:0}
+  .stappen::before{left:27px;right:auto;top:0;bottom:0;width:2px;height:auto}
+  .lijnvul{left:27px;width:2px;height:calc(var(--vul) * 100%);background:linear-gradient(180deg,var(--accent),var(--accent-2));transition:height .25s linear}
+  .stap{grid-template-columns:56px 1fr;column-gap:16px;row-gap:6px}
+  .stap .ic{grid-row:span 2;align-self:start}
+  .diensten{grid-template-columns:1fr}
+  .dienst{padding:22px 20px;grid-template-columns:44px 1fr}
+  .kenmerken{grid-template-columns:1fr;gap:14px}
+  .reacties{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;padding:6px var(--gutter) 10px;margin-inline:calc(-1 * var(--gutter));scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .reacties::-webkit-scrollbar{display:none}
+  .reactie{flex:0 0 80vw;scroll-snap-align:start;padding:24px 22px}
+  .reactie p{font-size:20px}
+  .row-2{grid-template-columns:1fr}
+  #offerte{padding:22px 18px}
+  .pijlen{display:none}
+  .scrollhint{display:none}
+  body{padding-bottom:84px}
+  .actionbar{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:20;padding:10px var(--gutter) calc(10px + env(safe-area-inset-bottom,0px));background:rgba(7,13,24,.88);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid var(--donker-line);color:var(--donker-text)}
+  .actionbar .btn{min-height:50px}
+  .lb-nav{top:auto;bottom:-56px}
+}
+@media (max-width:480px){
+  .acties .btn{flex:1 1 100%}
+  .kaart{flex-basis:78vw}
+  .feiten{gap:8px 20px;font-size:14px}
+  .top .wrap{height:64px}
+  .hero .wrap{padding-top:92px}
+}
+
+/* ===== Beweging alleen als de bezoeker dat wil ===== */
+@media (prefers-reduced-motion:no-preference){
+  .js .hero-bg img{animation:zoom 24s ease-out both}
+  @keyframes zoom{from{transform:scale(1.12)}to{transform:scale(1)}}
+  .js .hero h1 .w>span{animation:rol .9s cubic-bezier(.2,.7,.2,1) both;transform:translateY(110%)}
+  .js .hero .lead,.js .hero .acties,.js .hero .feiten{animation:op .9s ease both;animation-delay:.9s}
+  .js .hero .acties{animation-delay:1.05s} .js .hero .feiten{animation-delay:1.2s}
+  @keyframes rol{to{transform:none}}
+  @keyframes op{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+}
+@media (prefers-reduced-motion:reduce){
+  .js .reveal,.js .stap-reveal{opacity:1;transform:none;transition:none}
+  .band-spoor,.scrollhint::after{animation:none}
+  .btn,.kaart img,.dienst,.stap .ic,.contact-item{transition:none}
+  html{scroll-behavior:auto}
+}
 </style>
 </head>
 <body>
@@ -287,264 +331,188 @@ window.BJL = {
 };
 </script>
 
-<header class="nav">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <symbol id="i-tel" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8 19.2L4 20Z"/><path d="M9.5 9.5c0 3 2 5 5 5l1-1.5-1.8-.8-.7.7c-1-.4-1.8-1.2-2.2-2.2l.7-.7-.8-1.8z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 6h18v12H3zM3 7l9 6 9-6"/></symbol>
+  <symbol id="i-form" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></symbol>
+  <symbol id="i-klok" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="i-prijs" viewBox="0 0 24 24"><path d="M4 7h11l5 5-5 5H4zM8.5 12h.01"/></symbol>
+  <symbol id="i-schild" viewBox="0 0 24 24"><path d="M12 3l8 3.5V12c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6.5z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-kalender" viewBox="0 0 24 24"><path d="M4 6.5h16v13H4zM4 10.5h16M8 4v4M16 4v4"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></symbol>
+  <symbol id="i-druppel" viewBox="0 0 24 24"><path d="M12 3s6 7 6 11.5a6 6 0 0 1-12 0C6 10 12 3 12 3Z"/></symbol>
+  <symbol id="i-radiator" viewBox="0 0 24 24"><path d="M5 6v12M9 6v12M13 6v12M17 6v12M3 9h18M3 15h18"/></symbol>
+  <symbol id="i-riool" viewBox="0 0 24 24"><path d="M3 8h8a4 4 0 0 1 4 4v8M3 12h8M15 20h6M11 8V5M11 12v3"/></symbol>
+  <symbol id="i-douche" viewBox="0 0 24 24"><path d="M4 20V7a3 3 0 0 1 3-3h1a3 3 0 0 1 3 3M6 11h10M8 15v1M11 15v1M14 15v1M8 19v.5M11 19v.5M14 19v.5"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-links" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+  <symbol id="i-rechts" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
+  <symbol id="i-pijl" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></symbol>
+</defs></svg>
+
+<header class="top" id="top">
   <div class="wrap">
-    <a class="logo" href="#top" aria-label="BJL Allround, naar boven">
-      <span class="logo-text"><span class="logo-bjl">BJL</span> Allround</span>
-    </a>
-    <nav class="nav-main" aria-label="Hoofdmenu"><ul class="nav-links">
-      <li><a href="#diensten">Diensten</a></li>
-      <li><a href="#over">Over BJL</a></li>
-      <li><a href="#werk">Werk</a></li>
-      <li><a href="#faq">Vragen</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul></nav>
-    <div class="nav-cta">
-      <a class="btn btn-accent" href="tel:+31641178935" data-tel style="min-height:44px;padding:0 18px;font-size:.92rem">
-        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
-        <span data-tel-text>Bel direct</span>
-      </a>
-    </div>
-    <a class="nav-call" href="tel:+31641178935" data-tel>
-      <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
-      Bel
-    </a>
+    <a class="merk" href="#start">BJL <span>Allround</span></a>
+    <nav class="nav-main" aria-label="Hoofdmenu">
+      <a href="#diensten">Diensten</a><a href="#werk">Werk</a><a href="#over">Over Benjamin</a><a href="#vragen">Vragen</a><a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-wit" href="tel:+31641178935" data-tel><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-tel"/></svg><span data-phone-display>06-41178935</span></a>
   </div>
 </header>
 
-<main id="top">
-
-<!-- ===== HERO ===== -->
-<section class="hero">
-  <div class="wrap">
-    <div class="hero-copy">
-      <span class="eyebrow">Loodgieter · Verwarming · Riool · Sanitair</span>
-      <h1>Van lekkage tot nieuwe badkamer <span class="dash">—</span></h1>
-      <p class="tag">alles onder één dak, netjes geregeld</p>
-      <p class="lead">Lekkende kraan, verstopt riool, koude radiator of een complete verbouwing? BJL Allround pakt het aan. Eén telefoontje, snel ter plaatse, vaste afspraken en een schone werkplek als we weggaan.</p>
-      <div class="hero-actions">
-        <a class="btn btn-accent" href="tel:+31641178935" data-tel>
-          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
-          <span data-tel-text>Bel direct</span>
-        </a>
-        <a class="btn btn-wa" href="https://wa.me/31641178935" data-wa>
-          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.5-.3z"/></svg>
-          WhatsApp
-        </a>
-        <a class="btn btn-ghost" href="#contact">Offerte aanvragen</a>
+<main id="start">
+  <section class="hero" aria-labelledby="hero-kop">
+    <div class="hero-bg"><img src="img/hero.jpg" alt="" width="1086" height="1448" fetchpriority="high" decoding="async"></div>
+    <div class="gloed" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow">Loodgieter · Verwarming · Riool · Sanitair</p>
+      <h1 id="hero-kop"><span class="w"><span>Van</span></span> <span class="w"><span>lekkage</span></span> <span class="w"><span>tot</span></span> <br><span class="w"><span><em>nieuwe</span></span> <span class="w"><span>badkamer.</em></span></span> </h1>
+      <p class="lead">Eén vakman die zelf opneemt, zelf langskomt en zelf het werk doet. Vanuit Overijssel, door heel Nederland.</p>
+      <div class="acties">
+        <a class="btn btn-primary" href="tel:+31641178935" data-tel><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-tel"/></svg><span data-tel-text>Bel 06-41178935</span></a>
+        <a class="btn btn-wit" href="https://wa.me/31641178935" data-wa><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-wa"/></svg>Stuur een appje</a>
       </div>
-      <div class="stats" role="group" aria-label="Kernpunten">
-        <div class="stat"><b>24/7</b><span>bereikbaar bij spoed</span></div>
-        <div class="stat"><b>Gratis</b><span>offerte vooraf</span></div>
-        <div class="stat"><b>Vast</b><span>tarief, geen verrassingen</span></div>
-      </div>
+      <ul class="feiten">
+        <li><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-klok"/></svg>Bij spoed dezelfde dag</li>
+        <li><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-prijs"/></svg>Prijs vooraf, geen verrassingen</li>
+        <li><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-schild"/></svg>Garantie op het werk</li>
+      </ul>
     </div>
-    <div class="hero-photo">
-      <img src="img/hero.jpg" fetchpriority="high" decoding="async" alt="Badkamer door BJL Allround: zwart zwevend badmeubel met dubbele zwarte kraan en ronde verlichte spiegel op visgraattegels" width="1086" height="1448">
-      <div class="badge">BJL Allround<span>Loodgieter · Verwarming · Riool</span></div>
-    </div>
-  </div>
-</section>
+    <div class="scrollhint" aria-hidden="true"></div>
+  </section>
 
-<!-- ===== DIENSTEN ===== -->
-<section id="diensten" class="alt">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Diensten</span>
-      <h2>Wat we voor je <span class="script">regelen</span></h2>
-      <p class="lead">Spoedklus of gepland werk: voor particulieren en bedrijven.</p>
-    </div>
-    <div class="grid-2">
-      <article class="card">
-        <div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-4-7-13-7-13S5 11 5 15a7 7 0 0 0 7 7z"/></svg></div>
-        <span class="eyebrow">Loodgieterswerk</span>
-        <h3>Lekkages en leidingwerk</h3>
-        <p>Lekkende kraan, kapotte leiding of een nieuwe aansluiting voor keuken of wasmachine. Opsporen, repareren en vervangen zonder hak- en breekwerk waar het niet nodig is.</p>
-        <ul class="checks">
-          <li>Lekkage opsporen en verhelpen</li>
-          <li>Waterleidingen aanleggen en vervangen</li>
-          <li>Kranen, sifons en aansluitingen</li>
-        </ul>
-        <a class="btn btn-ghost" href="#contact">Plan een afspraak</a>
-      </article>
-      <article class="card">
-        <div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4-.5-2-1-3-1.1-2.2-.2-4.1 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.2.5-2.3 1-3 .5 2 1.5 3 2.5 3z"/></svg></div>
-        <span class="eyebrow">Water &amp; verwarming</span>
-        <h3>Warm water en radiatoren</h3>
-        <p>Geen warm water of een radiator die koud blijft? We plaatsen en vervangen radiatoren, leggen vloerverwarming aan en verzorgen het leidingwerk voor warm en koud water.</p>
-        <ul class="checks">
-          <li>Radiatoren plaatsen, vervangen en ontluchten</li>
-          <li>Vloerverwarming aanleggen, inclusief verdeler</li>
-          <li>Elektrische boilers en warmwatervoorzieningen</li>
-        </ul>
-        <a class="btn btn-ghost" href="#contact">Plan een afspraak</a>
-      </article>
-      <article class="card">
-        <div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h5a3 3 0 0 1 3 3v6a3 3 0 0 0 3 3h7"/><path d="M3 3v6M18 15l3 3-3 3"/></svg></div>
-        <span class="eyebrow">Riool</span>
-        <h3>Ontstoppen en rioolwerk</h3>
-        <p>Verstopte afvoer, stank of water dat niet wegloopt? We ontstoppen snel, inspecteren met camera en vervangen of herstellen rioolleidingen en putten.</p>
-        <ul class="checks">
-          <li>Ontstoppen van toilet, afvoer en riool</li>
-          <li>Camera-inspectie en lekdetectie</li>
-          <li>Riool aanleggen, herstellen en vervangen</li>
-        </ul>
-        <a class="btn btn-ghost" href="#contact">Plan een afspraak</a>
-      </article>
-      <article class="card">
-        <div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16v3a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M6 12V5a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1"/></svg></div>
-        <span class="eyebrow">Sanitair &amp; badkamer</span>
-        <h3>Badkamer en toilet</h3>
-        <p>Van een nieuw toilet tot een complete badkamerrenovatie. We verzorgen het leidingwerk, plaatsen het sanitair en werken het strak af.</p>
-        <ul class="checks">
-          <li>Complete badkamer- en toiletrenovatie</li>
-          <li>Douche, bad, wastafel en toilet plaatsen</li>
-          <li>Tegelwerk en afwerking in overleg</li>
-        </ul>
-        <a class="btn btn-ghost" href="#contact">Plan een afspraak</a>
-      </article>
-    </div>
-    <div class="chips">
-      <span class="chips-label">Ook voor</span>
-      <span>Dakgoten en hemelwaterafvoer</span>
-      <span>Zinkwerk</span>
-      <span>Gasleidingen</span>
-      <span>Wasmachine- en vaatwasseraansluiting</span>
-      <span>Buitenkraan</span>
-      <span>Kleine klussen</span>
-    </div>
-  </div>
-</section>
+  <div class="band" aria-hidden="true"><div class="band-spoor"><div><span>Lekkage</span><i></i><span>Riool ontstoppen</span><i></i><span>Vloerverwarming</span><i></i><span>Badkamer</span><i></i><span>Radiatoren</span><i></i><span>Toilet</span><i></i><span>Waterleiding</span><i></i><span>Dakgoot</span><i></i><span>Gasleiding</span><i></i><span>Camera-inspectie</span><i></i></div><div><span>Lekkage</span><i></i><span>Riool ontstoppen</span><i></i><span>Vloerverwarming</span><i></i><span>Badkamer</span><i></i><span>Radiatoren</span><i></i><span>Toilet</span><i></i><span>Waterleiding</span><i></i><span>Dakgoot</span><i></i><span>Gasleiding</span><i></i><span>Camera-inspectie</span><i></i></div></div></div>
 
-<!-- ===== OVER ===== -->
-<section id="over" class="about">
-  <div class="wrap">
-    <div class="about-photo">
-      <img src="img/portret.jpg" alt="Benjamin, loodgieter en eigenaar van BJL Allround" loading="lazy" width="800" height="800">
-    </div>
-    <div class="about-copy">
-      <span class="eyebrow">Over BJL</span>
-      <h2>Maak kennis met <span class="script">Benjamin</span></h2>
-      <p class="lead">BJL Allround is Benjamin: geen groot bedrijf met een callcenter, maar één vakman die zelf opneemt, zelf langskomt en zelf het werk doet. Je weet wie er over de vloer komt en je krijgt eerlijk advies: repareren als het kan, vervangen als het moet.</p>
-      <p class="lead">Van een lekkende kraan tot een complete badkamer, en van vloerverwarming tot rioolwerk. Allround betekent hier precies dat: één aanspreekpunt voor alles wat met water, verwarming en afvoer te maken heeft.</p>
-      <div class="hero-actions">
-        <a class="btn btn-accent" href="tel:+31641178935" data-tel><span data-tel-text>Bel direct</span></a>
-        <a class="btn btn-ghost" href="#werk">Bekijk het werk</a>
+  <section class="blok donker" id="werkwijze" aria-labelledby="werkwijze-kop">
+    <div class="wrap">
+      <div class="kop reveal"><p class="eyebrow">Zo werkt het</p><h2 id="werkwijze-kop">Drie stappen. Geen gedoe.</h2></div>
+      <div class="stappen" id="stappen">
+        <div class="lijnvul" aria-hidden="true"></div>
+        <div class="stap stap-reveal"><div class="ic"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-wa"/></svg></div><h3>Bel of app</h3><p>Stuur gerust een foto van het probleem. Vaak weten we dan al wat er nodig is en welke onderdelen meemoeten.</p></div>
+        <div class="stap stap-reveal"><div class="ic"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-kalender"/></svg></div><h3>Afspraak en prijs vooraf</h3><p>Je hoort meteen wanneer we kunnen komen. Kleine reparaties tegen vast tarief, grotere klussen met een offerte vooraf.</p></div>
+        <div class="stap stap-reveal"><div class="ic"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-check"/></svg></div><h3>Klaar en opgeruimd</h3><p>Netjes gedaan, met garantie op het werk, en een schone werkplek als we weggaan. Daarna volgt de factuur.</p></div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ===== WAAROM ===== -->
-<section class="alt">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Waarom BJL</span>
-      <h2>Zo werken we</h2>
-    </div>
-    <div class="grid-3">
-      <div class="why"><div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Snel ter plaatse</h3><p>Bij spoed komen we dezelfde dag. Je hoort direct wanneer we er zijn.</p></div>
-      <div class="why"><div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div><h3>Prijs vooraf</h3><p>Eerst een duidelijke prijs, dan pas aan het werk. Geen verrassingen achteraf.</p></div>
-      <div class="why"><div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Vakwerk met garantie</h3><p>Netjes gedaan, met garantie op het werk. Klaar is klaar.</p></div>
-      <div class="why"><div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l4-1 10-10-3-3L5 16z"/><path d="M13 7l3 3"/></svg></div><h3>Schoon achtergelaten</h3><p>We ruimen op en nemen het afval mee. Alsof we er niet geweest zijn, behalve dat het werkt.</p></div>
-      <div class="why"><div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>Eén aanspreekpunt</h3><p>Je belt of appt rechtstreeks met degene die het werk doet. Kort lijntje, snelle antwoorden.</p></div>
-      <div class="why"><div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg></div><h3>Particulier en zakelijk</h3><p>Woningen, verhuurders en bedrijfspanden. Ook voor onderhoudscontracten.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== WERK ===== -->
-<section id="werk">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Werk</span>
-      <h2>Recente <span class="script">klussen</span></h2>
-      <p class="lead">Een greep uit het werk: van toilet en badkamer tot vloerverwarming, riool en hemelwaterafvoer. Tik op een foto om hem groot te bekijken, met uitleg.</p>
-    </div>
-    <div class="gallery">
-      <!-- Voorbeeld met foto:
-      <figure class="shot" data-title="Titel van de klus" data-desc="Uitleg die groot bij de foto verschijnt."><button type="button" class="shot-open" aria-label="Bekijk groot: Titel van de klus"><img src="img/werk-9.jpg" alt="Omschrijving van de klus" loading="lazy"></button><figcaption>Bijschrift</figcaption></figure>
-      -->
-      <figure class="shot" data-title="Toiletrenovatie in visgraat en zwart" data-desc="Compleet vernieuwd toilet: wandcloset op inbouwreservoir, fonteintje met zwarte kraan en zwarte sifon, visgraattegels als accentwand en zwart toiletgarnituur. Al het leidingwerk zit weggewerkt in de wand." data-full="img/werk-1.jpg"><button type="button" class="shot-open" aria-label="Bekijk groot: Toiletrenovatie in visgraat en zwart"><img src="img/werk-1-s.jpg" srcset="img/werk-1-s.jpg 450w, img/werk-1.jpg 900w" sizes="(min-width:760px) 25vw, 50vw" alt="Toilet met visgraattegels, zwart fonteinkraantje en zwart toiletgarnituur" loading="lazy" decoding="async" width="450" height="600"><span class="zoom" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Toiletrenovatie · visgraat &amp; zwart</figcaption></figure>
-      <figure class="shot" data-title="Toilet met hangend closet" data-desc="Strak betegeld toilet in grijs: wandcloset met bedieningsplaat, fonteintje met chromen kraan en toiletborstel aan de wand. Geen zichtbare leidingen, makkelijk schoon te houden." data-full="img/werk-2.jpg"><button type="button" class="shot-open" aria-label="Bekijk groot: Toilet met hangend closet"><img src="img/werk-2-s.jpg" srcset="img/werk-2-s.jpg 450w, img/werk-2.jpg 900w" sizes="(min-width:760px) 25vw, 50vw" alt="Grijs betegeld toilet met hangend closet en fonteintje" loading="lazy" decoding="async" width="450" height="600"><span class="zoom" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Toilet · hangend closet</figcaption></figure>
-      <figure class="shot" data-title="Zwarte regendouche" data-desc="Regendouche met thermostaatkraan en handdouche in mat zwart op grootformaat tegels. De leidingen lopen in de wand, dus geen buizen in het zicht." data-full="img/werk-3.jpg"><button type="button" class="shot-open" aria-label="Bekijk groot: Zwarte regendouche"><img src="img/werk-3-s.jpg" srcset="img/werk-3-s.jpg 450w, img/werk-3.jpg 870w" sizes="(min-width:760px) 25vw, 50vw" alt="Zwarte regendouche met thermostaatkraan op lichte tegels" loading="lazy" decoding="async" width="450" height="621"><span class="zoom" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Badkamer · regendouche</figcaption></figure>
-      <figure class="shot" data-title="Toilet in antraciet en messing" data-desc="Toilet met antracieten achterwand en vloer, lichte wandtegels, wandcloset en fonteintje met messing kraan. Inbouwreservoir en afvoer volledig weggewerkt." data-full="img/werk-8.jpg"><button type="button" class="shot-open" aria-label="Bekijk groot: Toilet in antraciet en messing"><img src="img/werk-8-s.jpg" srcset="img/werk-8-s.jpg 450w, img/werk-8.jpg 900w" sizes="(min-width:760px) 25vw, 50vw" alt="Toilet met antracieten wand, lichte tegels en messing kraan" loading="lazy" decoding="async" width="450" height="600"><span class="zoom" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Toilet · antraciet &amp; messing</figcaption></figure>
-      <figure class="shot" data-title="Vloerverwarming in de woonkamer" data-desc="Vloerverwarming gelegd op wapeningsnet, klaar voor de dekvloer. Gelijkmatige lussen met vaste afstand zorgen voor een egale warmteverdeling over de hele vloer." data-full="img/werk-4.jpg"><button type="button" class="shot-open" aria-label="Bekijk groot: Vloerverwarming in de woonkamer"><img src="img/werk-4-s.jpg" srcset="img/werk-4-s.jpg 450w, img/werk-4.jpg 900w" sizes="(min-width:760px) 25vw, 50vw" alt="Vloerverwarmingsleidingen gelegd op wapeningsnet in woonkamer" loading="lazy" decoding="async" width="450" height="600"><span class="zoom" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Vloerverwarming · woonkamer</figcaption></figure>
-      <figure class="shot" data-title="Verdeler en pompgroep" data-desc="Verdeler van de vloerverwarming met pompgroep en per groep een flowmeter, aangesloten op de cv-leidingen en netjes weggewerkt onder de trap. Elke groep is apart in te regelen." data-full="img/werk-5.jpg"><button type="button" class="shot-open" aria-label="Bekijk groot: Verdeler en pompgroep"><img src="img/werk-5-s.jpg" srcset="img/werk-5-s.jpg 450w, img/werk-5.jpg 900w" sizes="(min-width:760px) 25vw, 50vw" alt="Vloerverwarmingsverdeler met pomp en flowmeters" loading="lazy" decoding="async" width="450" height="600"><span class="zoom" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Verdeler &amp; pompgroep</figcaption></figure>
-      <figure class="shot" data-title="Riool in de fundering van nieuwbouw" data-desc="Rioolleidingen aangelegd in de fundering van een nieuwbouwblok: op afschot gelegd en gefixeerd voordat de vloer gestort wordt, zodat alles later goed blijft afvoeren." data-full="img/werk-6.jpg"><button type="button" class="shot-open" aria-label="Bekijk groot: Riool in de fundering van nieuwbouw"><img src="img/werk-6-s.jpg" srcset="img/werk-6-s.jpg 450w, img/werk-6.jpg 900w" sizes="(min-width:760px) 25vw, 50vw" alt="Nieuwe rioolleidingen in de fundering van een woningblok" loading="lazy" decoding="async" width="450" height="600"><span class="zoom" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Riool · nieuwbouw fundering</figcaption></figure>
-      <figure class="shot" data-title="Hemelwaterafvoer op de gevel" data-desc="Hemelwaterafvoer gemonteerd op de houten gevel van een appartementengebouw, inclusief beugels, uitgevoerd vanaf de hoogwerker. Strak in lijn met de gevel." data-full="img/werk-7.jpg"><button type="button" class="shot-open" aria-label="Bekijk groot: Hemelwaterafvoer op de gevel"><img src="img/werk-7-s.jpg" srcset="img/werk-7-s.jpg 450w, img/werk-7.jpg 900w" sizes="(min-width:760px) 25vw, 50vw" alt="Hemelwaterafvoer gemonteerd op houten gevel van appartementengebouw" loading="lazy" decoding="async" width="450" height="600"><span class="zoom" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg></span></button><figcaption>Hemelwaterafvoer · gevel</figcaption></figure>
-    </div>
-  </div>
-</section>
-
-<!-- ===== REVIEWS ===== -->
-<section id="reviews" class="alt">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Reacties</span>
-      <h2>Wat klanten <span class="script">zeggen</span></h2>
-      <p class="lead">Berichtjes die Benjamin na een klus kreeg, precies zoals ze binnenkwamen.</p>
-    </div>
-    <!-- Reacties van klanten, letterlijk uit WhatsApp, zonder naam. Nieuwe toevoegen: kopieer een <figure class="review">. -->
-    <div class="reviews">
-      <figure class="review"><blockquote><p>Dan was jij er wel snel bij en snel gefixed 👍🏻💪🏻</p></blockquote><figcaption>Klant van BJL Allround, via WhatsApp</figcaption></figure>
-      <figure class="review"><blockquote><p>Super gedaan Benjamin! Bedankt goed weekend!</p></blockquote><figcaption>Klant van BJL Allround, via WhatsApp</figcaption></figure>
-      <figure class="review"><blockquote><p>Ziet er goed uit man!</p></blockquote><figcaption>Klant van BJL Allround, via WhatsApp</figcaption></figure>
-      <figure class="review"><blockquote><p>Fijn dat je het zo oppakt 👍</p></blockquote><figcaption>Klant van BJL Allround, via WhatsApp</figcaption></figure>
-      <figure class="review"><blockquote><p>Dat je je best doet, zie ik wel 😉💪🏻 Dus komt goed</p></blockquote><figcaption>Klant van BJL Allround, via WhatsApp</figcaption></figure>
-    </div>
-  </div>
-</section>
-
-<!-- ===== FAQ ===== -->
-<section id="faq">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Vragen</span>
-      <h2>Veelgestelde vragen</h2>
-    </div>
-    <div class="faq">
-      <details><summary>Hoe snel kunnen jullie komen bij een lekkage of verstopping?</summary><div class="a">Bij spoed proberen we dezelfde dag langs te komen. Bel direct, dan hoor je meteen hoe laat we er kunnen zijn. Zet bij een lekkage eerst de hoofdkraan dicht.</div></details>
-      <details><summary>Wat kost een loodgieter?</summary><div class="a">Dat hangt af van de klus. Voor kleine reparaties rekenen we een vast tarief, voor grotere klussen maak je vooraf een offerte. Je weet altijd de prijs voordat we beginnen.</div></details>
-      <details><summary>In welke regio werken jullie?</summary><div class="a">Door heel Nederland. Benjamin zit in Overijssel; buiten Overijssel rekenen we reiskosten, en die hoor je vooraf.</div></details>
-      <details><summary>Kan ik een foto sturen van het probleem?</summary><div class="a">Graag zelfs. Stuur een foto via WhatsApp, dan kunnen we vaak al inschatten wat er nodig is en de juiste onderdelen meenemen.</div></details>
-      <details><summary>Werken jullie ook voor bedrijven?</summary><div class="a">Zeker. We doen zowel losse klussen voor bedrijfspanden als voor verhuurders.</div></details>
-      <details><summary>Krijg ik garantie op het werk?</summary><div class="a">Ja, op de uitgevoerde werkzaamheden en op de geplaatste materialen/onderdelen volgens de geldende fabrieksgarantie. De precieze garantietermijn staat in de offerte of op de factuur.</div></details>
-      <details><summary>Hoe kan ik betalen?</summary><div class="a">Na afronding ontvang je een factuur die je per bankoverschrijving of betaalverzoek kunt voldoen. Bij grotere klussen spreken we vooraf de termijnen af.</div></details>
-    </div>
-  </div>
-</section>
-
-<!-- ===== CONTACT ===== -->
-<section id="contact" class="contact alt">
-  <div class="wrap">
-    <div>
-      <div class="sec-head">
-        <span class="eyebrow">Contact</span>
-        <h2 id="contact-kop">Bel, app of <span class="script">mail</span></h2>
-        <p class="lead">Bij spoed: bel Benjamin direct. Voor een offerte of vraag: vul het formulier in of stuur een appje met een foto.</p>
+  <section class="blok" id="diensten" aria-labelledby="diensten-kop">
+    <div class="wrap">
+      <div class="kop reveal"><p class="eyebrow">Diensten</p><h2 id="diensten-kop">Alles wat met water, warmte en afvoer te maken heeft.</h2></div>
+      <div class="diensten">
+        <article class="dienst reveal"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-druppel"/></svg><h3>Lekkages en leidingwerk</h3><p>Lekkende kraan, kapotte leiding of een nieuwe aansluiting voor keuken of wasmachine. Opsporen, repareren en vervangen zonder hak- en breekwerk waar het niet nodig is.</p><ul><li>Lekkage opsporen en verhelpen</li><li>Waterleidingen aanleggen en vervangen</li><li>Kranen, sifons en aansluitingen</li></ul></article>
+        <article class="dienst reveal" data-vertraag="1"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-radiator"/></svg><h3>Warm water en radiatoren</h3><p>Geen warm water of een radiator die koud blijft? We plaatsen en vervangen radiatoren, leggen vloerverwarming aan en verzorgen het leidingwerk voor warm en koud water.</p><ul><li>Radiatoren plaatsen, vervangen en ontluchten</li><li>Vloerverwarming aanleggen, inclusief verdeler</li><li>Leidingwerk voor warm en koud water</li></ul></article>
+        <article class="dienst reveal" data-vertraag="2"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-riool"/></svg><h3>Riool en ontstoppen</h3><p>Verstopte afvoer, stank of water dat niet wegloopt? We ontstoppen snel, inspecteren met camera en vervangen of herstellen rioolleidingen en putten.</p><ul><li>Ontstoppen van toilet, afvoer en riool</li><li>Camera-inspectie en lekdetectie</li><li>Riool aanleggen, herstellen en vervangen</li></ul></article>
+        <article class="dienst reveal" data-vertraag="3"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-douche"/></svg><h3>Badkamer en toilet</h3><p>Van een nieuw toilet tot een complete badkamerrenovatie. We verzorgen het leidingwerk, plaatsen het sanitair en werken het strak af.</p><ul><li>Complete badkamer- en toiletrenovatie</li><li>Douche, bad, wastafel en toilet plaatsen</li><li>Tegelwerk en afwerking in overleg</li></ul></article>
       </div>
-      <div class="contact-list">
-        <a class="contact-item" href="tel:+31641178935" data-tel>
-          <div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></div>
-          <div class="val"><small>Telefoon</small><b data-phone-display>06-41178935</b></div>
-        </a>
-        <a class="contact-item" href="https://wa.me/31641178935" data-wa>
-          <div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.5-.3z"/></svg></div>
-          <div class="val"><small>WhatsApp</small><b data-wa-display>06-41178935</b></div>
-        </a>
-        <a class="contact-item" href="#contact" data-mail>
-          <div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
-          <div class="val"><small>E-mail</small><b data-email-display>—</b></div>
-        </a>
-        <div class="contact-item">
-          <div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
-          <div class="val"><small>Werkgebied</small><b data-region-display>Heel Nederland, vanuit Overijssel</b></div>
+      <div class="ook reveal"><b>Ook voor</b><span>Gasleidingen</span><span>Dakgoot en hemelwaterafvoer</span><span>Buitenkraan</span><span>Wasmachine- en vaatwasseraansluiting</span><span>Verhuurders en bedrijfspanden</span></div>
+    </div>
+  </section>
+
+  <section class="blok over" id="over" aria-labelledby="over-kop">
+    <div class="wrap">
+      <div class="portret reveal"><img src="img/portret.jpg" alt="Benjamin, eigenaar van BJL Allround" width="800" height="800" loading="lazy" decoding="async"></div>
+      <div class="over-tekst reveal" data-vertraag="1">
+        <p class="eyebrow">Over Benjamin</p>
+        <h2 id="over-kop" class="sr">Maak kennis met Benjamin</h2>
+        <blockquote>“Geen callcenter en geen planner ertussen. <em>Je spreekt mij, en ik kom zelf.</em>”</blockquote>
+        <p class="lead">BJL Allround is Benjamin: één vakman die zelf opneemt, zelf langskomt en zelf het werk doet. Je weet wie er over de vloer komt en je krijgt eerlijk advies: repareren als het kan, vervangen als het moet.</p>
+        <div class="kenmerken">
+          <div class="kenmerk"><b>Overijssel</b><span>Thuisbasis; door heel Nederland, reiskosten hoor je vooraf</span></div>
+          <div class="kenmerk"><b>Eén aanspreekpunt</b><span>Van lekkende kraan tot complete badkamer</span></div>
+          <div class="kenmerk"><b>Eerlijk advies</b><span>Repareren als het kan, vervangen als het moet</span></div>
         </div>
       </div>
     </div>
+  </section>
 
-    <form id="offerte" aria-labelledby="offerte-kop" novalidate>
+  <section class="blok donker werk" id="werk" aria-labelledby="werk-kop">
+    <div class="wrap">
+      <div class="kop reveal">
+        <div><p class="eyebrow">Recent werk</p><h2 id="werk-kop">Zo ziet het eruit als we weggaan.</h2></div>
+        <div class="pijlen"><button class="pijl" type="button" data-richting="-1" aria-label="Vorige foto's"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-links"/></svg></button><button class="pijl" type="button" data-richting="1" aria-label="Volgende foto's"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-rechts"/></svg></button></div>
+      </div>
+      <div class="strook-rand"><div class="strook reveal" id="strook">
+        <figure class="shot kaart" data-title="Toiletrenovatie in visgraat en zwart" data-desc="Compleet vernieuwd toilet: wandcloset op inbouwreservoir, fonteintje met zwarte kraan en zwarte sifon, visgraattegels als accentwand en zwart toiletgarnituur. Al het leidingwerk zit weggewerkt in de wand." data-full="img/werk-1.jpg">
+          <button class="shot-open" type="button" aria-label="Bekijk groot: Toiletrenovatie in visgraat en zwart"><img src="img/werk-1-s.jpg" srcset="img/werk-1-s.jpg 450w, img/werk-1.jpg 900w" sizes="(max-width: 480px) 78vw, (max-width: 900px) 46vw, 400px" alt="Toiletrenovatie in visgraat en zwart" width="450" height="600" loading="lazy" decoding="async" draggable="false"></button>
+          <figcaption><b>Toiletrenovatie in visgraat en zwart</b><span>Wandcloset, zwarte kraan, visgraattegels. Leidingwerk in de wand.</span></figcaption>
+        </figure>
+        <figure class="shot kaart" data-title="Zwarte regendouche" data-desc="Regendouche met thermostaatkraan en handdouche in mat zwart op grootformaat tegels. De leidingen lopen in de wand, dus geen buizen in het zicht." data-full="img/werk-3.jpg">
+          <button class="shot-open" type="button" aria-label="Bekijk groot: Zwarte regendouche"><img src="img/werk-3-s.jpg" srcset="img/werk-3-s.jpg 450w, img/werk-3.jpg 900w" sizes="(max-width: 480px) 78vw, (max-width: 900px) 46vw, 400px" alt="Zwarte regendouche" width="450" height="600" loading="lazy" decoding="async" draggable="false"></button>
+          <figcaption><b>Zwarte regendouche</b><span>Thermostaatkraan en handdouche in mat zwart, geen buizen in het zicht.</span></figcaption>
+        </figure>
+        <figure class="shot kaart" data-title="Toilet in antraciet en messing" data-desc="Toilet met antracieten achterwand en vloer, lichte wandtegels, wandcloset en fonteintje met messing kraan. Inbouwreservoir en afvoer volledig weggewerkt." data-full="img/werk-8.jpg">
+          <button class="shot-open" type="button" aria-label="Bekijk groot: Toilet in antraciet en messing"><img src="img/werk-8-s.jpg" srcset="img/werk-8-s.jpg 450w, img/werk-8.jpg 900w" sizes="(max-width: 480px) 78vw, (max-width: 900px) 46vw, 400px" alt="Toilet in antraciet en messing" width="450" height="600" loading="lazy" decoding="async" draggable="false"></button>
+          <figcaption><b>Toilet in antraciet en messing</b><span>Messing kraan, antracieten vloer, afvoer volledig weggewerkt.</span></figcaption>
+        </figure>
+        <figure class="shot kaart" data-title="Vloerverwarming in de woonkamer" data-desc="Vloerverwarming gelegd op wapeningsnet, klaar voor de dekvloer. Gelijkmatige lussen met vaste afstand zorgen voor een egale warmteverdeling over de hele vloer." data-full="img/werk-4.jpg">
+          <button class="shot-open" type="button" aria-label="Bekijk groot: Vloerverwarming in de woonkamer"><img src="img/werk-4-s.jpg" srcset="img/werk-4-s.jpg 450w, img/werk-4.jpg 900w" sizes="(max-width: 480px) 78vw, (max-width: 900px) 46vw, 400px" alt="Vloerverwarming in de woonkamer" width="450" height="600" loading="lazy" decoding="async" draggable="false"></button>
+          <figcaption><b>Vloerverwarming in de woonkamer</b><span>Gelijkmatige lussen op wapeningsnet, klaar voor de dekvloer.</span></figcaption>
+        </figure>
+        <figure class="shot kaart" data-title="Toilet met hangend closet" data-desc="Strak betegeld toilet in grijs: wandcloset met bedieningsplaat, fonteintje met chromen kraan en toiletborstel aan de wand. Geen zichtbare leidingen, makkelijk schoon te houden." data-full="img/werk-2.jpg">
+          <button class="shot-open" type="button" aria-label="Bekijk groot: Toilet met hangend closet"><img src="img/werk-2-s.jpg" srcset="img/werk-2-s.jpg 450w, img/werk-2.jpg 900w" sizes="(max-width: 480px) 78vw, (max-width: 900px) 46vw, 400px" alt="Toilet met hangend closet" width="450" height="600" loading="lazy" decoding="async" draggable="false"></button>
+          <figcaption><b>Toilet met hangend closet</b><span>Strak betegeld in grijs, makkelijk schoon te houden.</span></figcaption>
+        </figure>
+        <figure class="shot kaart" data-title="Verdeler en pompgroep" data-desc="Verdeler van de vloerverwarming met pompgroep en per groep een flowmeter, aangesloten op de cv-leidingen en netjes weggewerkt onder de trap. Elke groep is apart in te regelen." data-full="img/werk-5.jpg">
+          <button class="shot-open" type="button" aria-label="Bekijk groot: Verdeler en pompgroep"><img src="img/werk-5-s.jpg" srcset="img/werk-5-s.jpg 450w, img/werk-5.jpg 900w" sizes="(max-width: 480px) 78vw, (max-width: 900px) 46vw, 400px" alt="Verdeler en pompgroep" width="450" height="600" loading="lazy" decoding="async" draggable="false"></button>
+          <figcaption><b>Verdeler en pompgroep</b><span>Per groep een flowmeter, netjes weggewerkt onder de trap.</span></figcaption>
+        </figure>
+        <figure class="shot kaart" data-title="Riool in de fundering van nieuwbouw" data-desc="Rioolleidingen aangelegd in de fundering van een nieuwbouwblok: op afschot gelegd en gefixeerd voordat de vloer gestort wordt, zodat alles later goed blijft afvoeren." data-full="img/werk-6.jpg">
+          <button class="shot-open" type="button" aria-label="Bekijk groot: Riool in de fundering van nieuwbouw"><img src="img/werk-6-s.jpg" srcset="img/werk-6-s.jpg 450w, img/werk-6.jpg 900w" sizes="(max-width: 480px) 78vw, (max-width: 900px) 46vw, 400px" alt="Riool in de fundering van nieuwbouw" width="450" height="600" loading="lazy" decoding="async" draggable="false"></button>
+          <figcaption><b>Riool in de fundering van nieuwbouw</b><span>Op afschot gelegd en gefixeerd vóór het storten van de vloer.</span></figcaption>
+        </figure>
+        <figure class="shot kaart" data-title="Hemelwaterafvoer op de gevel" data-desc="Hemelwaterafvoer gemonteerd op de houten gevel van een appartementengebouw, inclusief beugels, uitgevoerd vanaf de hoogwerker. Strak in lijn met de gevel." data-full="img/werk-7.jpg">
+          <button class="shot-open" type="button" aria-label="Bekijk groot: Hemelwaterafvoer op de gevel"><img src="img/werk-7-s.jpg" srcset="img/werk-7-s.jpg 450w, img/werk-7.jpg 900w" sizes="(max-width: 480px) 78vw, (max-width: 900px) 46vw, 400px" alt="Hemelwaterafvoer op de gevel" width="450" height="600" loading="lazy" decoding="async" draggable="false"></button>
+          <figcaption><b>Hemelwaterafvoer op de gevel</b><span>Vanaf de hoogwerker gemonteerd, strak in lijn met de gevel.</span></figcaption>
+        </figure>
+      </div></div>
+      <p class="muted reveal" style="font-size:14px">Eigen foto's van eigen werk. Tik op een foto voor uitleg; veeg of scrol zijwaarts voor meer.</p>
+    </div>
+  </section>
+
+  <section class="blok donker" id="reacties" aria-labelledby="reacties-kop" style="padding-top:0">
+    <div class="wrap">
+      <div class="kop reveal"><p class="eyebrow">Reacties van klanten</p><h2 id="reacties-kop">Wat klanten appen na de klus.</h2></div>
+      <div class="reacties">
+        <figure class="reactie reveal" data-vertraag="0"><blockquote><p>“Dan was jij er wel snel bij en snel gefixed 👍🏻💪🏻”</p></blockquote><figcaption><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-wa"/></svg>Klant van BJL Allround, via WhatsApp</figcaption></figure>
+        <figure class="reactie reveal" data-vertraag="1"><blockquote><p>“Super gedaan Benjamin! Bedankt goed weekend!”</p></blockquote><figcaption><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-wa"/></svg>Klant van BJL Allround, via WhatsApp</figcaption></figure>
+        <figure class="reactie reveal" data-vertraag="2"><blockquote><p>“Ziet er goed uit man!”</p></blockquote><figcaption><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-wa"/></svg>Klant van BJL Allround, via WhatsApp</figcaption></figure>
+        <figure class="reactie reveal" data-vertraag="3"><blockquote><p>“Fijn dat je het zo oppakt 👍”</p></blockquote><figcaption><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-wa"/></svg>Klant van BJL Allround, via WhatsApp</figcaption></figure>
+        <figure class="reactie reveal" data-vertraag="3"><blockquote><p>“Dat je je best doet, zie ik wel 😉💪🏻 Dus komt goed”</p></blockquote><figcaption><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-wa"/></svg>Klant van BJL Allround, via WhatsApp</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="blok" id="vragen" aria-labelledby="vragen-kop">
+    <div class="wrap">
+      <div class="kop reveal"><p class="eyebrow">Veelgestelde vragen</p><h2 id="vragen-kop">Goed om te weten.</h2></div>
+      <div class="vragen reveal">
+        <details open><summary>Hoe snel kunnen jullie komen bij een lekkage of verstopping?</summary><div class="a">Bij spoed proberen we dezelfde dag langs te komen. Bel direct, dan hoor je meteen hoe laat we er kunnen zijn. Zet bij een lekkage eerst de hoofdkraan dicht.</div></details>
+        <details><summary>Wat kost een loodgieter?</summary><div class="a">Dat hangt af van de klus. Voor kleine reparaties rekenen we een vast tarief, voor grotere klussen maak je vooraf een offerte. Je weet altijd de prijs voordat we beginnen.</div></details>
+        <details><summary>In welke regio werken jullie?</summary><div class="a">Door heel Nederland. Benjamin zit in Overijssel; buiten Overijssel rekenen we reiskosten, en die hoor je vooraf.</div></details>
+        <details><summary>Kan ik een foto sturen van het probleem?</summary><div class="a">Graag zelfs. Stuur een foto via WhatsApp, dan kunnen we vaak al inschatten wat er nodig is en de juiste onderdelen meenemen.</div></details>
+        <details><summary>Werken jullie ook voor bedrijven?</summary><div class="a">Zeker. We doen zowel losse klussen voor bedrijfspanden als voor verhuurders.</div></details>
+        <details><summary>Krijg ik garantie op het werk?</summary><div class="a">Ja, op de uitgevoerde werkzaamheden en op de geplaatste materialen/onderdelen volgens de geldende fabrieksgarantie. De precieze garantietermijn staat in de offerte of op de factuur.</div></details>
+        <details><summary>Hoe kan ik betalen?</summary><div class="a">Na afronding ontvang je een factuur die je per bankoverschrijving of betaalverzoek kunt voldoen. Bij grotere klussen spreken we vooraf de termijnen af.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="blok donker contact" id="contact" aria-labelledby="contact-kop">
+    <div class="gloed" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="contact-kop reveal">
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-kop">Bel, app of mail.</h2>
+        <p class="lead">Bij spoed: bel Benjamin direct. Voor een offerte of vraag: vul het formulier in of stuur een appje met een foto.</p>
+        <div class="contact-list">
+          <a class="contact-item" href="tel:+31641178935" data-tel><span class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-tel"/></svg></span><span class="val"><small>Telefoon</small><b data-phone-display>06-41178935</b></span><svg class="pijltje" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-pijl"/></svg></a>
+          <a class="contact-item" href="https://wa.me/31641178935" data-wa><span class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-wa"/></svg></span><span class="val"><small>WhatsApp</small><b data-wa-display>06-41178935</b></span><svg class="pijltje" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-pijl"/></svg></a>
+          <a class="contact-item" href="#contact" data-mail><span class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-mail"/></svg></span><span class="val"><small>E-mail</small><b data-email-display>—</b></span><svg class="pijltje" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-pijl"/></svg></a>
+          <div class="contact-item"><span class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><span class="val"><small>Werkgebied</small><b data-region-display>Heel Nederland, vanuit Overijssel</b></span></div>
+        </div>
+      </div>
+    <form id="offerte" class="reveal" data-vertraag="1" aria-labelledby="offerte-kop" novalidate>
       <h3 id="offerte-kop">Offerte of vraag</h3>
       <div class="row-2">
         <div class="field"><label for="f-naam">Naam</label><input id="f-naam" name="naam" type="text" autocomplete="name" required><p class="field-err" id="f-naam-err" hidden></p></div>
@@ -571,38 +539,32 @@ window.BJL = {
       <div class="field"><label for="f-msg">Omschrijving</label><textarea id="f-msg" name="omschrijving" required placeholder="Wat is er aan de hand en wanneer komt het uit?"></textarea><p class="field-err" id="f-msg-err" hidden></p></div>
       <div class="hp" aria-hidden="true"><label>Laat dit veld leeg<input name="_gotcha" type="text" tabindex="-1" autocomplete="off"></label></div>
       <div class="form-status" id="form-status" role="status" aria-live="polite" aria-atomic="true"></div>
-      <button class="btn btn-accent btn-block" type="submit" id="form-submit">Verstuur aanvraag</button>
+      <button class="btn btn-primary btn-block" type="submit" id="form-submit">Verstuur aanvraag</button>
       <p class="form-note" id="form-note">Je krijgt binnen één werkdag reactie. Spoed? Bel dan direct.</p>
       <p class="form-note" id="form-privacy">Je gegevens gebruiken we alleen om je aanvraag te beantwoorden.</p>
     </form>
-  </div>
-</section>
-
+    </div>
+  </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <div><span class="logo-text"><span class="logo-bjl">BJL</span> Allround</span><br>Installatie- en montagewerkzaamheden</div>
+    <span class="merk">BJL <span>Allround</span></span>
+    <span>Installatie- en montagewerkzaamheden</span>
     <div class="meta">
       <span>KvK <span data-kvk>88991490</span></span>
       <span data-btw-wrap hidden>Btw-id <span data-btw></span></span>
       <span data-adres hidden></span>
       <span data-region-display>Heel Nederland, vanuit Overijssel</span>
-      <a href="#top">Naar boven</a>
+      <a href="#start">Naar boven</a>
     </div>
   </div>
 </footer>
 
 <nav class="actionbar" aria-label="Snel contact">
-  <a class="btn btn-accent" href="tel:+31641178935" data-tel>
-    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Bel
-  </a>
-  <a class="btn btn-wa" href="https://wa.me/31641178935" data-wa>
-    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.5-.3z"/></svg>App
-  </a>
-  <a class="btn btn-ghost" href="#contact" data-mail>
-    <svg class="ic-mail" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><svg class="ic-form" hidden aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg><span data-mail-label>Mail</span>
-  </a>
+  <a class="btn btn-primary" href="tel:+31641178935" data-tel><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-tel"/></svg>Bel</a>
+  <a class="btn btn-wit" href="https://wa.me/31641178935" data-wa><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-wa"/></svg>App</a>
+  <a class="btn btn-wit" href="#contact" data-mail hidden><svg class="ic-mail" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-mail"/></svg><svg class="ic-form" hidden aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-form"/></svg><span data-mail-label>Mail</span></a>
 </nav>
 
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-labelledby="lb-title" aria-describedby="lb-desc">
@@ -621,6 +583,79 @@ window.BJL = {
   </div>
 </div>
 
+
+<script>
+(function(){
+  // ===== Beweging: alleen met JavaScript en als de bezoeker geen 'verminder beweging' heeft =====
+  var root = document.documentElement;
+  var rustig = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!rustig) root.classList.add('js');
+
+  var woorden = document.querySelectorAll('.hero h1 .w > span');
+  for (var i = 0; i < woorden.length; i++) woorden[i].style.animationDelay = (0.15 + i * 0.09) + 's';
+
+  var top = document.getElementById('top');
+  function kop(){ if (window.pageYOffset > 40) top.classList.add('vast'); else top.classList.remove('vast'); }
+  kop(); window.addEventListener('scroll', kop, { passive: true });
+
+  var reveals = document.querySelectorAll('.reveal');
+  function toonAlles(){ for (var k = 0; k < reveals.length; k++) reveals[k].classList.add('in'); }
+  if ('IntersectionObserver' in window && !rustig) {
+    var io = new IntersectionObserver(function(items){
+      for (var n = 0; n < items.length; n++) if (items[n].isIntersecting) { items[n].target.classList.add('in'); io.unobserve(items[n].target); }
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+    for (var j = 0; j < reveals.length; j++) io.observe(reveals[j]);
+    setTimeout(toonAlles, 4000); // vangnet: nooit iets verborgen laten
+  } else { toonAlles(); }
+
+  // Hero: de foto schuift langzamer mee dan de pagina (parallax), de tekst glijdt zachtjes weg.
+  var heroBg = document.querySelector('.hero-bg'), heroTekst = document.querySelector('.hero .wrap'), hero = document.querySelector('.hero');
+  var ticking = false;
+  function parallax(){
+    ticking = false;
+    if (rustig || !heroBg || !hero) return;
+    var y = window.pageYOffset, hh = hero.offsetHeight;
+    if (y > hh) return;
+    heroBg.style.transform = 'translate3d(0,' + (y * 0.28).toFixed(1) + 'px,0)';
+    var f = Math.min(1, y / (hh * 0.7));
+    heroTekst.style.transform = 'translate3d(0,' + (y * 0.12).toFixed(1) + 'px,0)';
+    heroTekst.style.opacity = (1 - f * 0.9).toFixed(3);
+  }
+  // 'Zo werkt het': de lijn vult zich en de stappen verschijnen één voor één, op het ritme van het scrollen.
+  var stappen = document.getElementById('stappen');
+  var stapEls = stappen ? stappen.querySelectorAll('.stap') : [];
+  function lijn(){
+    if (!stappen) return;
+    var r = stappen.getBoundingClientRect(), h = window.innerHeight;
+    var t = Math.min(1, Math.max(0, (h * 0.85 - r.top) / (r.height + h * 0.35)));
+    stappen.style.setProperty('--vul', t.toFixed(3));
+    var n = stapEls.length;
+    for (var s = 0; s < n; s++) {
+      if (rustig || t > s / n * 0.9) stapEls[s].classList.add('in');
+      if (t > (s + 0.6) / n) stapEls[s].classList.add('actief'); else stapEls[s].classList.remove('actief');
+    }
+  }
+  function opScroll(){ if (!ticking) { ticking = true; (window.requestAnimationFrame || setTimeout)(function(){ parallax(); lijn(); }); } }
+  parallax(); lijn();
+  window.addEventListener('scroll', opScroll, { passive: true }); window.addEventListener('resize', opScroll);
+
+  // Werkgalerij: pijlen, slepen met de muis; een sleep mag de lightbox niet openen.
+  var strook = document.getElementById('strook');
+  if (strook) {
+    var knoppen = document.querySelectorAll('.pijl');
+    for (var p = 0; p < knoppen.length; p++) knoppen[p].addEventListener('click', function(){
+      var kaart = strook.querySelector('.kaart'); var stap = kaart ? kaart.getBoundingClientRect().width + 18 : 320;
+      var links = stap * 2 * Number(this.getAttribute('data-richting'));
+      if (strook.scrollBy) strook.scrollBy({ left: links, behavior: rustig ? 'auto' : 'smooth' }); else strook.scrollLeft += links;
+    });
+    var sleep = false, bewogen = false, startX = 0, startScroll = 0;
+    strook.addEventListener('mousedown', function(e){ sleep = true; bewogen = false; startX = e.pageX; startScroll = strook.scrollLeft; strook.classList.add('sleep'); });
+    window.addEventListener('mouseup', function(){ sleep = false; strook.classList.remove('sleep'); });
+    strook.addEventListener('mousemove', function(e){ if (!sleep) return; var dx = e.pageX - startX; if (Math.abs(dx) > 6) bewogen = true; if (bewogen) { e.preventDefault(); strook.scrollLeft = startScroll - dx; } });
+    strook.addEventListener('click', function(e){ if (bewogen) { e.stopPropagation(); e.preventDefault(); bewogen = false; } }, true);
+  }
+})();
+</script>
 <script>
 (function(){
   var C = window.BJL || {};
