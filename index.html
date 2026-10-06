@@ -132,7 +132,7 @@
      springt één oplichtende rand van links naar rechts: Waar het om gaat, BJL Allround, Groot installatiebedrijf. */
   .tabel-kaart{border:1px solid var(--line);border-radius:20px;background:var(--surface);padding:clamp(20px,3vw,36px);display:grid;gap:24px;max-width:960px;margin-inline:auto}
   .tabel-wrap{overflow-x:auto;position:relative;padding-block:6px}
-  .kol-rand{position:absolute;left:0;top:0;width:0;height:0;border:2px solid var(--accent-text);border-radius:16px;box-shadow:0 0 0 4px rgba(79,151,245,.10),0 0 22px rgba(79,151,245,.35);pointer-events:none;opacity:0;transition:left .6s cubic-bezier(.65,0,.35,1),width .6s cubic-bezier(.65,0,.35,1),opacity .4s ease}
+  .kol-rand{position:absolute;left:0;top:0;width:0;height:0;border:2px solid var(--accent-text);border-radius:12px;box-shadow:0 0 0 4px rgba(79,151,245,.10),0 0 22px rgba(79,151,245,.35);pointer-events:none;opacity:0;transition:top .55s cubic-bezier(.65,0,.35,1),height .55s cubic-bezier(.65,0,.35,1),opacity .4s ease}
   .kol-rand.aan{opacity:1}
   table{width:100%;border-collapse:separate;border-spacing:0;font-size:15px}
   th,td{padding:15px 16px;text-align:left;border-bottom:1px solid var(--line-2);white-space:nowrap}
@@ -330,13 +330,38 @@
     @keyframes vv-stroom{to{stroke-dashoffset:-1000}}
   }
   @media (max-width:720px){ .vv-rechts,.vv-links{width:110vw;opacity:.7} .vv-rechts{right:-55vw} .vv-links{left:-55vw} .vv-cta{display:none} }
+  /* v6: Benjamin in de opening, twee knoppen, rustige telefoonversie */
+  .hero-knoppen{display:flex;flex-wrap:wrap;gap:12px} .hero-knoppen .knop-rand svg{color:var(--wa)}
+  .ben-pil{display:none;align-items:center;gap:10px;padding:5px 14px 5px 5px;border-radius:999px;border:1px solid var(--accent-line);background:var(--accent-soft);font:600 13.5px/1 var(--body);color:var(--text)}
+  .ben-pil img{width:34px;height:34px;border-radius:50%;object-fit:cover;object-position:50% 20%}
+  .ki-persoon{display:flex;align-items:center;gap:14px}
+  .ki-persoon img{width:60px;height:60px;border-radius:50%;object-fit:cover;object-position:50% 20%;border:2px solid var(--accent-line);flex:none}
+  .ki-persoon>span:nth-child(2){flex:1;min-width:0} .ki-persoon b{display:block;font:700 19px/1.2 var(--display)} .ki-persoon small{color:var(--muted);font-size:13.5px}
+  @media (max-width:600px){
+    .m-weg{display:none!important}
+    .blok{padding-block:48px} .blok-kop{margin-bottom:22px}
+    .hero .wrap{padding-block:28px 40px;gap:24px} .hero .pil{display:none} .ben-pil{display:inline-flex}
+    .hero h1{font-size:clamp(34px,10vw,42px)} .hero .sub{font-size:16px}
+    .hero-knoppen{width:100%} .hero-knoppen .knop{flex:1 1 140px;width:auto;padding-inline:14px}
+    .punten{gap:8px 18px;font-size:13.5px}
+    .kaart-plek{display:none}
+    .reacties-kop .sub,.reacties-kop .knop{display:none}
+    .uitgelicht{aspect-ratio:1/1}
+    .ben-foto img{aspect-ratio:4/3;object-position:50% 22%}
+    .ben-feiten{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px} .ben-feiten b{font-size:17px} .ben-feiten span{font-size:12px;line-height:1.3}
+    .raster{grid-template-columns:1fr 1fr;gap:10px} .raster .kaart{padding:16px;gap:10px} .raster .kaart p{display:none} .raster .kaart h3{font-size:15px;line-height:1.25}
+    .g-tekst p{display:none} .g-wissel{min-height:0}
+    .stappen{gap:10px} .stap{padding:16px 18px;grid-template-columns:auto 1fr;column-gap:14px;align-items:center} .stap .nr{grid-row:span 2} .stap h3{font-size:16px} .stap p{font-size:14px}
+    .vragen summary{font-size:15px}
+    footer .wrap>div:nth-child(2){display:none} footer .wrap{gap:22px;padding-block:36px 24px}
+  }
 </style>
 </head>
 <body>
 <div class="strip" id="top"><a href="tel:+31641178935">Spoed? Bel 06-41178935 · bij spoed dezelfde dag langs</a></div>
 <header class="kop"><div class="wrap">
   <a class="merk" href="#top">BJL <span>Allround</span></a>
-  <nav class="menu" aria-label="Hoofdmenu"><a href="#over">Over Benjamin</a><a href="#diensten">Diensten</a><a href="#klussen">Klussen</a><a href="#werkwijze">Zo werkt het</a><a href="#vragen">Vragen</a><a href="#contact">Contact</a></nav>
+  <nav class="menu" aria-label="Hoofdmenu"><a href="#over">Over Benjamin</a><a href="#reacties">Reacties</a><a href="#diensten">Diensten</a><a href="#werk">Werk</a><a href="#vragen">Vragen</a><a href="#contact">Contact</a></nav>
   <a class="knop knop-vol" href="tel:+31641178935">Bel nu</a>
 </div></header>
 
@@ -345,26 +370,19 @@
     <div class="hero-foto" aria-hidden="true"><img src="img/hero.jpg" srcset="img/hero-s.jpg 450w, img/hero.jpg 1086w" sizes="60vw" alt="" decoding="async"></div>
     <div class="wrap">
     <div class="hero-tekst">
-      <span class="pil" data-enter="0">BJL Allround · Loodgieter · Heel Nederland</span>
+      <span class="pil" data-enter="0">BJL Allround · Loodgieter · Heel Nederland</span><span class="ben-pil" data-enter="0"><img src="img/portret.jpg" alt="" width="800" height="800" decoding="async">Benjamin · neemt zelf op</span>
       <h1 data-enter="1">Van lekkage tot nieuwe badkamer.</h1>
-      <p class="sub" data-enter="2">De vakman die zelf opneemt, zelf langskomt en zelf het werk doet. Lekkages, riool, verwarming, badkamer en toilet. Vanuit Overijssel, door heel Nederland.</p>
-      <a class="knop knop-vol knop-groot" data-enter="3" href="tel:+31641178935">Bel direct <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <ul class="punten" data-enter="4"><li>Bij spoed dezelfde dag</li><li>Prijs vooraf bekend</li><li>Garantie op het werk</li></ul>
+      <p class="sub" data-enter="2">Eén vakman die zelf opneemt, langskomt en het werk doet. <span class="m-weg">Lekkages, riool, verwarming, badkamer en toilet. </span>Door heel Nederland.</p>
+      <div class="hero-knoppen" data-enter="3"><a class="knop knop-vol knop-groot" href="tel:+31641178935">Bel direct <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="knop knop-rand knop-groot" href="https://wa.me/31641178935">WhatsApp <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8 19.2L4 20Z"/><path d="M9.5 9.5c0 3 2 5 5 5l1-1.5-1.8-.8-.7.7c-1-.4-1.8-1.2-2.2-2.2l.7-.7-.8-1.8z"/></svg></a></div>
+      <ul class="punten" data-enter="4"><li>Bij spoed dezelfde dag</li><li>Gratis offerte vooraf</li><li>Garantie op het werk</li></ul>
     </div>
     <div class="kaart-plek" data-enter="5"><aside class="kaart-info" aria-label="Direct contact">
-      <div class="ki-kop"><span><img src="img/portret.jpg" alt="" width="28" height="28" decoding="async">Direct contact</span><span class="live">Bereikbaar</span></div>
-      <div class="ki-groot"><a href="tel:+31641178935">06-41178935</a><small>Benjamin neemt zelf op</small></div>
+      <div class="ki-persoon"><img src="img/portret.jpg" alt="Benjamin, eigenaar van BJL Allround" width="800" height="800" decoding="async"><span><b>Benjamin</b><small>Eigenaar · neemt zelf op</small></span><span class="live">Bereikbaar</span></div>
+      <div class="ki-groot"><a href="tel:+31641178935">06-41178935</a><small>Bel of app, ook voor een foto van het probleem</small></div>
       <div class="tegels"><div class="tegel"><small>Bij spoed</small><b>Zelfde dag</b></div><div class="tegel"><small>Prijs</small><b>Vooraf</b></div><div class="tegel"><small>Garantie</small><b>Op het werk</b></div><div class="tegel"><small>Werkgebied</small><b>Heel NL</b></div></div>
       <div class="voortgang"><i></i><span>Reactie op je aanvraag</span><b>Binnen 1 werkdag</b></div>
       <div class="ki-voet"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Stuur gerust een foto van het probleem via WhatsApp</div>
     </aside></div>
-  </div></section>
-
-  <section class="cijfers" aria-label="In het kort"><div class="wrap">
-    <div class="cijfer" data-reveal data-reveal-delay="0"><b>24/7</b><span>Bereikbaar bij spoed</span></div>
-    <div class="cijfer" data-reveal data-reveal-delay="90"><b>1</b><span>Vakman, één aanspreekpunt</span></div>
-    <div class="cijfer" data-reveal data-reveal-delay="180"><b>Heel NL</b><span>Werkgebied</span></div>
-    <div class="cijfer" data-reveal data-reveal-delay="270"><b>Vooraf</b><span>Prijs bekend</span></div>
   </div></section>
 
   <section class="blok" id="over"><div class="wrap ben">
@@ -372,50 +390,36 @@
     <div class="ben-tekst" data-reveal="right">
       <p class="eyebrow">Maak kennis</p>
       <h2>Eén vakman, van eerste telefoontje tot oplevering</h2>
-      <p>BJL Allround is Benjamin. Geen groot bedrijf met een callcenter, maar één vakman die zelf opneemt, zelf langskomt en zelf het werk doet. Je weet wie er over de vloer komt.</p>
-      <p>Je krijgt eerlijk advies: repareren als het kan, vervangen als het moet. Van een lekkende kraan tot een complete badkamer, en van vloerverwarming tot rioolwerk.</p>
+      <p>BJL Allround is Benjamin. Geen callcenter, maar één vakman die zelf opneemt, langskomt en het werk doet. <span class="m-weg">Eerlijk advies: repareren als het kan, vervangen als het moet.</span></p>
       <div class="ben-feiten"><div><b>Overijssel</b><span>Thuisbasis</span></div><div><b>Allround</b><span>Water, warmte en afvoer</span></div><div><b>Zelf</b><span>Opnemen, komen, doen</span></div></div>
     </div>
   </div></section>
 
-  <section class="blok vlak" id="waarom"><div class="wrap">
-    <div class="blok-kop" data-reveal><p class="eyebrow">Waarom BJL Allround</p><h2>Geen tussenpersonen, gewoon geregeld</h2><p class="sub">Je belt en Benjamin neemt op. Je appt een foto en vaak weet hij dan al wat er nodig is. Wie je aan de lijn had, staat ook bij je voor de deur.</p></div>
-    <div class="vergelijk">
-      <div data-reveal="left">
-        <p class="eyebrow grijs">Bij een groot bedrijf</p>
-        <h3 class="door">Doorverbonden, ingepland, afwachten</h3>
-        <p>Een planner ertussen, wisselende monteurs en een prijs die pas achteraf duidelijk is.</p>
-        <ul class="nee"><li data-reveal="still" data-reveal-delay="0"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>Callcenter en planner tussen jou en de monteur</li><li data-reveal="still" data-reveal-delay="90"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>Elke keer iemand anders over de vloer</li><li data-reveal="still" data-reveal-delay="180"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>Prijs pas na afloop bekend</li></ul>
-      </div>
-      <div data-reveal="right">
-        <p class="eyebrow">Met BJL Allround</p>
-        <h3>Direct contact, zelf gedaan</h3>
-        <p>Benjamin neemt zelf op, komt zelf langs en doet zelf het werk. Je weet vooraf wat het kost.</p>
-        <ul class="ja"><li data-reveal="still" data-reveal-delay="90"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Zelf aan de telefoon en zelf aan het werk</li><li data-reveal="still" data-reveal-delay="180"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Foto appen, vaak direct een inschatting</li><li data-reveal="still" data-reveal-delay="270"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Prijs vooraf, bij spoed dezelfde dag</li></ul>
-      </div>
-    </div>
-  </div></section>
-
-  <section class="blok" id="vergelijk"><div class="wrap">
+  <section class="blok vlak" id="vergelijk"><div class="wrap">
     <div class="blok-kop midden" data-reveal><p class="eyebrow">Naast elkaar</p><h2>BJL Allround vs. <em>een groot installatiebedrijf.</em></h2></div>
     <div class="tabel-kaart" data-reveal="scale">
       <div class="tabel-wrap"><table data-kolommen><thead><tr><th scope="col" class="k1">Waar het om gaat</th><th scope="col" class="wij k2">BJL Allround</th><th scope="col" class="k3">Groot installatie&shy;bedrijf</th></tr></thead><tbody><tr><th scope="row" class="k1">Wie neemt op</th><td class="wij k2"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Benjamin zelf</td><td class="k3">Callcenter of planner</td></tr><tr><th scope="row" class="k1">Wie komt langs</th><td class="wij k2"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Dezelfde vakman</td><td class="k3">Wisselende monteur</td></tr><tr><th scope="row" class="k1">Prijs</th><td class="wij k2"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Vooraf bekend</td><td class="k3">Vaak pas achteraf</td></tr><tr><th scope="row" class="k1">Bij spoed</th><td class="wij k2"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Zelfde dag</td><td class="k3">Op de planning</td></tr><tr><th scope="row" class="k1">Foto via WhatsApp</th><td class="wij k2"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Vaak direct een inschatting</td><td class="k3">Meestal niet</td></tr><tr><th scope="row" class="k1">Aanspreekpunt</th><td class="wij k2"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Eén persoon</td><td class="k3">Een afdeling</td></tr></tbody></table></div>
-      <div class="onder"><p>Bij BJL Allround heb je één aanspreekpunt van het eerste telefoontje tot de factuur. Geen wachtrij, geen doorverbinden, en je weet vooraf waar je aan toe bent.</p><a class="knop knop-vol" href="tel:+31641178935">Bel Benjamin</a></div>
+      <div class="onder"><p class="m-weg">Bij BJL Allround heb je één aanspreekpunt van het eerste telefoontje tot de factuur. Geen wachtrij, geen doorverbinden, en je weet vooraf waar je aan toe bent.</p><a class="knop knop-vol" href="tel:+31641178935">Bel Benjamin</a></div>
+    </div>
+  </div></section>
+
+  <section class="blok" id="reacties"><div class="wrap reacties-rij">
+    <div class="blok-kop reacties-kop" data-reveal="left"><p class="eyebrow">Reacties</p><h2>Wat klanten appen</h2>
+      <p class="sub">Echte WhatsApp-berichten van klanten, woord voor woord.</p>
+      <a class="knop knop-rand" href="https://wa.me/31641178935">App Benjamin <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8 19.2L4 20Z"/><path d="M9.5 9.5c0 3 2 5 5 5l1-1.5-1.8-.8-.7.7c-1-.4-1.8-1.2-2.2-2.2l.7-.7-.8-1.8z"/></svg></a></div>
+    <div class="gesprek" data-reveal="right">
+      <div class="gesprek-kop"><span class="wa-rond"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8 19.2L4 20Z"/><path d="M9.5 9.5c0 3 2 5 5 5l1-1.5-1.8-.8-.7.7c-1-.4-1.8-1.2-2.2-2.2l.7-.7-.8-1.8z"/></svg></span><span><b>Berichten van klanten</b><small>via WhatsApp</small></span></div>
+      <div class="gesprek-lijst" id="g-lijst"><figure class="bericht"><figcaption>Klant</figcaption><blockquote>Dan was jij er wel snel bij en snel gefixed 👍🏻💪🏻</blockquote><small>na de klus</small></figure><figure class="bericht"><figcaption>Klant</figcaption><blockquote>Super gedaan Benjamin! Bedankt goed weekend!</blockquote><small>na de klus</small></figure><figure class="bericht"><figcaption>Klant</figcaption><blockquote>Ziet er goed uit man!</blockquote><small>na de klus</small></figure><figure class="bericht"><figcaption>Klant</figcaption><blockquote>Fijn dat je het zo oppakt 👍</blockquote><small>na de klus</small></figure><figure class="bericht"><figcaption>Klant</figcaption><blockquote>Dat je je best doet, zie ik wel 😉💪🏻 Dus komt goed</blockquote><small>na de klus</small></figure></div>
     </div>
   </div></section>
 
   <section class="blok vlak vv-vlak" id="diensten"><svg class="vv vv-rechts" viewBox="-90 0 690 600" aria-hidden="true" focusable="false"><path class="vv-buis" d="M-80.0 40.0 L30.1 40.0 Q40.0 40.0 49.9 40.0 L550.1 40.0 Q560.0 40.0 560.0 49.9 L560.0 550.1 Q560.0 560.0 550.1 560.0 L49.9 560.0 Q40.0 560.0 40.0 550.1 L40.0 93.9 Q40.0 84.0 49.9 84.0 L506.1 84.0 Q516.0 84.0 516.0 93.9 L516.0 506.1 Q516.0 516.0 506.1 516.0 L93.9 516.0 Q84.0 516.0 84.0 506.1 L84.0 137.9 Q84.0 128.0 93.9 128.0 L462.1 128.0 Q472.0 128.0 472.0 137.9 L472.0 462.1 Q472.0 472.0 462.1 472.0 L137.9 472.0 Q128.0 472.0 128.0 462.1 L128.0 181.9 Q128.0 172.0 137.9 172.0 L418.1 172.0 Q428.0 172.0 428.0 181.9 L428.0 418.1 Q428.0 428.0 418.1 428.0 L181.9 428.0 Q172.0 428.0 172.0 418.1 L172.0 225.9 Q172.0 216.0 181.9 216.0 L374.1 216.0 Q384.0 216.0 384.0 225.9 L384.0 374.1 Q384.0 384.0 374.1 384.0 L225.9 384.0 Q216.0 384.0 216.0 374.1 L216.0 269.9 Q216.0 260.0 225.9 260.0 L330.1 260.0 Q340.0 260.0 340.0 269.9 L340.0 330.1 Q340.0 340.0 330.1 340.0 L260.0 340.0"/><path class="vv-buis" d="M238.0 282.0 L238.0 352.1 Q238.0 362.0 247.9 362.0 L352.1 362.0 Q362.0 362.0 362.0 352.1 L362.0 247.9 Q362.0 238.0 352.1 238.0 L203.9 238.0 Q194.0 238.0 194.0 247.9 L194.0 396.1 Q194.0 406.0 203.9 406.0 L396.1 406.0 Q406.0 406.0 406.0 396.1 L406.0 203.9 Q406.0 194.0 396.1 194.0 L159.9 194.0 Q150.0 194.0 150.0 203.9 L150.0 440.1 Q150.0 450.0 159.9 450.0 L440.1 450.0 Q450.0 450.0 450.0 440.1 L450.0 159.9 Q450.0 150.0 440.1 150.0 L115.9 150.0 Q106.0 150.0 106.0 159.9 L106.0 484.1 Q106.0 494.0 115.9 494.0 L484.1 494.0 Q494.0 494.0 494.0 484.1 L494.0 115.9 Q494.0 106.0 484.1 106.0 L71.9 106.0 Q62.0 106.0 62.0 115.9 L62.0 528.1 Q62.0 538.0 71.9 538.0 L528.1 538.0 Q538.0 538.0 538.0 528.1 L538.0 71.9 Q538.0 62.0 528.1 62.0 L71.9 62.0 Q62.0 62.0 52.1 62.0 L-80.0 62.0"/><path class="vv-gloed vv-warm" d="M-80.0 40.0 L30.1 40.0 Q40.0 40.0 49.9 40.0 L550.1 40.0 Q560.0 40.0 560.0 49.9 L560.0 550.1 Q560.0 560.0 550.1 560.0 L49.9 560.0 Q40.0 560.0 40.0 550.1 L40.0 93.9 Q40.0 84.0 49.9 84.0 L506.1 84.0 Q516.0 84.0 516.0 93.9 L516.0 506.1 Q516.0 516.0 506.1 516.0 L93.9 516.0 Q84.0 516.0 84.0 506.1 L84.0 137.9 Q84.0 128.0 93.9 128.0 L462.1 128.0 Q472.0 128.0 472.0 137.9 L472.0 462.1 Q472.0 472.0 462.1 472.0 L137.9 472.0 Q128.0 472.0 128.0 462.1 L128.0 181.9 Q128.0 172.0 137.9 172.0 L418.1 172.0 Q428.0 172.0 428.0 181.9 L428.0 418.1 Q428.0 428.0 418.1 428.0 L181.9 428.0 Q172.0 428.0 172.0 418.1 L172.0 225.9 Q172.0 216.0 181.9 216.0 L374.1 216.0 Q384.0 216.0 384.0 225.9 L384.0 374.1 Q384.0 384.0 374.1 384.0 L225.9 384.0 Q216.0 384.0 216.0 374.1 L216.0 269.9 Q216.0 260.0 225.9 260.0 L330.1 260.0 Q340.0 260.0 340.0 269.9 L340.0 330.1 Q340.0 340.0 330.1 340.0 L260.0 340.0"/><path class="vv-kern vv-warm" d="M-80.0 40.0 L30.1 40.0 Q40.0 40.0 49.9 40.0 L550.1 40.0 Q560.0 40.0 560.0 49.9 L560.0 550.1 Q560.0 560.0 550.1 560.0 L49.9 560.0 Q40.0 560.0 40.0 550.1 L40.0 93.9 Q40.0 84.0 49.9 84.0 L506.1 84.0 Q516.0 84.0 516.0 93.9 L516.0 506.1 Q516.0 516.0 506.1 516.0 L93.9 516.0 Q84.0 516.0 84.0 506.1 L84.0 137.9 Q84.0 128.0 93.9 128.0 L462.1 128.0 Q472.0 128.0 472.0 137.9 L472.0 462.1 Q472.0 472.0 462.1 472.0 L137.9 472.0 Q128.0 472.0 128.0 462.1 L128.0 181.9 Q128.0 172.0 137.9 172.0 L418.1 172.0 Q428.0 172.0 428.0 181.9 L428.0 418.1 Q428.0 428.0 418.1 428.0 L181.9 428.0 Q172.0 428.0 172.0 418.1 L172.0 225.9 Q172.0 216.0 181.9 216.0 L374.1 216.0 Q384.0 216.0 384.0 225.9 L384.0 374.1 Q384.0 384.0 374.1 384.0 L225.9 384.0 Q216.0 384.0 216.0 374.1 L216.0 269.9 Q216.0 260.0 225.9 260.0 L330.1 260.0 Q340.0 260.0 340.0 269.9 L340.0 330.1 Q340.0 340.0 330.1 340.0 L260.0 340.0"/><path class="vv-gloed vv-koel" d="M238.0 282.0 L238.0 352.1 Q238.0 362.0 247.9 362.0 L352.1 362.0 Q362.0 362.0 362.0 352.1 L362.0 247.9 Q362.0 238.0 352.1 238.0 L203.9 238.0 Q194.0 238.0 194.0 247.9 L194.0 396.1 Q194.0 406.0 203.9 406.0 L396.1 406.0 Q406.0 406.0 406.0 396.1 L406.0 203.9 Q406.0 194.0 396.1 194.0 L159.9 194.0 Q150.0 194.0 150.0 203.9 L150.0 440.1 Q150.0 450.0 159.9 450.0 L440.1 450.0 Q450.0 450.0 450.0 440.1 L450.0 159.9 Q450.0 150.0 440.1 150.0 L115.9 150.0 Q106.0 150.0 106.0 159.9 L106.0 484.1 Q106.0 494.0 115.9 494.0 L484.1 494.0 Q494.0 494.0 494.0 484.1 L494.0 115.9 Q494.0 106.0 484.1 106.0 L71.9 106.0 Q62.0 106.0 62.0 115.9 L62.0 528.1 Q62.0 538.0 71.9 538.0 L528.1 538.0 Q538.0 538.0 538.0 528.1 L538.0 71.9 Q538.0 62.0 528.1 62.0 L71.9 62.0 Q62.0 62.0 52.1 62.0 L-80.0 62.0"/><path class="vv-kern vv-koel" d="M238.0 282.0 L238.0 352.1 Q238.0 362.0 247.9 362.0 L352.1 362.0 Q362.0 362.0 362.0 352.1 L362.0 247.9 Q362.0 238.0 352.1 238.0 L203.9 238.0 Q194.0 238.0 194.0 247.9 L194.0 396.1 Q194.0 406.0 203.9 406.0 L396.1 406.0 Q406.0 406.0 406.0 396.1 L406.0 203.9 Q406.0 194.0 396.1 194.0 L159.9 194.0 Q150.0 194.0 150.0 203.9 L150.0 440.1 Q150.0 450.0 159.9 450.0 L440.1 450.0 Q450.0 450.0 450.0 440.1 L450.0 159.9 Q450.0 150.0 440.1 150.0 L115.9 150.0 Q106.0 150.0 106.0 159.9 L106.0 484.1 Q106.0 494.0 115.9 494.0 L484.1 494.0 Q494.0 494.0 494.0 484.1 L494.0 115.9 Q494.0 106.0 484.1 106.0 L71.9 106.0 Q62.0 106.0 62.0 115.9 L62.0 528.1 Q62.0 538.0 71.9 538.0 L528.1 538.0 Q538.0 538.0 538.0 528.1 L538.0 71.9 Q538.0 62.0 528.1 62.0 L71.9 62.0 Q62.0 62.0 52.1 62.0 L-80.0 62.0"/></svg><div class="wrap">
-    <div class="blok-kop rij" data-reveal><div style="display:grid;gap:12px"><p class="eyebrow">Diensten</p><h2>Alles voor water, warmte en afvoer</h2></div><p class="sub">Van een lekkende kraan tot een complete badkamer. Repareren als het kan, vervangen als het moet.</p></div>
+    <div class="blok-kop rij" data-reveal><div style="display:grid;gap:12px"><p class="eyebrow">Diensten</p><h2>Alles voor water, warmte en afvoer</h2></div><p class="sub m-weg">Van een lekkende kraan tot een complete badkamer.</p></div>
     <div class="raster"><article class="kaart" data-reveal="still" data-reveal-delay="0"><span class="ic"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3s6 7 6 11.5a6 6 0 0 1-12 0C6 10 12 3 12 3Z"/></svg></span><h3>Lekkages en leidingwerk</h3><p>Lekkende kraan, kapotte leiding of een nieuwe aansluiting. Opsporen en repareren zonder onnodig breekwerk.</p></article><article class="kaart" data-reveal="still" data-reveal-delay="90"><span class="ic"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 6v12M9 6v12M13 6v12M17 6v12M3 9h18M3 15h18"/></svg></span><h3>Warm water en radiatoren</h3><p>Elektrische boilers en warmwatervoorzieningen. Radiatoren plaatsen, vervangen en ontluchten, en vloerverwarming inclusief verdeler.</p></article><article class="kaart" data-reveal="still" data-reveal-delay="180"><span class="ic"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 8h8a4 4 0 0 1 4 4v8M3 12h8M15 20h6M11 8V5M11 12v3"/></svg></span><h3>Riool en ontstoppen</h3><p>Toilet, afvoer of riool verstopt? Snel ontstoppen, camera-inspectie en lekdetectie. Ook riool en putten aanleggen, herstellen of vervangen.</p></article><article class="kaart" data-reveal="still" data-reveal-delay="0"><span class="ic"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 20V7a3 3 0 0 1 3-3h1a3 3 0 0 1 3 3M6 11h10M8 15v1M11 15v1M14 15v1M8 19v.5M11 19v.5M14 19v.5"/></svg></span><h3>Badkamer en toilet</h3><p>Van een nieuw toilet tot een complete badkamer: leidingwerk, sanitair en strakke afwerking.</p></article><article class="kaart" data-reveal="still" data-reveal-delay="90"><span class="ic"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7M6 10v9h12v-9M14 19v-5h-4v5"/></svg></span><h3>Dakgoot, hemelwater en zink</h3><p>Dakgoten, hemelwaterafvoer en zinkwerk monteren of herstellen, ook op hoogte.</p></article><article class="kaart" data-reveal="still" data-reveal-delay="180"><span class="ic"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3c2 3 5 5 5 9a5 5 0 0 1-10 0c0-2 1-3 1-3s0 2 2 2c0-3 2-5 2-8Z"/></svg></span><h3>Gas en aansluitingen</h3><p>Gasleidingen, buitenkraan, wasmachine- en vaatwasseraansluiting.</p></article></div>
   </div></section>
 
-  <section class="blok" id="klussen"><div class="wrap">
-    <div class="blok-kop rij" data-reveal><div style="display:grid;gap:12px"><p class="eyebrow">Wat heb je nodig</p><h2>Kies je klus</h2></div><p class="sub">Elke klus met een duidelijke afspraak, prijs vooraf en garantie op het werk.</p></div>
-    <div class="tiers"><article class="tier" data-reveal="still" data-reveal-delay="0"><p class="tier-naam">Reparatie</p><p class="tier-waarde">Vast tarief</p><ul><li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Kraan, sifon of toilet</li><li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Foto appen mag</li><li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Onderdelen mee</li><li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Garantie op het werk</li></ul><a class="knop knop-rand" href="https://wa.me/31641178935">App een foto</a></article><article class="tier" data-reveal="still" data-reveal-delay="90"><p class="tier-naam">Installatie</p><p class="tier-waarde">Prijs vooraf</p><ul><li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Radiatoren en vloerverwarming</li><li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Waterleiding en aansluitingen</li><li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Gas en buitenkraan</li><li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Vaste afspraak</li></ul><a class="knop knop-rand" href="https://wa.me/31641178935">Vraag een prijs</a></article><article class="tier uit" data-reveal="still" data-reveal-delay="180"><span class="badge">Bij spoed</span><p class="tier-naam">Spoed</p><p class="tier-waarde">Zelfde dag</p><ul><li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Lekkage of verstopping</li><li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Bereikbaar, ook 24/7</li><li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Hulp bij de hoofdkraan</li><li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Prijs vooraf</li></ul><a class="knop knop-vol" href="tel:+31641178935">Bel nu</a></article><article class="tier" data-reveal="still" data-reveal-delay="270"><p class="tier-naam">Renovatie</p><p class="tier-waarde">Op maat</p><ul><li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Complete badkamer of toilet</li><li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Leidingwerk en sanitair</li><li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Tegelwerk in overleg</li><li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Gratis offerte vooraf</li></ul><a class="knop knop-rand" href="https://wa.me/31641178935">Vraag een offerte</a></article></div>
-  </div></section>
-
-  <section class="blok vlak" id="werk"><div class="wrap">
-    <div class="blok-kop rij" data-reveal><div style="display:grid;gap:12px"><p class="eyebrow">Recent werk</p><h2>Zo laten we het achter</h2></div><p class="sub">Eigen foto's van eigen werk, met uitleg per klus. Kies een foto of laat ze vanzelf voorbijkomen.</p></div>
+  <section class="blok" id="werk"><div class="wrap">
+    <div class="blok-kop rij" data-reveal><div style="display:grid;gap:12px"><p class="eyebrow">Recent werk</p><h2>Zo laten we het achter</h2></div><p class="sub m-weg">Eigen foto's van eigen werk, met uitleg per klus.</p></div>
     <div class="galerij" id="galerij">
       <figure class="uitgelicht" data-reveal="left"><img class="laag actief" src="img/hero.jpg" srcset="img/hero-s.jpg 450w, img/hero.jpg 1086w" sizes="(max-width:600px) 92vw, (max-width:980px) 320px, 380px" alt="Badkamer met ronde spiegel" width="1086" height="1448" loading="lazy" decoding="async"><img class="laag" aria-hidden="true" data-src="img/werk-1.jpg" data-srcset="img/werk-1-s.jpg 450w, img/werk-1.jpg 900w" sizes="(max-width:600px) 92vw, (max-width:980px) 320px, 380px" alt="Toiletrenovatie in visgraat en zwart" width="900" height="1200" decoding="async"><img class="laag" aria-hidden="true" data-src="img/werk-2.jpg" data-srcset="img/werk-2-s.jpg 450w, img/werk-2.jpg 900w" sizes="(max-width:600px) 92vw, (max-width:980px) 320px, 380px" alt="Toilet met hangend closet" width="900" height="1200" decoding="async"><img class="laag" aria-hidden="true" data-src="img/werk-3.jpg" data-srcset="img/werk-3-s.jpg 450w, img/werk-3.jpg 870w" sizes="(max-width:600px) 92vw, (max-width:980px) 320px, 380px" alt="Zwarte regendouche" width="870" height="1200" decoding="async"><img class="laag" aria-hidden="true" data-src="img/werk-8.jpg" data-srcset="img/werk-8-s.jpg 450w, img/werk-8.jpg 900w" sizes="(max-width:600px) 92vw, (max-width:980px) 320px, 380px" alt="Toilet in antraciet en messing" width="900" height="1200" decoding="async"><img class="laag" aria-hidden="true" data-src="img/werk-4.jpg" data-srcset="img/werk-4-s.jpg 450w, img/werk-4.jpg 900w" sizes="(max-width:600px) 92vw, (max-width:980px) 320px, 380px" alt="Vloerverwarming in de woonkamer" width="900" height="1200" decoding="async"><img class="laag" aria-hidden="true" data-src="img/werk-5.jpg" data-srcset="img/werk-5-s.jpg 450w, img/werk-5.jpg 900w" sizes="(max-width:600px) 92vw, (max-width:980px) 320px, 380px" alt="Verdeler en pompgroep" width="900" height="1200" decoding="async"><img class="laag" aria-hidden="true" data-src="img/werk-6.jpg" data-srcset="img/werk-6-s.jpg 450w, img/werk-6.jpg 900w" sizes="(max-width:600px) 92vw, (max-width:980px) 320px, 380px" alt="Riool in de fundering van nieuwbouw" width="900" height="1200" decoding="async"><img class="laag" aria-hidden="true" data-src="img/werk-7.jpg" data-srcset="img/werk-7-s.jpg 450w, img/werk-7.jpg 900w" sizes="(max-width:600px) 92vw, (max-width:980px) 320px, 380px" alt="Hemelwaterafvoer op de gevel" width="900" height="1200" decoding="async"><span class="voortgang-g" aria-hidden="true"><i id="g-balk"></i></span></figure>
       <div class="galerij-tekst" data-reveal="right">
@@ -426,24 +430,14 @@
     </div>
   </div></section>
 
-  <section class="blok" id="werkwijze"><div class="wrap">
-    <div class="blok-kop rij" data-reveal><div style="display:grid;gap:12px"><p class="eyebrow">Zo werkt het</p><h2>In vier stappen geregeld</h2></div><p class="sub">Geen wachtrij en geen formulieren. Eén telefoontje of appje en het loopt.</p></div>
-    <div data-steps="4"><div class="stappen-balk"><i data-step-bar></i></div><div class="stappen"><article class="stap" data-step-index="0"><span class="nr">1</span><h3>Bel of app</h3><p>Bel of stuur een appje met een foto. Vaak weten we dan al wat er nodig is.</p></article><article class="stap" data-step-index="1"><span class="nr">2</span><h3>Afspraak en prijs</h3><p>Je hoort meteen wanneer we komen. Kleine klussen vast tarief, grotere met een gratis offerte.</p></article><article class="stap" data-step-index="2"><span class="nr">3</span><h3>Uitvoering</h3><p>Benjamin komt zelf en doet het werk, netjes en volgens afspraak.</p></article><article class="stap" data-step-index="3"><span class="nr">4</span><h3>Klaar en opgeruimd</h3><p>Garantie op het werk en een schone werkplek. Daarna volgt de factuur.</p></article></div></div>
-  </div></section>
-
-  <section class="blok vlak" id="reacties"><div class="wrap reacties-rij">
-    <div class="blok-kop reacties-kop" data-reveal="left"><p class="eyebrow">Reacties</p><h2>Wat klanten appen</h2>
-      <p class="sub">Echte berichten van klanten, na afloop gestuurd via WhatsApp. Woord voor woord overgenomen, alleen de namen laten we weg.</p>
-      <a class="knop knop-rand" href="https://wa.me/31641178935">App Benjamin <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8 19.2L4 20Z"/><path d="M9.5 9.5c0 3 2 5 5 5l1-1.5-1.8-.8-.7.7c-1-.4-1.8-1.2-2.2-2.2l.7-.7-.8-1.8z"/></svg></a></div>
-    <div class="gesprek" data-reveal="right">
-      <div class="gesprek-kop"><span class="wa-rond"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8 19.2L4 20Z"/><path d="M9.5 9.5c0 3 2 5 5 5l1-1.5-1.8-.8-.7.7c-1-.4-1.8-1.2-2.2-2.2l.7-.7-.8-1.8z"/></svg></span><span><b>Berichten van klanten</b><small>via WhatsApp</small></span></div>
-      <div class="gesprek-lijst" id="g-lijst"><figure class="bericht"><figcaption>Klant</figcaption><blockquote>Dan was jij er wel snel bij en snel gefixed 👍🏻💪🏻</blockquote><small>na de klus</small></figure><figure class="bericht"><figcaption>Klant</figcaption><blockquote>Super gedaan Benjamin! Bedankt goed weekend!</blockquote><small>na de klus</small></figure><figure class="bericht"><figcaption>Klant</figcaption><blockquote>Ziet er goed uit man!</blockquote><small>na de klus</small></figure><figure class="bericht"><figcaption>Klant</figcaption><blockquote>Fijn dat je het zo oppakt 👍</blockquote><small>na de klus</small></figure><figure class="bericht"><figcaption>Klant</figcaption><blockquote>Dat je je best doet, zie ik wel 😉💪🏻 Dus komt goed</blockquote><small>na de klus</small></figure></div>
-    </div>
+  <section class="blok vlak" id="werkwijze"><div class="wrap">
+    <div class="blok-kop rij" data-reveal><div style="display:grid;gap:12px"><p class="eyebrow">Zo werkt het</p><h2>In vier stappen geregeld</h2></div><p class="sub m-weg">Eén telefoontje of appje en het loopt.</p></div>
+    <div data-steps="4"><div class="stappen-balk"><i data-step-bar></i></div><div class="stappen"><article class="stap" data-step-index="0"><span class="nr">1</span><h3>Bel of app</h3><p>Met een foto weet Benjamin vaak al wat er nodig is.</p></article><article class="stap" data-step-index="1"><span class="nr">2</span><h3>Afspraak en prijs</h3><p>Vast tarief of een gratis offerte, vooraf.</p></article><article class="stap" data-step-index="2"><span class="nr">3</span><h3>Uitvoering</h3><p>Benjamin komt zelf en doet het werk.</p></article><article class="stap" data-step-index="3"><span class="nr">4</span><h3>Klaar en opgeruimd</h3><p>Garantie op het werk, schoon achtergelaten.</p></article></div></div>
   </div></section>
 
   <section class="blok vv-vlak" id="vragen"><svg class="vv vv-rechts" viewBox="-90 0 690 600" aria-hidden="true" focusable="false"><path class="vv-buis" d="M-80.0 40.0 L30.1 40.0 Q40.0 40.0 49.9 40.0 L550.1 40.0 Q560.0 40.0 560.0 49.9 L560.0 550.1 Q560.0 560.0 550.1 560.0 L49.9 560.0 Q40.0 560.0 40.0 550.1 L40.0 93.9 Q40.0 84.0 49.9 84.0 L506.1 84.0 Q516.0 84.0 516.0 93.9 L516.0 506.1 Q516.0 516.0 506.1 516.0 L93.9 516.0 Q84.0 516.0 84.0 506.1 L84.0 137.9 Q84.0 128.0 93.9 128.0 L462.1 128.0 Q472.0 128.0 472.0 137.9 L472.0 462.1 Q472.0 472.0 462.1 472.0 L137.9 472.0 Q128.0 472.0 128.0 462.1 L128.0 181.9 Q128.0 172.0 137.9 172.0 L418.1 172.0 Q428.0 172.0 428.0 181.9 L428.0 418.1 Q428.0 428.0 418.1 428.0 L181.9 428.0 Q172.0 428.0 172.0 418.1 L172.0 225.9 Q172.0 216.0 181.9 216.0 L374.1 216.0 Q384.0 216.0 384.0 225.9 L384.0 374.1 Q384.0 384.0 374.1 384.0 L225.9 384.0 Q216.0 384.0 216.0 374.1 L216.0 269.9 Q216.0 260.0 225.9 260.0 L330.1 260.0 Q340.0 260.0 340.0 269.9 L340.0 330.1 Q340.0 340.0 330.1 340.0 L260.0 340.0"/><path class="vv-buis" d="M238.0 282.0 L238.0 352.1 Q238.0 362.0 247.9 362.0 L352.1 362.0 Q362.0 362.0 362.0 352.1 L362.0 247.9 Q362.0 238.0 352.1 238.0 L203.9 238.0 Q194.0 238.0 194.0 247.9 L194.0 396.1 Q194.0 406.0 203.9 406.0 L396.1 406.0 Q406.0 406.0 406.0 396.1 L406.0 203.9 Q406.0 194.0 396.1 194.0 L159.9 194.0 Q150.0 194.0 150.0 203.9 L150.0 440.1 Q150.0 450.0 159.9 450.0 L440.1 450.0 Q450.0 450.0 450.0 440.1 L450.0 159.9 Q450.0 150.0 440.1 150.0 L115.9 150.0 Q106.0 150.0 106.0 159.9 L106.0 484.1 Q106.0 494.0 115.9 494.0 L484.1 494.0 Q494.0 494.0 494.0 484.1 L494.0 115.9 Q494.0 106.0 484.1 106.0 L71.9 106.0 Q62.0 106.0 62.0 115.9 L62.0 528.1 Q62.0 538.0 71.9 538.0 L528.1 538.0 Q538.0 538.0 538.0 528.1 L538.0 71.9 Q538.0 62.0 528.1 62.0 L71.9 62.0 Q62.0 62.0 52.1 62.0 L-80.0 62.0"/><path class="vv-gloed vv-warm" d="M-80.0 40.0 L30.1 40.0 Q40.0 40.0 49.9 40.0 L550.1 40.0 Q560.0 40.0 560.0 49.9 L560.0 550.1 Q560.0 560.0 550.1 560.0 L49.9 560.0 Q40.0 560.0 40.0 550.1 L40.0 93.9 Q40.0 84.0 49.9 84.0 L506.1 84.0 Q516.0 84.0 516.0 93.9 L516.0 506.1 Q516.0 516.0 506.1 516.0 L93.9 516.0 Q84.0 516.0 84.0 506.1 L84.0 137.9 Q84.0 128.0 93.9 128.0 L462.1 128.0 Q472.0 128.0 472.0 137.9 L472.0 462.1 Q472.0 472.0 462.1 472.0 L137.9 472.0 Q128.0 472.0 128.0 462.1 L128.0 181.9 Q128.0 172.0 137.9 172.0 L418.1 172.0 Q428.0 172.0 428.0 181.9 L428.0 418.1 Q428.0 428.0 418.1 428.0 L181.9 428.0 Q172.0 428.0 172.0 418.1 L172.0 225.9 Q172.0 216.0 181.9 216.0 L374.1 216.0 Q384.0 216.0 384.0 225.9 L384.0 374.1 Q384.0 384.0 374.1 384.0 L225.9 384.0 Q216.0 384.0 216.0 374.1 L216.0 269.9 Q216.0 260.0 225.9 260.0 L330.1 260.0 Q340.0 260.0 340.0 269.9 L340.0 330.1 Q340.0 340.0 330.1 340.0 L260.0 340.0"/><path class="vv-kern vv-warm" d="M-80.0 40.0 L30.1 40.0 Q40.0 40.0 49.9 40.0 L550.1 40.0 Q560.0 40.0 560.0 49.9 L560.0 550.1 Q560.0 560.0 550.1 560.0 L49.9 560.0 Q40.0 560.0 40.0 550.1 L40.0 93.9 Q40.0 84.0 49.9 84.0 L506.1 84.0 Q516.0 84.0 516.0 93.9 L516.0 506.1 Q516.0 516.0 506.1 516.0 L93.9 516.0 Q84.0 516.0 84.0 506.1 L84.0 137.9 Q84.0 128.0 93.9 128.0 L462.1 128.0 Q472.0 128.0 472.0 137.9 L472.0 462.1 Q472.0 472.0 462.1 472.0 L137.9 472.0 Q128.0 472.0 128.0 462.1 L128.0 181.9 Q128.0 172.0 137.9 172.0 L418.1 172.0 Q428.0 172.0 428.0 181.9 L428.0 418.1 Q428.0 428.0 418.1 428.0 L181.9 428.0 Q172.0 428.0 172.0 418.1 L172.0 225.9 Q172.0 216.0 181.9 216.0 L374.1 216.0 Q384.0 216.0 384.0 225.9 L384.0 374.1 Q384.0 384.0 374.1 384.0 L225.9 384.0 Q216.0 384.0 216.0 374.1 L216.0 269.9 Q216.0 260.0 225.9 260.0 L330.1 260.0 Q340.0 260.0 340.0 269.9 L340.0 330.1 Q340.0 340.0 330.1 340.0 L260.0 340.0"/><path class="vv-gloed vv-koel" d="M238.0 282.0 L238.0 352.1 Q238.0 362.0 247.9 362.0 L352.1 362.0 Q362.0 362.0 362.0 352.1 L362.0 247.9 Q362.0 238.0 352.1 238.0 L203.9 238.0 Q194.0 238.0 194.0 247.9 L194.0 396.1 Q194.0 406.0 203.9 406.0 L396.1 406.0 Q406.0 406.0 406.0 396.1 L406.0 203.9 Q406.0 194.0 396.1 194.0 L159.9 194.0 Q150.0 194.0 150.0 203.9 L150.0 440.1 Q150.0 450.0 159.9 450.0 L440.1 450.0 Q450.0 450.0 450.0 440.1 L450.0 159.9 Q450.0 150.0 440.1 150.0 L115.9 150.0 Q106.0 150.0 106.0 159.9 L106.0 484.1 Q106.0 494.0 115.9 494.0 L484.1 494.0 Q494.0 494.0 494.0 484.1 L494.0 115.9 Q494.0 106.0 484.1 106.0 L71.9 106.0 Q62.0 106.0 62.0 115.9 L62.0 528.1 Q62.0 538.0 71.9 538.0 L528.1 538.0 Q538.0 538.0 538.0 528.1 L538.0 71.9 Q538.0 62.0 528.1 62.0 L71.9 62.0 Q62.0 62.0 52.1 62.0 L-80.0 62.0"/><path class="vv-kern vv-koel" d="M238.0 282.0 L238.0 352.1 Q238.0 362.0 247.9 362.0 L352.1 362.0 Q362.0 362.0 362.0 352.1 L362.0 247.9 Q362.0 238.0 352.1 238.0 L203.9 238.0 Q194.0 238.0 194.0 247.9 L194.0 396.1 Q194.0 406.0 203.9 406.0 L396.1 406.0 Q406.0 406.0 406.0 396.1 L406.0 203.9 Q406.0 194.0 396.1 194.0 L159.9 194.0 Q150.0 194.0 150.0 203.9 L150.0 440.1 Q150.0 450.0 159.9 450.0 L440.1 450.0 Q450.0 450.0 450.0 440.1 L450.0 159.9 Q450.0 150.0 440.1 150.0 L115.9 150.0 Q106.0 150.0 106.0 159.9 L106.0 484.1 Q106.0 494.0 115.9 494.0 L484.1 494.0 Q494.0 494.0 494.0 484.1 L494.0 115.9 Q494.0 106.0 484.1 106.0 L71.9 106.0 Q62.0 106.0 62.0 115.9 L62.0 528.1 Q62.0 538.0 71.9 538.0 L528.1 538.0 Q538.0 538.0 538.0 528.1 L538.0 71.9 Q538.0 62.0 528.1 62.0 L71.9 62.0 Q62.0 62.0 52.1 62.0 L-80.0 62.0"/></svg><div class="wrap">
     <div class="blok-kop" data-reveal><p class="eyebrow">Vragen</p><h2>Goed om te weten</h2></div>
-    <div class="vragen"><details data-reveal="still" data-reveal-delay="0" open><summary>Hoe snel kunnen jullie komen bij een lekkage of verstopping?</summary><p>Bij spoed proberen we dezelfde dag langs te komen. Bel direct, dan hoor je meteen hoe laat we er kunnen zijn. Zet bij een lekkage eerst de hoofdkraan dicht.</p></details><details data-reveal="still" data-reveal-delay="60"><summary>Wat kost een loodgieter?</summary><p>Dat hangt af van de klus. Voor kleine reparaties rekenen we een vast tarief, voor grotere klussen maak je vooraf een offerte. Je weet altijd de prijs voordat we beginnen.</p></details><details data-reveal="still" data-reveal-delay="120"><summary>In welke regio werken jullie?</summary><p>Door heel Nederland. Benjamin zit in Overijssel; buiten Overijssel rekenen we reiskosten, en die hoor je vooraf.</p></details><details data-reveal="still" data-reveal-delay="180"><summary>Kan ik een foto sturen van het probleem?</summary><p>Graag zelfs. Stuur een foto via WhatsApp, dan kunnen we vaak al inschatten wat er nodig is en de juiste onderdelen meenemen.</p></details><details data-reveal="still" data-reveal-delay="240"><summary>Werken jullie ook voor bedrijven?</summary><p>Zeker. We doen zowel losse klussen voor bedrijfspanden als voor verhuurders.</p></details><details data-reveal="still" data-reveal-delay="240"><summary>Krijg ik garantie op het werk?</summary><p>Ja, op de uitgevoerde werkzaamheden en op de geplaatste materialen/onderdelen volgens de geldende fabrieksgarantie. De precieze garantietermijn staat in de offerte of op de factuur.</p></details><details data-reveal="still" data-reveal-delay="240"><summary>Hoe kan ik betalen?</summary><p>Na afronding ontvang je een factuur die je per bankoverschrijving of betaalverzoek kunt voldoen. Bij grotere klussen spreken we vooraf de termijnen af.</p></details></div>
+    <div class="vragen"><details data-reveal="still" data-reveal-delay="0"><summary>Hoe snel kunnen jullie komen bij een lekkage of verstopping?</summary><p>Bij spoed proberen we dezelfde dag langs te komen. Bel direct, dan hoor je meteen hoe laat we er kunnen zijn. Zet bij een lekkage eerst de hoofdkraan dicht.</p></details><details data-reveal="still" data-reveal-delay="60"><summary>Wat kost een loodgieter?</summary><p>Dat hangt af van de klus. Voor kleine reparaties rekenen we een vast tarief, voor grotere klussen maak je vooraf een offerte. Je weet altijd de prijs voordat we beginnen.</p></details><details data-reveal="still" data-reveal-delay="120"><summary>In welke regio werken jullie?</summary><p>Door heel Nederland. Benjamin zit in Overijssel; buiten Overijssel rekenen we reiskosten, en die hoor je vooraf.</p></details><details data-reveal="still" data-reveal-delay="240"><summary>Werken jullie ook voor bedrijven?</summary><p>Zeker. We doen zowel losse klussen voor bedrijfspanden als voor verhuurders.</p></details><details data-reveal="still" data-reveal-delay="240"><summary>Krijg ik garantie op het werk?</summary><p>Ja, op de uitgevoerde werkzaamheden en op de geplaatste materialen/onderdelen volgens de geldende fabrieksgarantie. De precieze garantietermijn staat in de offerte of op de factuur.</p></details><details data-reveal="still" data-reveal-delay="240"><summary>Hoe kan ik betalen?</summary><p>Na afronding ontvang je een factuur die je per bankoverschrijving of betaalverzoek kunt voldoen. Bij grotere klussen spreken we vooraf de termijnen af.</p></details></div>
   </div></section>
 
   <section class="wrap" id="contact">
@@ -464,7 +458,7 @@
   <div class="wrap">
     <div class="voet-merk"><a class="merk" href="#top">BJL <span>Allround</span></a><p>Installatie- en montagewerkzaamheden</p>
       <div class="voet-regels"><div><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 22s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Heel Nederland, vanuit Overijssel</div><div><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 6h18v12H3zM3 7l9 6 9-6"/></svg>bjlzakelijk@gmail.com</div><div><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7zM14 3v5h5"/></svg>KvK 88991490</div></div></div>
-    <div><h2>Menu</h2><ul><li><a href="#over">Over Benjamin</a></li><li><a href="#diensten">Diensten</a></li><li><a href="#klussen">Klussen</a></li><li><a href="#werkwijze">Zo werkt het</a></li><li><a href="#vragen">Vragen</a></li></ul></div>
+    <div><h2>Menu</h2><ul><li><a href="#over">Over Benjamin</a></li><li><a href="#reacties">Reacties</a></li><li><a href="#diensten">Diensten</a></li><li><a href="#werk">Werk</a></li><li><a href="#vragen">Vragen</a></li></ul></div>
     <div><h2>Contact</h2><ul><li><a href="tel:+31641178935">06-41178935</a></li><li><a href="https://wa.me/31641178935">WhatsApp</a></li><li><a href="mailto:bjlzakelijk@gmail.com">E-mail</a></li></ul></div>
     <div><h2>Gegevens</h2><ul><li>KvK 88991490</li><li>Btw-id NL004679991B76</li><li>Buiten Overijssel reiskosten, vooraf bekend</li></ul></div>
   </div>
@@ -542,44 +536,44 @@
 })();
 </script>
 <script>
-/* Kolomrand (ES5): één oplichtende rand springt in de vergelijking van kolom naar kolom, van links naar rechts.
-   Bij BJL Allround blijft hij iets langer staan; na de laatste kolom vervaagt hij en begint hij links opnieuw.
-   Start pas als de kolommen binnen zijn geschoven, loopt alleen als de tabel in beeld is, en doet niets bij
-   'minder beweging' of zonder JavaScript (dan is alleen het blauwe kader van BJL Allround er, zoals altijd). */
+/* Rand in de vergelijking (ES5): in de kolom BJL Allround loopt één oplichtende rand van het kopje vakje voor vakje
+   naar beneden, langs alle zes de punten; daarna vervaagt hij en begint hij weer bij het kopje. De andere kolommen
+   bewegen niet. Alleen in beeld; niets bij 'minder beweging' of zonder JavaScript. */
 (function(){
   var t = document.querySelector('[data-kolommen]'); if (!t || !('IntersectionObserver' in window)) return;
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var wrap = t.parentNode, rand = document.createElement('span');
   rand.className = 'kol-rand'; rand.setAttribute('aria-hidden', 'true'); wrap.appendChild(rand);
-  var kol = 0, zichtbaar = false, loopt = false, eerst = true, HOUD = [1700, 2600, 1700];
-  function plaats(k){
-    var kop = t.querySelector('thead .k' + (k + 1)), rijen = t.querySelectorAll('tbody tr'), onder = rijen[rijen.length - 1].querySelector('.k' + (k + 1));
-    if (!kop || !onder) return;
-    var w = wrap.getBoundingClientRect(), a = kop.getBoundingClientRect(), b = onder.getBoundingClientRect();
-    rand.style.left = (a.left - w.left + wrap.scrollLeft - 3) + 'px';
-    rand.style.top = (a.top - w.top + wrap.scrollTop - 3) + 'px';
-    rand.style.width = (a.width + 6) + 'px';
-    rand.style.height = (b.bottom - a.top + 6) + 'px';
+  var stap = 0, zichtbaar = false, loopt = false, eerst = true;
+  function vakken(){
+    var lijst = [t.querySelector('thead .k2')], rijen = t.querySelectorAll('tbody tr');
+    for (var i = 0; i < rijen.length; i++) if (rijen[i].getClientRects().length) lijst.push(rijen[i].querySelector('.k2'));
+    return lijst;
   }
-  function zonderSchuiven(k){ rand.style.transition = 'none'; plaats(k); rand.offsetHeight; rand.style.transition = ''; }
-  function stap(){
+  function plaats(el){
+    var w = wrap.getBoundingClientRect(), a = el.getBoundingClientRect();
+    rand.style.left = (a.left - w.left + wrap.scrollLeft - 3) + 'px'; rand.style.top = (a.top - w.top + wrap.scrollTop - 3) + 'px';
+    rand.style.width = (a.width + 6) + 'px'; rand.style.height = (a.height + 6) + 'px';
+  }
+  function zonderSchuiven(el){ rand.style.transition = 'none'; plaats(el); rand.offsetHeight; rand.style.transition = ''; }
+  function volgende(){
     if (!zichtbaar || document.hidden) { loopt = false; return; }
     loopt = true;
-    if (kol === 0) { zonderSchuiven(0); rand.className = 'kol-rand aan'; } else plaats(kol);
-    setTimeout(function(){
-      if (kol === 2) { rand.className = 'kol-rand'; kol = 0; setTimeout(stap, 800); }
-      else { kol++; stap(); }
-    }, HOUD[kol]);
+    var v = vakken();
+    if (stap >= v.length) { rand.className = 'kol-rand'; stap = 0; setTimeout(volgende, 900); return; }
+    if (stap === 0) { zonderSchuiven(v[0]); rand.className = 'kol-rand aan'; } else plaats(v[stap]);
+    stap++;
+    setTimeout(volgende, 1300);
   }
   function start(){
     if (loopt || !zichtbaar) return;
     loopt = true;
-    setTimeout(function(){ loopt = false; stap(); }, eerst ? 1300 : 300);   // eerst de kolommen laten binnenschuiven
+    setTimeout(function(){ loopt = false; volgende(); }, eerst ? 1300 : 300);   // eerst de kolommen laten binnenschuiven
     eerst = false;
   }
   new IntersectionObserver(function(it){ zichtbaar = it[0].isIntersecting; start(); }, { threshold: 0.3 }).observe(t);
   document.addEventListener('visibilitychange', start);
-  window.addEventListener('resize', function(){ if (rand.className.indexOf('aan') > -1) zonderSchuiven(kol); });
+  window.addEventListener('resize', function(){ if (rand.className.indexOf('aan') > -1) { var v = vakken(); zonderSchuiven(v[Math.max(0, stap - 1)] || v[0]); } });
 })();
 </script>
 <script>

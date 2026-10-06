@@ -42,7 +42,7 @@ Nieuwe toevoegen: kopieer er een. Geen verzonnen reviews; namen alleen met toest
 ## 4b. Lettertypes en overige bestanden
 - `fonts/` bevat Oxanium (koppen) en DM Sans (tekst) als woff2 (OFL-licentie), zodat er geen verzoek naar Google Fonts gaat (AVG).
 - `404.html`, `robots.txt`, `sitemap.xml`, favicons en `img/og.jpg` staan in de root.
-- Het ontwerp en het bouwscript staan in `ontwerp/` (niet in git): `python3 ontwerp/bouw.py` maakt `index.html` opnieuw uit `ontwerp/v5.html`.
+- Het ontwerp en het bouwscript staan in `ontwerp/` (niet in git): `python3 ontwerp/v6_volgorde.py` maakt `ontwerp/v6.html` uit `ontwerp/v5.html` (volgorde en telefoonversie), daarna maakt `python3 ontwerp/bouw.py` de echte `index.html`.
   Wie `index.html` met de hand aanpast, moet dat daarna niet meer doen, anders worden de handwijzigingen overschreven.
 
 ## 5. Live zetten (GitHub Pages + Strato-domein)
