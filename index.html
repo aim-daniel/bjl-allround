@@ -128,18 +128,12 @@
   .vergelijk .nee svg{color:var(--dim)} .vergelijk .ja svg{color:var(--accent-text)}
 
   /* tabel */
-  /* Lichtlijn rond de vergelijking, zoals op aimintelligence.app: een draaiend ELEMENT met een conisch
-     verloop achter een rand van 1,5 px. Geen @property, dus het werkt ook op Safari 15. Zonder beweging
-     (of met 'minder beweging' aan) blijft er een gewone dunne rand staan. */
-  .rand-loop{position:relative;max-width:960px;margin-inline:auto;border-radius:20px;padding:1.5px;background:var(--line);overflow:hidden;isolation:isolate;-webkit-mask-image:-webkit-radial-gradient(white,black)}
-  .tabel-kaart{border-radius:18.5px;background:var(--surface);padding:clamp(20px,3vw,36px);display:grid;gap:24px}
-  @media (prefers-reduced-motion:no-preference){
-    .rand-loop::before{content:"";position:absolute;left:50%;top:50%;width:170%;padding-bottom:170%;margin:-85% 0 0 -85%;z-index:-1;pointer-events:none;
-      background:conic-gradient(from 0deg,rgba(79,151,245,0) 0deg,rgba(79,151,245,0) 215deg,rgba(79,151,245,.4) 295deg,rgba(185,215,255,1) 352deg,rgba(79,151,245,0) 360deg);
-      animation:rand-draai 8s linear infinite}
-    @keyframes rand-draai{to{transform:rotate(360deg)}}
-  }
-  .tabel-wrap{overflow-x:auto}
+  /* Vergelijking: een gewone, stille kaart (de rondlopende lichtlijn is weg, Daniel 2026-10-06). Om de kolommen
+     springt één oplichtende rand van links naar rechts: Waar het om gaat, BJL Allround, Groot installatiebedrijf. */
+  .tabel-kaart{border:1px solid var(--line);border-radius:20px;background:var(--surface);padding:clamp(20px,3vw,36px);display:grid;gap:24px;max-width:960px;margin-inline:auto}
+  .tabel-wrap{overflow-x:auto;position:relative;padding-block:6px}
+  .kol-rand{position:absolute;left:0;top:0;width:0;height:0;border:2px solid var(--accent-text);border-radius:16px;box-shadow:0 0 0 4px rgba(79,151,245,.10),0 0 22px rgba(79,151,245,.35);pointer-events:none;opacity:0;transition:left .6s cubic-bezier(.65,0,.35,1),width .6s cubic-bezier(.65,0,.35,1),opacity .4s ease}
+  .kol-rand.aan{opacity:1}
   table{width:100%;border-collapse:separate;border-spacing:0;font-size:15px}
   th,td{padding:15px 16px;text-align:left;border-bottom:1px solid var(--line-2);white-space:nowrap}
   thead th{font:700 11.5px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
@@ -381,10 +375,10 @@
 
   <section class="blok" id="vergelijk"><div class="wrap">
     <div class="blok-kop midden" data-reveal><p class="eyebrow">Naast elkaar</p><h2>BJL Allround vs. <em>een groot installatiebedrijf.</em></h2></div>
-    <div class="rand-loop" data-reveal="scale"><div class="tabel-kaart">
+    <div class="tabel-kaart" data-reveal="scale">
       <div class="tabel-wrap"><table data-kolommen><thead><tr><th scope="col" class="k1">Waar het om gaat</th><th scope="col" class="wij k2">BJL Allround</th><th scope="col" class="k3">Groot installatie&shy;bedrijf</th></tr></thead><tbody><tr><th scope="row" class="k1">Wie neemt op</th><td class="wij k2"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Benjamin zelf</td><td class="k3">Callcenter of planner</td></tr><tr><th scope="row" class="k1">Wie komt langs</th><td class="wij k2"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Dezelfde vakman</td><td class="k3">Wisselende monteur</td></tr><tr><th scope="row" class="k1">Prijs</th><td class="wij k2"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Vooraf bekend</td><td class="k3">Vaak pas achteraf</td></tr><tr><th scope="row" class="k1">Bij spoed</th><td class="wij k2"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Zelfde dag</td><td class="k3">Op de planning</td></tr><tr><th scope="row" class="k1">Foto via WhatsApp</th><td class="wij k2"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Vaak direct een inschatting</td><td class="k3">Meestal niet</td></tr><tr><th scope="row" class="k1">Aanspreekpunt</th><td class="wij k2"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Eén persoon</td><td class="k3">Een afdeling</td></tr></tbody></table></div>
       <div class="onder"><p>Bij BJL Allround heb je één aanspreekpunt van het eerste telefoontje tot de factuur. Geen wachtrij, geen doorverbinden, en je weet vooraf waar je aan toe bent.</p><a class="knop knop-vol" href="tel:+31641178935">Bel Benjamin</a></div>
-    </div></div>
+    </div>
   </div></section>
 
   <section class="blok vlak" id="diensten"><div class="wrap">
@@ -525,6 +519,47 @@
 })();
 </script>
 <script>
+/* Kolomrand (ES5): één oplichtende rand springt in de vergelijking van kolom naar kolom, van links naar rechts.
+   Bij BJL Allround blijft hij iets langer staan; na de laatste kolom vervaagt hij en begint hij links opnieuw.
+   Start pas als de kolommen binnen zijn geschoven, loopt alleen als de tabel in beeld is, en doet niets bij
+   'minder beweging' of zonder JavaScript (dan is alleen het blauwe kader van BJL Allround er, zoals altijd). */
+(function(){
+  var t = document.querySelector('[data-kolommen]'); if (!t || !('IntersectionObserver' in window)) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var wrap = t.parentNode, rand = document.createElement('span');
+  rand.className = 'kol-rand'; rand.setAttribute('aria-hidden', 'true'); wrap.appendChild(rand);
+  var kol = 0, zichtbaar = false, loopt = false, eerst = true, HOUD = [1700, 2600, 1700];
+  function plaats(k){
+    var kop = t.querySelector('thead .k' + (k + 1)), rijen = t.querySelectorAll('tbody tr'), onder = rijen[rijen.length - 1].querySelector('.k' + (k + 1));
+    if (!kop || !onder) return;
+    var w = wrap.getBoundingClientRect(), a = kop.getBoundingClientRect(), b = onder.getBoundingClientRect();
+    rand.style.left = (a.left - w.left + wrap.scrollLeft - 3) + 'px';
+    rand.style.top = (a.top - w.top + wrap.scrollTop - 3) + 'px';
+    rand.style.width = (a.width + 6) + 'px';
+    rand.style.height = (b.bottom - a.top + 6) + 'px';
+  }
+  function zonderSchuiven(k){ rand.style.transition = 'none'; plaats(k); rand.offsetHeight; rand.style.transition = ''; }
+  function stap(){
+    if (!zichtbaar || document.hidden) { loopt = false; return; }
+    loopt = true;
+    if (kol === 0) { zonderSchuiven(0); rand.className = 'kol-rand aan'; } else plaats(kol);
+    setTimeout(function(){
+      if (kol === 2) { rand.className = 'kol-rand'; kol = 0; setTimeout(stap, 800); }
+      else { kol++; stap(); }
+    }, HOUD[kol]);
+  }
+  function start(){
+    if (loopt || !zichtbaar) return;
+    loopt = true;
+    setTimeout(function(){ loopt = false; stap(); }, eerst ? 1300 : 300);   // eerst de kolommen laten binnenschuiven
+    eerst = false;
+  }
+  new IntersectionObserver(function(it){ zichtbaar = it[0].isIntersecting; start(); }, { threshold: 0.3 }).observe(t);
+  document.addEventListener('visibilitychange', start);
+  window.addEventListener('resize', function(){ if (rand.className.indexOf('aan') > -1) zonderSchuiven(kol); });
+})();
+</script>
+<script>
 /* Werkgalerij (ES5). Bladert elke 6 s vanzelf door (dun balkje op de foto) en laadt een foto pas als hij bijna
    aan de beurt is. Wie zelf een foto kiest, neemt het over: dan stopt het doorbladeren. Muis erop (alleen met een
    echte muis) of toetsenbordfocus erin = pauze. Bij 'minder beweging' alleen zelf kiezen. Zonder JavaScript staat
@@ -615,10 +650,15 @@
     setTimeout(function(){
       var echt = bron[volgende].cloneNode(true); volgende = (volgende + 1) % bron.length;
       echt.className = 'bericht in'; if (typt.parentNode) lijst.replaceChild(echt, typt); else erbij(echt);
-      setTimeout(stap, 3200);
-    }, 1100);
+      setTimeout(stap, 1400);
+    }, 650);
   }
-  function start(){ if (!bezig && zichtbaar && !pauze) stap(); }
+  var gestart = false;
+  function start(){
+    if (bezig || !zichtbaar || pauze) return;
+    if (!gestart) { gestart = true; for (var v = 0; v < 2; v++) { var b = bron[volgende].cloneNode(true); volgende = (volgende + 1) % bron.length; b.className = 'bericht in'; lijst.appendChild(b); } bezig = true; setTimeout(stap, 900); return; }
+    stap();
+  }
   if ('IntersectionObserver' in window) new IntersectionObserver(function(it){ zichtbaar = it[0].isIntersecting; start(); }, { threshold: .4 }).observe(lijst);
   else { zichtbaar = true; start(); }
   document.addEventListener('visibilitychange', start);
