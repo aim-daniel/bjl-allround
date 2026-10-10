@@ -330,6 +330,17 @@
     @keyframes vv-stroom{to{stroke-dashoffset:-1000}}
   }
   @media (max-width:720px){ .vv-rechts,.vv-links{width:110vw;opacity:.7} .vv-rechts{right:-55vw} .vv-links{left:-55vw} .vv-cta{display:none} }
+  /* 'Zo werkt het': kader met lichte randen in blauw chroom, loopt van stap naar stap */
+  .stappen{position:relative}
+  .stap-kader{position:absolute;left:0;top:0;width:0;height:0;border-radius:20px;pointer-events:none;opacity:0;z-index:2;
+    box-shadow:0 0 0 1px rgba(150,195,255,.22),0 0 26px rgba(79,151,245,.36),0 0 60px rgba(79,151,245,.12);
+    transition:left .65s cubic-bezier(.65,0,.35,1),top .65s cubic-bezier(.65,0,.35,1),width .65s cubic-bezier(.65,0,.35,1),height .65s cubic-bezier(.65,0,.35,1),opacity .45s ease}
+  .stap-kader.aan{opacity:1}
+  .stap-chroom{position:absolute;inset:0;border-radius:inherit;padding:2px;
+    background:linear-gradient(115deg,#2a6fd6 0%,#9cc9ff 16%,#ffffff 24%,#5d9ff2 36%,#1d5fc4 50%,#b9dbff 64%,#ffffff 71%,#3b82e6 84%,#1d5fc4 100%);background-size:220% 220%;
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);
+    animation:chroom-glans 3.2s linear infinite}
+  @keyframes chroom-glans{to{background-position:220% 0}}
   /* v6: Benjamin in de opening, twee knoppen, rustige telefoonversie */
   .hero-knoppen{display:flex;flex-wrap:wrap;gap:12px} .hero-knoppen .knop-rand svg{color:var(--wa)}
   .ben-pil{display:none;align-items:center;gap:10px;padding:5px 14px 5px 5px;border-radius:999px;border:1px solid var(--accent-line);background:var(--accent-soft);font:600 13.5px/1 var(--body);color:var(--text)}
@@ -590,6 +601,43 @@
     }
   }, { threshold: .15 });
   for (i = 0; i < vlakken.length; i++) io.observe(vlakken[i]);
+})();
+</script>
+<script>
+/* Kader in 'Zo werkt het' (ES5): een kader met lichte randen in blauw chroom loopt van stap 1 naar stap 4 (op de
+   computer van links naar rechts, op de telefoon van boven naar beneden) en begint dan weer bij stap 1. Alleen als
+   het blok in beeld is; niets bij 'minder beweging' of zonder JavaScript. */
+(function(){
+  var lijst = document.querySelector('.stappen'); if (!lijst || !('IntersectionObserver' in window)) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var stappen = lijst.querySelectorAll('.stap'); if (stappen.length < 2) return;
+  var kader = document.createElement('span'), chroom = document.createElement('span');
+  kader.className = 'stap-kader'; kader.setAttribute('aria-hidden', 'true'); chroom.className = 'stap-chroom';
+  kader.appendChild(chroom); lijst.appendChild(kader);
+  var i = 0, zichtbaar = false, loopt = false, eerst = true;
+  function plaats(el){
+    var w = lijst.getBoundingClientRect(), a = el.getBoundingClientRect();
+    kader.style.left = (a.left - w.left - 4) + 'px'; kader.style.top = (a.top - w.top - 4) + 'px';
+    kader.style.width = (a.width + 8) + 'px'; kader.style.height = (a.height + 8) + 'px';
+  }
+  function zonderSchuiven(el){ kader.style.transition = 'none'; plaats(el); kader.offsetHeight; kader.style.transition = ''; }
+  function volgende(){
+    if (!zichtbaar || document.hidden) { loopt = false; return; }
+    loopt = true;
+    if (i >= stappen.length) { kader.className = 'stap-kader'; i = 0; setTimeout(volgende, 800); return; }
+    if (i === 0) { zonderSchuiven(stappen[0]); kader.className = 'stap-kader aan'; } else plaats(stappen[i]);
+    i++;
+    setTimeout(volgende, 1600);
+  }
+  function start(){
+    if (loopt || !zichtbaar) return;
+    loopt = true;
+    setTimeout(function(){ loopt = false; volgende(); }, eerst ? 900 : 300);
+    eerst = false;
+  }
+  new IntersectionObserver(function(it){ zichtbaar = it[0].isIntersecting; start(); }, { threshold: 0.35 }).observe(lijst);
+  document.addEventListener('visibilitychange', start);
+  window.addEventListener('resize', function(){ if (kader.className.indexOf('aan') > -1) zonderSchuiven(stappen[Math.max(0, i - 1)]); });
 })();
 </script>
 <script>
