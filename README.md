@@ -8,8 +8,8 @@ Wijzig je er een, zoek dan op de oude waarde en vervang **alle** plekken, ook in
 
 | gegeven | waarde | staat in |
 |---|---|---|
-| telefoon | `06-41178935`, link `tel:+31641178935` | strip bovenaan, kop, contactkaart, knoppen, voet, mobiele balk |
-| WhatsApp | `https://wa.me/31641178935` | klussen, reacties, contact, voet, mobiele balk |
+| telefoon | `06-41178935`, link `tel:+31641178935` | spoedbalk, kop, opening + Benjamins kaart, vergelijking, contact, voet, mobiele balk |
+| WhatsApp | `https://wa.me/31641178935` (met voorgevuld berichtje) | opening, reacties, diensten, vragen, contact, voet, mobiele balk |
 | e-mail | `bjlzakelijk@gmail.com` | contact, voet, JSON-LD |
 | KvK / btw-id | `88991490` / `NL004679991B76` | voet (wettelijk verplicht zichtbaar), btw ook in JSON-LD |
 
@@ -17,33 +17,33 @@ Er is bewust **geen formulier** (Daniel, 2026-10-05): klanten bellen, appen of m
 vanzelf in de Klusboek-app binnen; het koppelpunt `app.bjlallround.nl/api/aanvraag` bestaat nog, maar de site gebruikt het niet.
 
 ## 2. Foto's
-Staan in `img/` (verkleind, EXIF/locatie verwijderd). Elke werkfoto bestaat in drie maten:
+Staan in `img/` (verkleind, EXIF/locatie verwijderd):
 
-- `werk-N.jpg` (900 px breed) en `werk-N-s.jpg` (450 px): de grote foto in de galerij, de browser kiest zelf
-- `werk-N-t.jpg` (165 px): het kleine kiezer-fotootje eronder
-- `hero.jpg` / `hero-s.jpg` / `hero-t.jpg`: de badkamer, eerste foto van de galerij
-- `portret.jpg`: Benjamin (bij "Maak kennis" en klein in de contactkaart); `og.jpg`: deel-afbeelding voor WhatsApp en socials
+- `werk-N.jpg` (900 px breed) en `werk-N-s.jpg` (450 px): galerij en vergroting
+- `hero.jpg` / `hero-s.jpg`: de badkamer in de opening (op de telefoon donker als achtergrond)
+- `portret.jpg`: Benjamin (Maak kennis, kaartje in de opening, vragen, contact); `og.jpg`: deel-afbeelding voor WhatsApp en socials
+- `werk-N-t.jpg` en `hero-t.jpg` worden sinds 2026-10-11 niet meer gebruikt
 
-Een klus toevoegen in de galerij gaat op drie plekken in de sectie `id="werk"`, steeds in dezelfde volgorde:
-een `<img class="laag" data-src=…>` in `figure.uitgelicht`, een `<button class="kies" data-i=…>` in `.kiezers`
-(nummer `data-i` doortellen), en een regel `{"t": titel, "d": uitleg}` in `<script type="application/json" id="g-data">`.
-Pas ook de teller `/ 09` aan. Maak eerst de drie maten, bijvoorbeeld met `sips -Z 1200`, `-Z 600` en `-Z 220`.
+Een klus toevoegen: kopieer in de sectie `id="werk"` een `<figure class="shot">` en pas `data-title`, `data-desc`
+(uitleg in de vergroting), `data-full`, `href`, `src`/`srcset`, `alt` en het bijschrift aan. Houd het aantal deelbaar door 4
+(computer: 4 naast elkaar) en 2 (telefoon). Maak eerst de twee maten, bijvoorbeeld met `sips -Z 1200` en `sips -Z 600`.
 
 ## 3. Beweging
-Het bewegingssysteem is hetzelfde als op aimintelligence.app: `data-reveal` (blok komt omhoog of schuift in),
-`data-enter` (opening na elkaar), `data-steps` (de vier stappen lopen mee met scrollen). De galerij bladert elke 6 s door
-en stopt zodra iemand zelf een foto kiest; de reacties komen als WhatsApp-berichten binnen. Zonder JavaScript en bij
-"minder beweging" staat alles gewoon stil en volledig in beeld.
+Rustig en alleen als de bezoeker geen 'minder beweging' heeft gekozen: blokken komen binnen bij scrollen (`data-rv`),
+de opening komt na elkaar binnen (`data-in`), in de vergelijking loopt een rand vakje voor vakje door de kolom BJL Allround,
+de WhatsApp-berichten komen één voor één binnen (twee rondes, dan blijven de laatste drie staan), een kader in blauw chroom
+loopt langs de vier stappen en op de computer stroomt vloerverwarming door de achtergrond van Diensten en Vragen.
+Zonder JavaScript, bij 'minder beweging' en bij printen staat alles gewoon stil en volledig in beeld.
 
 ## 4. Reacties van klanten
 Letterlijke WhatsApp-berichtjes, zonder naam, in de sectie `id="reacties"` als `<figure class="bericht">`.
 Nieuwe toevoegen: kopieer er een. Geen verzonnen reviews; namen alleen met toestemming.
 
 ## 4b. Lettertypes en overige bestanden
-- `fonts/` bevat Oxanium (koppen) en DM Sans (tekst) als woff2 (OFL-licentie), zodat er geen verzoek naar Google Fonts gaat (AVG).
+- `fonts/` bevat Archivo (koppen), Instrument Sans (tekst) en Caveat (handgeschreven woorden), lokaal gehost (OFL-licentie), zodat er geen verzoek naar Google Fonts gaat (AVG).
 - `404.html`, `robots.txt`, `sitemap.xml`, favicons en `img/og.jpg` staan in de root.
-- Het ontwerp en het bouwscript staan in `ontwerp/` (niet in git): `python3 ontwerp/v6_volgorde.py` maakt `ontwerp/v6.html` uit `ontwerp/v5.html` (volgorde en telefoonversie), daarna maakt `python3 ontwerp/bouw.py` de echte `index.html`.
-  Wie `index.html` met de hand aanpast, moet dat daarna niet meer doen, anders worden de handwijzigingen overschreven.
+- Sinds 2026-10-11 is `index.html` weer **met de hand onderhouden**: de vertrouwde opbouw van de eerste site, aangevuld met delen van de tweede (spoedbalk, Benjamins kaart, vergelijking, WhatsApp-reacties, stappen, vloerverwarming).
+  Het werkexemplaar staat in `ontwerp/terug/site/index.html` (niet in git) en is gelijk aan `index.html`. Het oude bouwscript `ontwerp/bouw.py` maakte de vorige versie en stopt nu met een melding; niet meer draaien, anders wordt `index.html` overschreven.
 
 ## 5. Live zetten (GitHub Pages + Strato-domein)
 Hosting: GitHub Pages, repo `aim-daniel/bjl-allround`, branch `main`, map `/`. Elke push naar `main` is binnen een minuut live.
